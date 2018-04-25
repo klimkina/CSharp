@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{757AF02D-486C-49C4-962E-26A88E5A8EE2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VWA4Common</RootNamespace>
+    <AssemblyName>VWA4Common</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <ApplicationIcon>VW_appicon.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ActiveReports.Chart, Version=6.2.3164.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Shared.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Shared.v10.3.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.Misc.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.Misc.v10.3.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.v10.3.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppContext.cs" />
+    <Compile Include="DAO\GoalsDAO.cs" />
+    <Compile Include="DAO\TagsDAO.cs" />
+    <Compile Include="DAO\TagsFoodTypeDAO.cs" />
+    <Compile Include="DataObject\AvgActualData.cs" />
+    <Compile Include="DataObject\MaxMinModel.cs" />
+    <Compile Include="DataObject\Goal.cs" />
+    <Compile Include="DataObject\GoalReportModel.cs" />
+    <Compile Include="DataObject\Tag.cs" />
+    <Compile Include="DataObject\TagsFoodType.cs" />
+    <Compile Include="DBDetector.cs" />
+    <Compile Include="Errors.cs" />
+    <Compile Include="DAO\ContainerCategoryDAO.cs" />
+    <Compile Include="DAO\ContainerTypeDAO.cs" />
+    <Compile Include="DAO\FoodCategoryDAO.cs" />
+    <Compile Include="DAO\FoodTypeDAO.cs" />
+    <Compile Include="DAO\FormDAO.cs" />
+    <Compile Include="DAO\FormFormSeriesDAO.cs" />
+    <Compile Include="DAO\FormSeriesDAO.cs" />
+    <Compile Include="DAO\LossCategoryDAO.cs" />
+    <Compile Include="DAO\LossTypeDAO.cs" />
+    <Compile Include="DAO\SiteDAO.cs" />
+    <Compile Include="DAO\UnitsVolumeDAO.cs" />
+    <Compile Include="DataObject\ContainerCategory.cs" />
+    <Compile Include="DataObject\ContainerType.cs" />
+    <Compile Include="DataObject\FoodCategory.cs" />
+    <Compile Include="DataObject\FoodType.cs" />
+    <Compile Include="DataObject\Form.cs" />
+    <Compile Include="DataObject\FormFormSeries.cs" />
+    <Compile Include="DataObject\FormSeries.cs" />
+    <Compile Include="DataObject\LossCategory.cs" />
+    <Compile Include="DataObject\LossType.cs" />
+    <Compile Include="DataObject\Site.cs" />
+    <Compile Include="DataObject\UnitsVolume.cs" />
+    <Compile Include="DB.cs" />
+    <Compile Include="DialogGet1LineofText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogGet1LineofText.Designer.cs">
+      <DependentUpon>DialogGet1LineofText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Events.cs" />
+    <Compile Include="frmChangePIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChangePIN.Designer.cs">
+      <DependentUpon>frmChangePIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalClasses.cs" />
+    <Compile Include="GlobalSettings.cs" />
+    <Compile Include="NiceErrorDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NiceErrorDialog.Designer.cs">
+      <DependentUpon>NiceErrorDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgressDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgressDialog.Designer.cs">
+      <DependentUpon>ProgressDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgressForm.Designer.cs">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Query.cs" />
+    <Compile Include="Security\Activation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Security\Activation.Designer.cs">
+      <DependentUpon>Activation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\DESEncryption.cs" />
+    <Compile Include="Security\LicenseManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Security\SecurityPermission.cs" />
+    <Compile Include="Security\LicenseUtility.cs" />
+    <Compile Include="Security\UpdateData.cs" />
+    <Compile Include="SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TrackerDetector.cs" />
+    <Compile Include="Transaction_Mem.cs" />
+    <Compile Include="Types\AllowedWasteClassesType.cs" />
+    <Compile Include="Types\DefaultUserLevelType.cs" />
+    <Compile Include="Types\ExpirationWarningType.cs" />
+    <Compile Include="Types\LicenseType.cs" />
+    <Compile Include="UpdateDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateDB.Designer.cs">
+      <DependentUpon>UpdateDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities.cs" />
+    <Compile Include="UtilitiesInstance.cs" />
+    <Compile Include="VWACommon.cs" />
+    <Compile Include="VWADBUtils.cs" />
+    <Compile Include="Web References\com.licensemanager4web\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DialogGet1LineofText.resx">
+      <DependentUpon>DialogGet1LineofText.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChangePIN.resx">
+      <DependentUpon>frmChangePIN.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GlobalDefaults.xml" />
+    <EmbeddedResource Include="NiceErrorDialog.resx">
+      <DependentUpon>NiceErrorDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressDialog.resx">
+      <DependentUpon>ProgressDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressForm.resx">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Security\Activation.resx">
+      <DependentUpon>Activation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateDB.resx">
+      <DependentUpon>UpdateDB.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\gears.gif" />
+    <None Include="Web References\com.licensemanager4web\Activation.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\com.licensemanager4web\Client.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\com.licensemanager4web\License.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\com.licensemanager4web\LicenseFeaturesParams.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\com.licensemanager4web\LicenseManager4Web.wsdl" />
+    <None Include="Web References\com.licensemanager4web\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\com.licensemanager4web\Site.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gears1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gears2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gears3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gears4.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="VW_appicon.ico" />
+    <None Include="Web References\com.licensemanager4web\LicenseManager4Web.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://activate.leanpath.com/LicenseManager4Web.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\com.licensemanager4web\</RelPath>
+      <UpdateFromURL>http://activate.leanpath.com/LicenseManager4Web.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>VWA4Common_com_licensemanager4web_LicenseManagerWebService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

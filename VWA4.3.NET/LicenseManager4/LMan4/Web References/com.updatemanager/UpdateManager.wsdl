@@ -1,0 +1,1499 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="GetUpdateTypes">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUpdateTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUpdateTypesResult" type="tns:ArrayOfUpdateType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUpdateType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UpdateType" type="tns:UpdateType" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="UpdateType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Message" />
+          <s:enumeration value="Hotfix" />
+          <s:enumeration value="Update" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SaveUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="u" type="tns:Update" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Update">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateSeriesId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="UpdateFileIds" type="tns:ArrayOfGuid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PayloadPath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InstallPath" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateType" type="tns:UpdateType" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateCreated" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateModified" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfGuid">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="guid" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveUpdateResult" type="tns:Update" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUpdateById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUpdateByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUpdateByIdResult" type="tns:Update" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllUpdates">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllUpdatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllUpdatesResult" type="tns:ArrayOfUpdate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUpdate">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Update" nillable="true" type="tns:Update" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUpdatesBySeriesId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUpdatesBySeriesIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUpdatesBySeriesIdResult" type="tns:ArrayOfUpdate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CompleteUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="applicationid" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="updateId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CompleteUpdateResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CheckForUpdates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="version" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="applicationId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckForUpdatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckForUpdatesResult" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUpdateResult" type="tns:Update" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUpdateSeries">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUpdateSeriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUpdateSeriesResult" type="tns:UpdateSeries" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UpdateSeries">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateCreated" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateModified" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Updates" type="tns:ArrayOfUpdate" />
+          <s:element minOccurs="0" maxOccurs="1" name="Versions" type="tns:ArrayOfGuid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteUpdateById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUpdateByIdResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="InstallUpdatesInSeriesByIds">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ids" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InstallUpdatesInSeriesByIdsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InstallUpdatesInSeriesByIdsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HotfixUpdatesInSeriesByIds">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ids" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HotfixUpdatesInSeriesByIdsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="HotfixUpdatesInSeriesByIdsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllMessageUpdatesInSeriesById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllMessageUpdatesInSeriesByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllMessageUpdatesInSeriesByIdResult" type="tns:ArrayOfUpdate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllHotfixUpdatesInSeriesById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllHotfixUpdatesInSeriesByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllHotfixUpdatesInSeriesByIdResult" type="tns:ArrayOfUpdate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllUpdateSeries">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllUpdateSeriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllUpdateSeriesResult" type="tns:ArrayOfUpdateSeries" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUpdateSeries">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UpdateSeries" nillable="true" type="tns:UpdateSeries" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUpdateSeriesById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUpdateSeriesByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUpdateSeriesByIdResult" type="tns:UpdateSeries" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveUpdateSeriesWithUpdateIds">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="us" type="tns:UpdateSeries" />
+            <s:element minOccurs="0" maxOccurs="1" name="updateIds" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveUpdateSeriesWithUpdateIdsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveUpdateSeriesWithUpdateIdsResult" type="tns:UpdateSeries" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUpdateSeriesById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUpdateSeriesByIdResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SaveUpdateSeries">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="us" type="tns:UpdateSeries" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveUpdateSeriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveUpdateSeriesResult" type="tns:UpdateSeries" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllVersionsForUpdateSeries">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllVersionsForUpdateSeriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllVersionsForUpdateSeriesResult" type="tns:ArrayOfVersion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfVersion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Version" nillable="true" type="tns:Version" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Version">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="VersionName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllVersions">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllVersionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllVersionsResult" type="tns:ArrayOfVersion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="v" type="tns:Version" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveVersionResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteVersionById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteVersionByIdResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="StartDownload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fileId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartDownloadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="StartDownloadResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Download">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fileId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="read" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartUpload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="updateId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="installPath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartUploadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="StartUploadResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppendUpload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fileId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="bytes" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppendUploadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AppendUploadResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FinishUpload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fileId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FinishUploadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FinishUploadResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllUploadsByUpdateId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="updateId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllUploadsByUpdateIdResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CancelAllUploadsByUpdateId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="updateId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelAllUploadsByUpdateIdResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteUpload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fileId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUploadResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CancelUpload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fileId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelUploadResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUpdateFileById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUpdateFileByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUpdateFileByIdResult" type="tns:UpdateFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UpdateFile">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="File" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InstallPath" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateCreated" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateModified" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFilesForUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFilesForUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFilesForUpdateResult" type="tns:ArrayOfUpdateFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUpdateFile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UpdateFile" nillable="true" type="tns:UpdateFile" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetUpdateTypesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUpdateTypes" />
+  </wsdl:message>
+  <wsdl:message name="GetUpdateTypesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUpdateTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveUpdate" />
+  </wsdl:message>
+  <wsdl:message name="SaveUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUpdateByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUpdateById" />
+  </wsdl:message>
+  <wsdl:message name="GetUpdateByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUpdateByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUpdatesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllUpdates" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUpdatesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllUpdatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUpdatesBySeriesIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUpdatesBySeriesId" />
+  </wsdl:message>
+  <wsdl:message name="GetUpdatesBySeriesIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUpdatesBySeriesIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="CompleteUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:CompleteUpdate" />
+  </wsdl:message>
+  <wsdl:message name="CompleteUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:CompleteUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckForUpdatesSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckForUpdates" />
+  </wsdl:message>
+  <wsdl:message name="CheckForUpdatesSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckForUpdatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUpdate" />
+  </wsdl:message>
+  <wsdl:message name="GetUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUpdateSeriesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUpdateSeries" />
+  </wsdl:message>
+  <wsdl:message name="GetUpdateSeriesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUpdateSeriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUpdateByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteUpdateById" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUpdateByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteUpdateByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="InstallUpdatesInSeriesByIdsSoapIn">
+    <wsdl:part name="parameters" element="tns:InstallUpdatesInSeriesByIds" />
+  </wsdl:message>
+  <wsdl:message name="InstallUpdatesInSeriesByIdsSoapOut">
+    <wsdl:part name="parameters" element="tns:InstallUpdatesInSeriesByIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="HotfixUpdatesInSeriesByIdsSoapIn">
+    <wsdl:part name="parameters" element="tns:HotfixUpdatesInSeriesByIds" />
+  </wsdl:message>
+  <wsdl:message name="HotfixUpdatesInSeriesByIdsSoapOut">
+    <wsdl:part name="parameters" element="tns:HotfixUpdatesInSeriesByIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMessageUpdatesInSeriesByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllMessageUpdatesInSeriesById" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMessageUpdatesInSeriesByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllMessageUpdatesInSeriesByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllHotfixUpdatesInSeriesByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllHotfixUpdatesInSeriesById" />
+  </wsdl:message>
+  <wsdl:message name="GetAllHotfixUpdatesInSeriesByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllHotfixUpdatesInSeriesByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUpdateSeriesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllUpdateSeries" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUpdateSeriesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllUpdateSeriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUpdateSeriesByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUpdateSeriesById" />
+  </wsdl:message>
+  <wsdl:message name="GetUpdateSeriesByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUpdateSeriesByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveUpdateSeriesWithUpdateIdsSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveUpdateSeriesWithUpdateIds" />
+  </wsdl:message>
+  <wsdl:message name="SaveUpdateSeriesWithUpdateIdsSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveUpdateSeriesWithUpdateIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUpdateSeriesByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteUpdateSeriesById" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUpdateSeriesByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteUpdateSeriesByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveUpdateSeriesSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveUpdateSeries" />
+  </wsdl:message>
+  <wsdl:message name="SaveUpdateSeriesSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveUpdateSeriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllVersionsForUpdateSeriesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllVersionsForUpdateSeries" />
+  </wsdl:message>
+  <wsdl:message name="GetAllVersionsForUpdateSeriesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllVersionsForUpdateSeriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllVersionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllVersions" />
+  </wsdl:message>
+  <wsdl:message name="GetAllVersionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllVersionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveVersion" />
+  </wsdl:message>
+  <wsdl:message name="SaveVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteVersionByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteVersionById" />
+  </wsdl:message>
+  <wsdl:message name="DeleteVersionByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteVersionByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="StartDownloadSoapIn">
+    <wsdl:part name="parameters" element="tns:StartDownload" />
+  </wsdl:message>
+  <wsdl:message name="StartDownloadSoapOut">
+    <wsdl:part name="parameters" element="tns:StartDownloadResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSoapIn">
+    <wsdl:part name="parameters" element="tns:Download" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadResponse" />
+  </wsdl:message>
+  <wsdl:message name="StartUploadSoapIn">
+    <wsdl:part name="parameters" element="tns:StartUpload" />
+  </wsdl:message>
+  <wsdl:message name="StartUploadSoapOut">
+    <wsdl:part name="parameters" element="tns:StartUploadResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppendUploadSoapIn">
+    <wsdl:part name="parameters" element="tns:AppendUpload" />
+  </wsdl:message>
+  <wsdl:message name="AppendUploadSoapOut">
+    <wsdl:part name="parameters" element="tns:AppendUploadResponse" />
+  </wsdl:message>
+  <wsdl:message name="FinishUploadSoapIn">
+    <wsdl:part name="parameters" element="tns:FinishUpload" />
+  </wsdl:message>
+  <wsdl:message name="FinishUploadSoapOut">
+    <wsdl:part name="parameters" element="tns:FinishUploadResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllUploadsByUpdateIdSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteAllUploadsByUpdateId" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllUploadsByUpdateIdSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteAllUploadsByUpdateIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelAllUploadsByUpdateIdSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelAllUploadsByUpdateId" />
+  </wsdl:message>
+  <wsdl:message name="CancelAllUploadsByUpdateIdSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelAllUploadsByUpdateIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUploadSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteUpload" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUploadSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteUploadResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelUploadSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelUpload" />
+  </wsdl:message>
+  <wsdl:message name="CancelUploadSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelUploadResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUpdateFileByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUpdateFileById" />
+  </wsdl:message>
+  <wsdl:message name="GetUpdateFileByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUpdateFileByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFilesForUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFilesForUpdate" />
+  </wsdl:message>
+  <wsdl:message name="GetFilesForUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFilesForUpdateResponse" />
+  </wsdl:message>
+  <wsdl:portType name="UpdateManagerSoap">
+    <wsdl:operation name="GetUpdateTypes">
+      <wsdl:input message="tns:GetUpdateTypesSoapIn" />
+      <wsdl:output message="tns:GetUpdateTypesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveUpdate">
+      <wsdl:input message="tns:SaveUpdateSoapIn" />
+      <wsdl:output message="tns:SaveUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdateById">
+      <wsdl:input message="tns:GetUpdateByIdSoapIn" />
+      <wsdl:output message="tns:GetUpdateByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUpdates">
+      <wsdl:input message="tns:GetAllUpdatesSoapIn" />
+      <wsdl:output message="tns:GetAllUpdatesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdatesBySeriesId">
+      <wsdl:input message="tns:GetUpdatesBySeriesIdSoapIn" />
+      <wsdl:output message="tns:GetUpdatesBySeriesIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CompleteUpdate">
+      <wsdl:input message="tns:CompleteUpdateSoapIn" />
+      <wsdl:output message="tns:CompleteUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckForUpdates">
+      <wsdl:input message="tns:CheckForUpdatesSoapIn" />
+      <wsdl:output message="tns:CheckForUpdatesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdate">
+      <wsdl:input message="tns:GetUpdateSoapIn" />
+      <wsdl:output message="tns:GetUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdateSeries">
+      <wsdl:input message="tns:GetUpdateSeriesSoapIn" />
+      <wsdl:output message="tns:GetUpdateSeriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUpdateById">
+      <wsdl:input message="tns:DeleteUpdateByIdSoapIn" />
+      <wsdl:output message="tns:DeleteUpdateByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InstallUpdatesInSeriesByIds">
+      <wsdl:input message="tns:InstallUpdatesInSeriesByIdsSoapIn" />
+      <wsdl:output message="tns:InstallUpdatesInSeriesByIdsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HotfixUpdatesInSeriesByIds">
+      <wsdl:input message="tns:HotfixUpdatesInSeriesByIdsSoapIn" />
+      <wsdl:output message="tns:HotfixUpdatesInSeriesByIdsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMessageUpdatesInSeriesById">
+      <wsdl:input message="tns:GetAllMessageUpdatesInSeriesByIdSoapIn" />
+      <wsdl:output message="tns:GetAllMessageUpdatesInSeriesByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllHotfixUpdatesInSeriesById">
+      <wsdl:input message="tns:GetAllHotfixUpdatesInSeriesByIdSoapIn" />
+      <wsdl:output message="tns:GetAllHotfixUpdatesInSeriesByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUpdateSeries">
+      <wsdl:input message="tns:GetAllUpdateSeriesSoapIn" />
+      <wsdl:output message="tns:GetAllUpdateSeriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdateSeriesById">
+      <wsdl:input message="tns:GetUpdateSeriesByIdSoapIn" />
+      <wsdl:output message="tns:GetUpdateSeriesByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveUpdateSeriesWithUpdateIds">
+      <wsdl:input message="tns:SaveUpdateSeriesWithUpdateIdsSoapIn" />
+      <wsdl:output message="tns:SaveUpdateSeriesWithUpdateIdsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUpdateSeriesById">
+      <wsdl:input message="tns:DeleteUpdateSeriesByIdSoapIn" />
+      <wsdl:output message="tns:DeleteUpdateSeriesByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveUpdateSeries">
+      <wsdl:input message="tns:SaveUpdateSeriesSoapIn" />
+      <wsdl:output message="tns:SaveUpdateSeriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllVersionsForUpdateSeries">
+      <wsdl:input message="tns:GetAllVersionsForUpdateSeriesSoapIn" />
+      <wsdl:output message="tns:GetAllVersionsForUpdateSeriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllVersions">
+      <wsdl:input message="tns:GetAllVersionsSoapIn" />
+      <wsdl:output message="tns:GetAllVersionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveVersion">
+      <wsdl:input message="tns:SaveVersionSoapIn" />
+      <wsdl:output message="tns:SaveVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteVersionById">
+      <wsdl:input message="tns:DeleteVersionByIdSoapIn" />
+      <wsdl:output message="tns:DeleteVersionByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StartDownload">
+      <wsdl:input message="tns:StartDownloadSoapIn" />
+      <wsdl:output message="tns:StartDownloadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Download">
+      <wsdl:input message="tns:DownloadSoapIn" />
+      <wsdl:output message="tns:DownloadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StartUpload">
+      <wsdl:input message="tns:StartUploadSoapIn" />
+      <wsdl:output message="tns:StartUploadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppendUpload">
+      <wsdl:input message="tns:AppendUploadSoapIn" />
+      <wsdl:output message="tns:AppendUploadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FinishUpload">
+      <wsdl:input message="tns:FinishUploadSoapIn" />
+      <wsdl:output message="tns:FinishUploadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllUploadsByUpdateId">
+      <wsdl:input message="tns:DeleteAllUploadsByUpdateIdSoapIn" />
+      <wsdl:output message="tns:DeleteAllUploadsByUpdateIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelAllUploadsByUpdateId">
+      <wsdl:input message="tns:CancelAllUploadsByUpdateIdSoapIn" />
+      <wsdl:output message="tns:CancelAllUploadsByUpdateIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUpload">
+      <wsdl:input message="tns:DeleteUploadSoapIn" />
+      <wsdl:output message="tns:DeleteUploadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelUpload">
+      <wsdl:input message="tns:CancelUploadSoapIn" />
+      <wsdl:output message="tns:CancelUploadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdateFileById">
+      <wsdl:input message="tns:GetUpdateFileByIdSoapIn" />
+      <wsdl:output message="tns:GetUpdateFileByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFilesForUpdate">
+      <wsdl:input message="tns:GetFilesForUpdateSoapIn" />
+      <wsdl:output message="tns:GetFilesForUpdateSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UpdateManagerSoap" type="tns:UpdateManagerSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUpdateTypes">
+      <soap:operation soapAction="http://tempuri.org/GetUpdateTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUpdate">
+      <soap:operation soapAction="http://tempuri.org/SaveUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdateById">
+      <soap:operation soapAction="http://tempuri.org/GetUpdateById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUpdates">
+      <soap:operation soapAction="http://tempuri.org/GetAllUpdates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdatesBySeriesId">
+      <soap:operation soapAction="http://tempuri.org/GetUpdatesBySeriesId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompleteUpdate">
+      <soap:operation soapAction="http://tempuri.org/CompleteUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckForUpdates">
+      <soap:operation soapAction="http://tempuri.org/CheckForUpdates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdate">
+      <soap:operation soapAction="http://tempuri.org/GetUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdateSeries">
+      <soap:operation soapAction="http://tempuri.org/GetUpdateSeries" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUpdateById">
+      <soap:operation soapAction="http://tempuri.org/DeleteUpdateById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstallUpdatesInSeriesByIds">
+      <soap:operation soapAction="http://tempuri.org/InstallUpdatesInSeriesByIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HotfixUpdatesInSeriesByIds">
+      <soap:operation soapAction="http://tempuri.org/HotfixUpdatesInSeriesByIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMessageUpdatesInSeriesById">
+      <soap:operation soapAction="http://tempuri.org/GetAllMessageUpdatesInSeriesById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllHotfixUpdatesInSeriesById">
+      <soap:operation soapAction="http://tempuri.org/GetAllHotfixUpdatesInSeriesById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUpdateSeries">
+      <soap:operation soapAction="http://tempuri.org/GetAllUpdateSeries" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdateSeriesById">
+      <soap:operation soapAction="http://tempuri.org/GetUpdateSeriesById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUpdateSeriesWithUpdateIds">
+      <soap:operation soapAction="http://tempuri.org/SaveUpdateSeriesWithUpdateIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUpdateSeriesById">
+      <soap:operation soapAction="http://tempuri.org/DeleteUpdateSeriesById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUpdateSeries">
+      <soap:operation soapAction="http://tempuri.org/SaveUpdateSeries" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllVersionsForUpdateSeries">
+      <soap:operation soapAction="http://tempuri.org/GetAllVersionsForUpdateSeries" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllVersions">
+      <soap:operation soapAction="http://tempuri.org/GetAllVersions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveVersion">
+      <soap:operation soapAction="http://tempuri.org/SaveVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteVersionById">
+      <soap:operation soapAction="http://tempuri.org/DeleteVersionById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartDownload">
+      <soap:operation soapAction="http://tempuri.org/StartDownload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Download">
+      <soap:operation soapAction="http://tempuri.org/Download" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartUpload">
+      <soap:operation soapAction="http://tempuri.org/StartUpload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppendUpload">
+      <soap:operation soapAction="http://tempuri.org/AppendUpload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FinishUpload">
+      <soap:operation soapAction="http://tempuri.org/FinishUpload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllUploadsByUpdateId">
+      <soap:operation soapAction="http://tempuri.org/DeleteAllUploadsByUpdateId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelAllUploadsByUpdateId">
+      <soap:operation soapAction="http://tempuri.org/CancelAllUploadsByUpdateId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUpload">
+      <soap:operation soapAction="http://tempuri.org/DeleteUpload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelUpload">
+      <soap:operation soapAction="http://tempuri.org/CancelUpload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdateFileById">
+      <soap:operation soapAction="http://tempuri.org/GetUpdateFileById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFilesForUpdate">
+      <soap:operation soapAction="http://tempuri.org/GetFilesForUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UpdateManagerSoap12" type="tns:UpdateManagerSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUpdateTypes">
+      <soap12:operation soapAction="http://tempuri.org/GetUpdateTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUpdate">
+      <soap12:operation soapAction="http://tempuri.org/SaveUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdateById">
+      <soap12:operation soapAction="http://tempuri.org/GetUpdateById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUpdates">
+      <soap12:operation soapAction="http://tempuri.org/GetAllUpdates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdatesBySeriesId">
+      <soap12:operation soapAction="http://tempuri.org/GetUpdatesBySeriesId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompleteUpdate">
+      <soap12:operation soapAction="http://tempuri.org/CompleteUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckForUpdates">
+      <soap12:operation soapAction="http://tempuri.org/CheckForUpdates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdate">
+      <soap12:operation soapAction="http://tempuri.org/GetUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdateSeries">
+      <soap12:operation soapAction="http://tempuri.org/GetUpdateSeries" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUpdateById">
+      <soap12:operation soapAction="http://tempuri.org/DeleteUpdateById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstallUpdatesInSeriesByIds">
+      <soap12:operation soapAction="http://tempuri.org/InstallUpdatesInSeriesByIds" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HotfixUpdatesInSeriesByIds">
+      <soap12:operation soapAction="http://tempuri.org/HotfixUpdatesInSeriesByIds" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMessageUpdatesInSeriesById">
+      <soap12:operation soapAction="http://tempuri.org/GetAllMessageUpdatesInSeriesById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllHotfixUpdatesInSeriesById">
+      <soap12:operation soapAction="http://tempuri.org/GetAllHotfixUpdatesInSeriesById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUpdateSeries">
+      <soap12:operation soapAction="http://tempuri.org/GetAllUpdateSeries" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdateSeriesById">
+      <soap12:operation soapAction="http://tempuri.org/GetUpdateSeriesById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUpdateSeriesWithUpdateIds">
+      <soap12:operation soapAction="http://tempuri.org/SaveUpdateSeriesWithUpdateIds" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUpdateSeriesById">
+      <soap12:operation soapAction="http://tempuri.org/DeleteUpdateSeriesById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUpdateSeries">
+      <soap12:operation soapAction="http://tempuri.org/SaveUpdateSeries" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllVersionsForUpdateSeries">
+      <soap12:operation soapAction="http://tempuri.org/GetAllVersionsForUpdateSeries" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllVersions">
+      <soap12:operation soapAction="http://tempuri.org/GetAllVersions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveVersion">
+      <soap12:operation soapAction="http://tempuri.org/SaveVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteVersionById">
+      <soap12:operation soapAction="http://tempuri.org/DeleteVersionById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartDownload">
+      <soap12:operation soapAction="http://tempuri.org/StartDownload" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Download">
+      <soap12:operation soapAction="http://tempuri.org/Download" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartUpload">
+      <soap12:operation soapAction="http://tempuri.org/StartUpload" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppendUpload">
+      <soap12:operation soapAction="http://tempuri.org/AppendUpload" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FinishUpload">
+      <soap12:operation soapAction="http://tempuri.org/FinishUpload" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllUploadsByUpdateId">
+      <soap12:operation soapAction="http://tempuri.org/DeleteAllUploadsByUpdateId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelAllUploadsByUpdateId">
+      <soap12:operation soapAction="http://tempuri.org/CancelAllUploadsByUpdateId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUpload">
+      <soap12:operation soapAction="http://tempuri.org/DeleteUpload" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelUpload">
+      <soap12:operation soapAction="http://tempuri.org/CancelUpload" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdateFileById">
+      <soap12:operation soapAction="http://tempuri.org/GetUpdateFileById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFilesForUpdate">
+      <soap12:operation soapAction="http://tempuri.org/GetFilesForUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UpdateManager">
+    <wsdl:port name="UpdateManagerSoap" binding="tns:UpdateManagerSoap">
+      <soap:address location="http://activate.leanpath.com/UpdateManager.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UpdateManagerSoap12" binding="tns:UpdateManagerSoap12">
+      <soap12:address location="http://activate.leanpath.com/UpdateManager.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

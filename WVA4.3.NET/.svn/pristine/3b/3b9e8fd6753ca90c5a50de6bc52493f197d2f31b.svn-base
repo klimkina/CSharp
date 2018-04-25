@@ -1,0 +1,845 @@
+namespace Reports
+{
+    /// <summary>
+    /// Summary description for rptWasteAvoidance.
+    /// </summary>
+    partial class rptWasteAvoidance
+    {
+        private DataDynamics.ActiveReports.PageHeader pageHeader;
+        private DataDynamics.ActiveReports.Detail detail;
+        private DataDynamics.ActiveReports.PageFooter pageFooter;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+            }
+            base.Dispose(disposing);
+        }
+
+        #region ActiveReport Designer generated code
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rptWasteAvoidance));
+            DataDynamics.ActiveReports.Chart.ChartArea chartArea3 = new DataDynamics.ActiveReports.Chart.ChartArea();
+            DataDynamics.ActiveReports.Chart.Axis axis11 = new DataDynamics.ActiveReports.Chart.Axis();
+            DataDynamics.ActiveReports.Chart.Axis axis12 = new DataDynamics.ActiveReports.Chart.Axis();
+            DataDynamics.ActiveReports.Chart.Axis axis13 = new DataDynamics.ActiveReports.Chart.Axis();
+            DataDynamics.ActiveReports.Chart.Axis axis14 = new DataDynamics.ActiveReports.Chart.Axis();
+            DataDynamics.ActiveReports.Chart.Axis axis15 = new DataDynamics.ActiveReports.Chart.Axis();
+            DataDynamics.ActiveReports.Chart.Series series5 = new DataDynamics.ActiveReports.Chart.Series();
+            DataDynamics.ActiveReports.Chart.Series series6 = new DataDynamics.ActiveReports.Chart.Series();
+            DataDynamics.ActiveReports.Chart.Title title3 = new DataDynamics.ActiveReports.Chart.Title();
+            DataDynamics.ActiveReports.Chart.ChartArea chartArea4 = new DataDynamics.ActiveReports.Chart.ChartArea();
+            DataDynamics.ActiveReports.Chart.Axis axis16 = new DataDynamics.ActiveReports.Chart.Axis();
+            DataDynamics.ActiveReports.Chart.Axis axis17 = new DataDynamics.ActiveReports.Chart.Axis();
+            DataDynamics.ActiveReports.Chart.Axis axis18 = new DataDynamics.ActiveReports.Chart.Axis();
+            DataDynamics.ActiveReports.Chart.Axis axis19 = new DataDynamics.ActiveReports.Chart.Axis();
+            DataDynamics.ActiveReports.Chart.Axis axis20 = new DataDynamics.ActiveReports.Chart.Axis();
+            DataDynamics.ActiveReports.Chart.Series series7 = new DataDynamics.ActiveReports.Chart.Series();
+            DataDynamics.ActiveReports.Chart.Series series8 = new DataDynamics.ActiveReports.Chart.Series();
+            DataDynamics.ActiveReports.Chart.Title title4 = new DataDynamics.ActiveReports.Chart.Title();
+            this.pageHeader = new DataDynamics.ActiveReports.PageHeader();
+            this.txtSubTitle = new DataDynamics.ActiveReports.TextBox();
+            this.txtSite = new DataDynamics.ActiveReports.TextBox();
+            this.textBox1 = new DataDynamics.ActiveReports.TextBox();
+            this.textBox3 = new DataDynamics.ActiveReports.TextBox();
+            this.txtPeriod = new DataDynamics.ActiveReports.TextBox();
+            this.imgLogo = new DataDynamics.ActiveReports.Picture();
+            this.lblTitle = new DataDynamics.ActiveReports.Label();
+            this.detail = new DataDynamics.ActiveReports.Detail();
+            this.lblMonth = new DataDynamics.ActiveReports.Label();
+            this.txtPounds = new DataDynamics.ActiveReports.TextBox();
+            this.txtDollars = new DataDynamics.ActiveReports.TextBox();
+            this.txtNotes = new DataDynamics.ActiveReports.TextBox();
+            this.txtAdjBL = new DataDynamics.ActiveReports.TextBox();
+            this.txtVariance = new DataDynamics.ActiveReports.TextBox();
+            this.txtCumulative = new DataDynamics.ActiveReports.TextBox();
+            this.pageFooter = new DataDynamics.ActiveReports.PageFooter();
+            this.lblDB = new DataDynamics.ActiveReports.TextBox();
+            this.txtFilter = new DataDynamics.ActiveReports.TextBox();
+            this.imgLeanPath = new DataDynamics.ActiveReports.Picture();
+            this.ghWasteAvoidance = new DataDynamics.ActiveReports.GroupHeader();
+            this.label1 = new DataDynamics.ActiveReports.Label();
+            this.label2 = new DataDynamics.ActiveReports.Label();
+            this.label4 = new DataDynamics.ActiveReports.Label();
+            this.label3 = new DataDynamics.ActiveReports.Label();
+            this.label5 = new DataDynamics.ActiveReports.Label();
+            this.label7 = new DataDynamics.ActiveReports.Label();
+            this.label8 = new DataDynamics.ActiveReports.Label();
+            this.groupFooter1 = new DataDynamics.ActiveReports.GroupFooter();
+            this.label6 = new DataDynamics.ActiveReports.Label();
+            this.line1 = new DataDynamics.ActiveReports.Line();
+            this.txtError = new DataDynamics.ActiveReports.TextBox();
+            this.chartControl1 = new DataDynamics.ActiveReports.ChartControl();
+            this.txtTotalPounds = new DataDynamics.ActiveReports.TextBox();
+            this.textBox4 = new DataDynamics.ActiveReports.TextBox();
+            this.textBox7 = new DataDynamics.ActiveReports.TextBox();
+            this.chartControl2 = new DataDynamics.ActiveReports.ChartControl();
+            this.lnBaseline = new DataDynamics.ActiveReports.Line();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSubTitle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSite)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPeriod)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblTitle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblMonth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPounds)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDollars)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNotes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAdjBL)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVariance)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCumulative)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblDB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFilter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLeanPath)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtError)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTotalPounds)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartControl2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            // 
+            // pageHeader
+            // 
+            this.pageHeader.CanShrink = true;
+            this.pageHeader.Controls.AddRange(new DataDynamics.ActiveReports.ARControl[] {
+            this.txtSubTitle,
+            this.txtSite,
+            this.textBox1,
+            this.textBox3,
+            this.txtPeriod,
+            this.imgLogo,
+            this.lblTitle});
+            this.pageHeader.Height = 1.25F;
+            this.pageHeader.Name = "pageHeader";
+            // 
+            // txtSubTitle
+            // 
+            this.txtSubTitle.CanShrink = true;
+            this.txtSubTitle.Height = 0.1875F;
+            this.txtSubTitle.Left = 0F;
+            this.txtSubTitle.Name = "txtSubTitle";
+            this.txtSubTitle.Style = "text-align: center";
+            this.txtSubTitle.Text = null;
+            this.txtSubTitle.Top = 0.3125F;
+            this.txtSubTitle.Width = 9.4375F;
+            // 
+            // txtSite
+            // 
+            this.txtSite.Height = 0.1875F;
+            this.txtSite.Left = 1F;
+            this.txtSite.Name = "txtSite";
+            this.txtSite.Style = "font-size: 9.75pt; font-weight: bold; ddo-char-set: 204";
+            this.txtSite.Text = "Site";
+            this.txtSite.Top = 0.75F;
+            this.txtSite.Width = 8.4375F;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Height = 0.1979167F;
+            this.textBox1.Left = 0F;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Style = "font-weight: bold";
+            this.textBox1.Text = "Facility: ";
+            this.textBox1.Top = 0.75F;
+            this.textBox1.Width = 1F;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Height = 0.1979167F;
+            this.textBox3.Left = 0F;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Style = "font-weight: bold";
+            this.textBox3.Text = "Period:";
+            this.textBox3.Top = 0.9375F;
+            this.textBox3.Width = 1F;
+            // 
+            // txtPeriod
+            // 
+            this.txtPeriod.Height = 0.1875F;
+            this.txtPeriod.Left = 1F;
+            this.txtPeriod.Name = "txtPeriod";
+            this.txtPeriod.Style = "font-weight: bold";
+            this.txtPeriod.Text = null;
+            this.txtPeriod.Top = 0.9375F;
+            this.txtPeriod.Width = 5.5F;
+            // 
+            // imgLogo
+            // 
+            this.imgLogo.Height = 0.3125F;
+            this.imgLogo.HyperLink = null;
+            this.imgLogo.ImageData = ((System.IO.Stream)(resources.GetObject("imgLogo.ImageData")));
+            this.imgLogo.Left = 0F;
+            this.imgLogo.Name = "imgLogo";
+            this.imgLogo.SizeMode = DataDynamics.ActiveReports.SizeModes.Stretch;
+            this.imgLogo.Top = 0F;
+            this.imgLogo.Width = 0.625F;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.Height = 0.3125F;
+            this.lblTitle.HyperLink = null;
+            this.lblTitle.Left = 0.625F;
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Style = "background-color: IndianRed; color: White; font-size: 16pt; font-weight: bold; te" +
+    "xt-align: center; vertical-align: middle";
+            this.lblTitle.Text = "Waste Avoidance Report";
+            this.lblTitle.Top = 0F;
+            this.lblTitle.Width = 8.448001F;
+            // 
+            // detail
+            // 
+            this.detail.ColumnSpacing = 0F;
+            this.detail.Controls.AddRange(new DataDynamics.ActiveReports.ARControl[] {
+            this.lblMonth,
+            this.txtPounds,
+            this.txtDollars,
+            this.txtNotes,
+            this.txtAdjBL,
+            this.txtVariance,
+            this.txtCumulative,
+            this.lnBaseline});
+            this.detail.Height = 0.21875F;
+            this.detail.Name = "detail";
+            this.detail.Format += new System.EventHandler(this.detail_Format);
+            // 
+            // lblMonth
+            // 
+            this.lblMonth.DataField = "yDate";
+            this.lblMonth.Height = 0.1875F;
+            this.lblMonth.HyperLink = null;
+            this.lblMonth.Left = 0F;
+            this.lblMonth.Name = "lblMonth";
+            this.lblMonth.Style = "";
+            this.lblMonth.Text = "Month";
+            this.lblMonth.Top = 0F;
+            this.lblMonth.Width = 0.625F;
+            // 
+            // txtPounds
+            // 
+            this.txtPounds.DataField = "Pounds";
+            this.txtPounds.Height = 0.1875F;
+            this.txtPounds.Left = 0.708F;
+            this.txtPounds.Name = "txtPounds";
+            this.txtPounds.Style = "font-family: Arial; font-size: 9.75pt; text-align: right; ddo-char-set: 204";
+            this.txtPounds.Text = "Lbs";
+            this.txtPounds.Top = 0F;
+            this.txtPounds.Width = 0.802F;
+            // 
+            // txtDollars
+            // 
+            this.txtDollars.DataField = "Dollars";
+            this.txtDollars.Height = 0.1875F;
+            this.txtDollars.Left = 1.608F;
+            this.txtDollars.Name = "txtDollars";
+            this.txtDollars.OutputFormat = resources.GetString("txtDollars.OutputFormat");
+            this.txtDollars.Style = "font-family: Arial; font-size: 9.75pt; font-weight: normal; text-align: right; dd" +
+    "o-char-set: 204";
+            this.txtDollars.Text = "$";
+            this.txtDollars.Top = 0F;
+            this.txtDollars.Width = 0.7500001F;
+            // 
+            // txtNotes
+            // 
+            this.txtNotes.CanGrow = false;
+            this.txtNotes.DataField = "WasteWeight";
+            this.txtNotes.Height = 0.1875F;
+            this.txtNotes.Left = 2.456F;
+            this.txtNotes.Name = "txtNotes";
+            this.txtNotes.OutputFormat = resources.GetString("txtNotes.OutputFormat");
+            this.txtNotes.Style = "font-family: Arial; font-size: 9.75pt; font-weight: normal; text-align: right; dd" +
+    "o-char-set: 204";
+            this.txtNotes.Text = "Note";
+            this.txtNotes.Top = 0F;
+            this.txtNotes.Width = 0.7500002F;
+            // 
+            // txtAdjBL
+            // 
+            this.txtAdjBL.DataField = "Baseline";
+            this.txtAdjBL.Height = 0.1875F;
+            this.txtAdjBL.Left = 3.304F;
+            this.txtAdjBL.Name = "txtAdjBL";
+            this.txtAdjBL.OutputFormat = resources.GetString("txtAdjBL.OutputFormat");
+            this.txtAdjBL.Style = "font-family: Arial; font-size: 9.75pt; ddo-char-set: 204";
+            this.txtAdjBL.Text = "Adj BL";
+            this.txtAdjBL.Top = 0F;
+            this.txtAdjBL.Width = 0.802F;
+            // 
+            // txtVariance
+            // 
+            this.txtVariance.DataField = "Variance";
+            this.txtVariance.Height = 0.1875F;
+            this.txtVariance.Left = 4.204F;
+            this.txtVariance.Name = "txtVariance";
+            this.txtVariance.OutputFormat = resources.GetString("txtVariance.OutputFormat");
+            this.txtVariance.Style = "font-family: Arial; font-size: 9.75pt; font-weight: normal; text-align: right; dd" +
+    "o-char-set: 204";
+            this.txtVariance.Text = "Variance";
+            this.txtVariance.Top = 0F;
+            this.txtVariance.Width = 0.75F;
+            // 
+            // txtCumulative
+            // 
+            this.txtCumulative.CanGrow = false;
+            this.txtCumulative.DataField = "Variance";
+            this.txtCumulative.Height = 0.1875F;
+            this.txtCumulative.Left = 5.052F;
+            this.txtCumulative.Name = "txtCumulative";
+            this.txtCumulative.OutputFormat = resources.GetString("txtCumulative.OutputFormat");
+            this.txtCumulative.Style = "font-family: Arial; font-size: 9.75pt; font-weight: normal; text-align: right; dd" +
+    "o-char-set: 204";
+            this.txtCumulative.SummaryFunc = DataDynamics.ActiveReports.SummaryFunc.Count;
+            this.txtCumulative.Text = "Cumulative";
+            this.txtCumulative.Top = 0F;
+            this.txtCumulative.Width = 0.75F;
+            // 
+            // pageFooter
+            // 
+            this.pageFooter.Controls.AddRange(new DataDynamics.ActiveReports.ARControl[] {
+            this.lblDB,
+            this.txtFilter,
+            this.imgLeanPath});
+            this.pageFooter.Height = 0.375F;
+            this.pageFooter.Name = "pageFooter";
+            // 
+            // lblDB
+            // 
+            this.lblDB.Height = 0.1875F;
+            this.lblDB.Left = 0F;
+            this.lblDB.Name = "lblDB";
+            this.lblDB.Style = "font-size: 8pt";
+            this.lblDB.Text = null;
+            this.lblDB.Top = 0.1875F;
+            this.lblDB.Width = 8.5F;
+            // 
+            // txtFilter
+            // 
+            this.txtFilter.Height = 0.1875F;
+            this.txtFilter.Left = 0F;
+            this.txtFilter.Name = "txtFilter";
+            this.txtFilter.Style = "font-size: 8pt; font-style: italic";
+            this.txtFilter.Text = null;
+            this.txtFilter.Top = 0F;
+            this.txtFilter.Width = 8.5F;
+            // 
+            // imgLeanPath
+            // 
+            this.imgLeanPath.Height = 0.3125F;
+            this.imgLeanPath.HyperLink = null;
+            this.imgLeanPath.ImageData = ((System.IO.Stream)(resources.GetObject("imgLeanPath.ImageData")));
+            this.imgLeanPath.Left = 8.5F;
+            this.imgLeanPath.Name = "imgLeanPath";
+            this.imgLeanPath.SizeMode = DataDynamics.ActiveReports.SizeModes.Stretch;
+            this.imgLeanPath.Top = 0F;
+            this.imgLeanPath.Width = 0.625F;
+            // 
+            // ghWasteAvoidance
+            // 
+            this.ghWasteAvoidance.Controls.AddRange(new DataDynamics.ActiveReports.ARControl[] {
+            this.label1,
+            this.label2,
+            this.label4,
+            this.label3,
+            this.label5,
+            this.label7,
+            this.label8});
+            this.ghWasteAvoidance.Height = 0.1875F;
+            this.ghWasteAvoidance.Name = "ghWasteAvoidance";
+            // 
+            // label1
+            // 
+            this.label1.Height = 0.1875F;
+            this.label1.HyperLink = null;
+            this.label1.Left = 0F;
+            this.label1.Name = "label1";
+            this.label1.Style = "color: Navy; font-weight: bold";
+            this.label1.Text = "Month";
+            this.label1.Top = 0F;
+            this.label1.Width = 0.6F;
+            // 
+            // label2
+            // 
+            this.label2.Height = 0.1875F;
+            this.label2.HyperLink = null;
+            this.label2.Left = 0.708F;
+            this.label2.Name = "label2";
+            this.label2.Style = "color: Navy; font-weight: bold";
+            this.label2.Text = "Lbs";
+            this.label2.Top = 0F;
+            this.label2.Width = 0.75F;
+            // 
+            // label4
+            // 
+            this.label4.Height = 0.1875F;
+            this.label4.HyperLink = null;
+            this.label4.Left = 1.5768F;
+            this.label4.Name = "label4";
+            this.label4.Style = "color: Navy; font-weight: bold";
+            this.label4.Text = "Dollars";
+            this.label4.Top = 0F;
+            this.label4.Width = 0.75F;
+            // 
+            // label3
+            // 
+            this.label3.Height = 0.1875F;
+            this.label3.HyperLink = null;
+            this.label3.Left = 2.4456F;
+            this.label3.Name = "label3";
+            this.label3.Style = "color: Navy; font-weight: bold";
+            this.label3.Text = "Notes";
+            this.label3.Top = 0F;
+            this.label3.Width = 0.75F;
+            // 
+            // label5
+            // 
+            this.label5.Height = 0.1875F;
+            this.label5.HyperLink = null;
+            this.label5.Left = 3.3144F;
+            this.label5.Name = "label5";
+            this.label5.Style = "color: Navy; font-weight: bold";
+            this.label5.Text = "Adj BL";
+            this.label5.Top = 0F;
+            this.label5.Width = 0.75F;
+            // 
+            // label7
+            // 
+            this.label7.Height = 0.1875F;
+            this.label7.HyperLink = null;
+            this.label7.Left = 4.1832F;
+            this.label7.Name = "label7";
+            this.label7.Style = "color: Navy; font-weight: bold";
+            this.label7.Text = "Variance";
+            this.label7.Top = 0F;
+            this.label7.Width = 0.75F;
+            // 
+            // label8
+            // 
+            this.label8.Height = 0.1875F;
+            this.label8.HyperLink = null;
+            this.label8.Left = 5.052F;
+            this.label8.Name = "label8";
+            this.label8.Style = "color: Navy; font-weight: bold";
+            this.label8.Text = "Cumulative";
+            this.label8.Top = 0F;
+            this.label8.Width = 0.7980003F;
+            // 
+            // groupFooter1
+            // 
+            this.groupFooter1.CanShrink = true;
+            this.groupFooter1.Controls.AddRange(new DataDynamics.ActiveReports.ARControl[] {
+            this.label6,
+            this.line1,
+            this.txtError,
+            this.chartControl1,
+            this.txtTotalPounds,
+            this.textBox4,
+            this.textBox7,
+            this.chartControl2});
+            this.groupFooter1.Height = 8.656F;
+            this.groupFooter1.Name = "groupFooter1";
+            // 
+            // label6
+            // 
+            this.label6.Height = 0.1875F;
+            this.label6.HyperLink = null;
+            this.label6.Left = 0F;
+            this.label6.Name = "label6";
+            this.label6.Style = "font-family: Arial; font-size: 9.75pt; font-weight: bold; vertical-align: middle;" +
+    " ddo-char-set: 204";
+            this.label6.Text = "Total: ";
+            this.label6.Top = 0.26F;
+            this.label6.Width = 0.5F;
+            // 
+            // line1
+            // 
+            this.line1.Height = 0F;
+            this.line1.Left = 0F;
+            this.line1.LineWeight = 1F;
+            this.line1.Name = "line1";
+            this.line1.Top = 0.25F;
+            this.line1.Width = 5.802F;
+            this.line1.X1 = 0F;
+            this.line1.X2 = 5.802F;
+            this.line1.Y1 = 0.25F;
+            this.line1.Y2 = 0.25F;
+            // 
+            // txtError
+            // 
+            this.txtError.CanShrink = true;
+            this.txtError.Height = 0.1875F;
+            this.txtError.Left = 0F;
+            this.txtError.Name = "txtError";
+            this.txtError.Style = "color: Red";
+            this.txtError.Text = null;
+            this.txtError.Top = 0F;
+            this.txtError.Width = 5.802F;
+            // 
+            // chartControl1
+            // 
+            this.chartControl1.AutoRefresh = true;
+            chartArea3.AntiAliasMode = DataDynamics.ActiveReports.Chart.Graphics.AntiAliasMode.Graphics;
+            axis11.AxisType = DataDynamics.ActiveReports.Chart.AxisType.Categorical;
+            axis11.LabelFont = new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Microsoft Sans Serif", 8F), 45F);
+            axis11.MajorTick = new DataDynamics.ActiveReports.Chart.Tick(new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), 1D, 1F, true);
+            axis11.MinorTick = new DataDynamics.ActiveReports.Chart.Tick(new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), 0D, 0F, false);
+            axis11.TitleFont = new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Microsoft Sans Serif", 8F));
+            axis12.LabelFont = new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Microsoft Sans Serif", 8F));
+            axis12.LabelsGap = 0;
+            axis12.LabelsVisible = false;
+            axis12.Line = new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None);
+            axis12.MajorTick = new DataDynamics.ActiveReports.Chart.Tick(new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), 0D, 0F, false);
+            axis12.MinorTick = new DataDynamics.ActiveReports.Chart.Tick(new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), 0D, 0F, false);
+            axis12.Position = 0D;
+            axis12.TickOffset = 0D;
+            axis12.TitleFont = new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Microsoft Sans Serif", 8F));
+            axis12.Visible = false;
+            axis13.DisplayScale = true;
+            axis13.LabelFont = new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Microsoft Sans Serif", 8F));
+            axis13.MajorTick = new DataDynamics.ActiveReports.Chart.Tick(new DataDynamics.ActiveReports.Chart.Graphics.Line(), new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Black, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.Dot), 0D, 5F, true);
+            axis13.MinorTick = new DataDynamics.ActiveReports.Chart.Tick(new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), 0D, 0F, false);
+            axis13.Position = 0D;
+            axis13.SmartLabels = false;
+            axis13.Title = "Waste ($)";
+            axis13.TitleFont = new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Microsoft Sans Serif", 8F), -90F);
+            axis14.LabelFont = new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Microsoft Sans Serif", 8F));
+            axis14.Line = new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None);
+            axis14.MajorTick = new DataDynamics.ActiveReports.Chart.Tick(new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), 0D, 0F, false);
+            axis14.MinorTick = new DataDynamics.ActiveReports.Chart.Tick(new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), 0D, 0F, false);
+            axis14.TitleFont = new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Microsoft Sans Serif", 8F));
+            axis14.Visible = false;
+            axis15.LabelFont = new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Microsoft Sans Serif", 8F));
+            axis15.LabelsGap = 0;
+            axis15.LabelsVisible = false;
+            axis15.Line = new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None);
+            axis15.MajorTick = new DataDynamics.ActiveReports.Chart.Tick(new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), 0D, 0F, false);
+            axis15.MinorTick = new DataDynamics.ActiveReports.Chart.Tick(new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), 0D, 0F, false);
+            axis15.Position = 0D;
+            axis15.TickOffset = 0D;
+            axis15.TitleFont = new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Microsoft Sans Serif", 8F));
+            axis15.Visible = false;
+            chartArea3.Axes.AddRange(new DataDynamics.ActiveReports.Chart.AxisBase[] {
+            axis11,
+            axis12,
+            axis13,
+            axis14,
+            axis15});
+            chartArea3.Backdrop = new DataDynamics.ActiveReports.Chart.BackdropItem(DataDynamics.ActiveReports.Chart.Graphics.BackdropStyle.Transparent, System.Drawing.Color.White, System.Drawing.Color.White, DataDynamics.ActiveReports.Chart.Graphics.GradientType.Vertical, System.Drawing.Drawing2D.HatchStyle.DottedGrid, null, DataDynamics.ActiveReports.Chart.Graphics.PicturePutStyle.Stretched);
+            chartArea3.Border = new DataDynamics.ActiveReports.Chart.Border(new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), 0, System.Drawing.Color.Black);
+            chartArea3.Light = new DataDynamics.ActiveReports.Chart.Light(new DataDynamics.ActiveReports.Chart.Graphics.Point3d(10F, 40F, 20F), DataDynamics.ActiveReports.Chart.LightType.InfiniteDirectional, 0.3F);
+            chartArea3.Name = "defaultArea";
+            chartArea3.Projection = new DataDynamics.ActiveReports.Chart.Projection(DataDynamics.ActiveReports.Chart.Graphics.ProjectionType.Orthogonal, 0.1F, 0.1F);
+            chartArea3.WallXY = new DataDynamics.ActiveReports.Chart.PlaneItem(new DataDynamics.ActiveReports.Chart.Graphics.Backdrop(System.Drawing.Color.White, ((byte)(56))));
+            chartArea3.WallYZ = new DataDynamics.ActiveReports.Chart.PlaneItem(new DataDynamics.ActiveReports.Chart.Graphics.Backdrop(System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224))))), ((byte)(0))));
+            this.chartControl1.ChartAreas.AddRange(new DataDynamics.ActiveReports.Chart.ChartArea[] {
+            chartArea3});
+            this.chartControl1.ChartBorder = new DataDynamics.ActiveReports.Chart.Border(new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), 0, System.Drawing.Color.Black);
+            this.chartControl1.Height = 4F;
+            this.chartControl1.Left = 0F;
+            this.chartControl1.Name = "chartControl1";
+            series5.AxisX = axis11;
+            series5.AxisY = axis13;
+            series5.ChartArea = chartArea3;
+            series5.Legend = null;
+            series5.LegendText = "";
+            series5.Name = "Basic Week";
+            series5.Properties = new DataDynamics.ActiveReports.Chart.CustomProperties(new DataDynamics.ActiveReports.Chart.KeyValuePair[] {
+            new DataDynamics.ActiveReports.Chart.KeyValuePair("Marker", new DataDynamics.ActiveReports.Chart.Marker(6, DataDynamics.ActiveReports.Chart.MarkerStyle.Triangle, new DataDynamics.ActiveReports.Chart.Graphics.Backdrop(), new DataDynamics.ActiveReports.Chart.Graphics.Line(), new DataDynamics.ActiveReports.Chart.LabelInfo(new DataDynamics.ActiveReports.Chart.Graphics.Line(), new DataDynamics.ActiveReports.Chart.Graphics.Backdrop(), new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Arial", 6F)), "{Value:$#,##0}", DataDynamics.ActiveReports.Chart.Alignment.Top)))});
+            series5.Type = DataDynamics.ActiveReports.Chart.ChartType.Bar3D;
+            series5.ValueMembersY = null;
+            series5.ValueMemberX = null;
+            series6.AxisX = axis11;
+            series6.AxisY = axis13;
+            series6.ChartArea = chartArea3;
+            series6.Legend = null;
+            series6.LegendText = "";
+            series6.Name = "ComparisionWeek";
+            series6.Properties = new DataDynamics.ActiveReports.Chart.CustomProperties(new DataDynamics.ActiveReports.Chart.KeyValuePair[] {
+            new DataDynamics.ActiveReports.Chart.KeyValuePair("Marker", new DataDynamics.ActiveReports.Chart.Marker(6, DataDynamics.ActiveReports.Chart.MarkerStyle.Triangle, new DataDynamics.ActiveReports.Chart.Graphics.Backdrop(), new DataDynamics.ActiveReports.Chart.Graphics.Line(), new DataDynamics.ActiveReports.Chart.LabelInfo(new DataDynamics.ActiveReports.Chart.Graphics.Line(), new DataDynamics.ActiveReports.Chart.Graphics.Backdrop(), new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Arial", 6F)), "{Value:$#,##0}", DataDynamics.ActiveReports.Chart.Alignment.Top)))});
+            series6.Type = DataDynamics.ActiveReports.Chart.ChartType.Bar3D;
+            series6.ValueMembersY = null;
+            series6.ValueMemberX = null;
+            this.chartControl1.Series.AddRange(new DataDynamics.ActiveReports.Chart.Series[] {
+            series5,
+            series6});
+            title3.Alignment = DataDynamics.ActiveReports.Chart.Alignment.Center;
+            title3.Border = new DataDynamics.ActiveReports.Chart.Border(new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), 0, System.Drawing.Color.Black);
+            title3.DockArea = chartArea3;
+            title3.Font = new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Microsoft Sans Serif", 8F));
+            title3.Name = "Title1";
+            title3.Text = "Waste Avoidance Area Chart";
+            this.chartControl1.Titles.AddRange(new DataDynamics.ActiveReports.Chart.Title[] {
+            title3});
+            this.chartControl1.Top = 0.541F;
+            this.chartControl1.UIOptions = DataDynamics.ActiveReports.Chart.UIOptions.ForceHitTesting;
+            this.chartControl1.Width = 7.948F;
+            // 
+            // txtTotalPounds
+            // 
+            this.txtTotalPounds.DataField = "Pounds";
+            this.txtTotalPounds.Height = 0.1875F;
+            this.txtTotalPounds.Left = 0.708F;
+            this.txtTotalPounds.Name = "txtTotalPounds";
+            this.txtTotalPounds.OutputFormat = resources.GetString("txtTotalPounds.OutputFormat");
+            this.txtTotalPounds.Style = "font-family: Arial; font-size: 9.75pt; font-weight: bold; text-align: right; ddo-" +
+    "char-set: 204";
+            this.txtTotalPounds.SummaryGroup = "ghWasteAvoidance";
+            this.txtTotalPounds.SummaryRunning = DataDynamics.ActiveReports.SummaryRunning.Group;
+            this.txtTotalPounds.SummaryType = DataDynamics.ActiveReports.SummaryType.SubTotal;
+            this.txtTotalPounds.Text = "TotalPounds";
+            this.txtTotalPounds.Top = 0.26F;
+            this.txtTotalPounds.Width = 0.802F;
+            // 
+            // textBox4
+            // 
+            this.textBox4.DataField = "Dollars";
+            this.textBox4.Height = 0.1875F;
+            this.textBox4.Left = 1.51F;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.OutputFormat = resources.GetString("textBox4.OutputFormat");
+            this.textBox4.Style = "font-family: Arial; font-size: 9.75pt; font-weight: bold; text-align: right; ddo-" +
+    "char-set: 204";
+            this.textBox4.SummaryGroup = "ghWasteAvoidance";
+            this.textBox4.SummaryRunning = DataDynamics.ActiveReports.SummaryRunning.Group;
+            this.textBox4.SummaryType = DataDynamics.ActiveReports.SummaryType.SubTotal;
+            this.textBox4.Text = "TotalDollars";
+            this.textBox4.Top = 0.26F;
+            this.textBox4.Width = 0.9480002F;
+            // 
+            // textBox7
+            // 
+            this.textBox7.DataField = "Variance";
+            this.textBox7.Height = 0.1875F;
+            this.textBox7.Left = 3.835F;
+            this.textBox7.Name = "textBox7";
+            this.textBox7.OutputFormat = resources.GetString("textBox7.OutputFormat");
+            this.textBox7.Style = "font-family: Arial; font-size: 9.75pt; font-weight: bold; text-align: right; ddo-" +
+    "char-set: 204";
+            this.textBox7.SummaryGroup = "ghWasteAvoidance";
+            this.textBox7.SummaryRunning = DataDynamics.ActiveReports.SummaryRunning.Group;
+            this.textBox7.SummaryType = DataDynamics.ActiveReports.SummaryType.SubTotal;
+            this.textBox7.Text = "TotalVariance";
+            this.textBox7.Top = 0.26F;
+            this.textBox7.Width = 1.156F;
+            // 
+            // chartControl2
+            // 
+            this.chartControl2.AutoRefresh = true;
+            chartArea4.AntiAliasMode = DataDynamics.ActiveReports.Chart.Graphics.AntiAliasMode.Graphics;
+            axis16.AxisType = DataDynamics.ActiveReports.Chart.AxisType.Categorical;
+            axis16.LabelFont = new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Microsoft Sans Serif", 8F), 45F);
+            axis16.MajorTick = new DataDynamics.ActiveReports.Chart.Tick(new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), 1D, 1F, true);
+            axis16.MinorTick = new DataDynamics.ActiveReports.Chart.Tick(new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), 0D, 0F, false);
+            axis16.TitleFont = new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Microsoft Sans Serif", 8F));
+            axis17.LabelFont = new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Microsoft Sans Serif", 8F));
+            axis17.LabelsGap = 0;
+            axis17.LabelsVisible = false;
+            axis17.Line = new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None);
+            axis17.MajorTick = new DataDynamics.ActiveReports.Chart.Tick(new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), 0D, 0F, false);
+            axis17.MinorTick = new DataDynamics.ActiveReports.Chart.Tick(new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), 0D, 0F, false);
+            axis17.Position = 0D;
+            axis17.TickOffset = 0D;
+            axis17.TitleFont = new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Microsoft Sans Serif", 8F));
+            axis17.Visible = false;
+            axis18.DisplayScale = true;
+            axis18.LabelFont = new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Microsoft Sans Serif", 8F));
+            axis18.MajorTick = new DataDynamics.ActiveReports.Chart.Tick(new DataDynamics.ActiveReports.Chart.Graphics.Line(), new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Black, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.Dot), 0D, 5F, true);
+            axis18.MinorTick = new DataDynamics.ActiveReports.Chart.Tick(new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), 0D, 0F, false);
+            axis18.Position = 0D;
+            axis18.SmartLabels = false;
+            axis18.StaggerLabels = true;
+            axis18.Title = "Waste ($)";
+            axis18.TitleFont = new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Microsoft Sans Serif", 8F), -90F);
+            axis19.LabelFont = new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Microsoft Sans Serif", 8F));
+            axis19.Line = new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None);
+            axis19.MajorTick = new DataDynamics.ActiveReports.Chart.Tick(new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), 0D, 0F, false);
+            axis19.MinorTick = new DataDynamics.ActiveReports.Chart.Tick(new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), 0D, 0F, false);
+            axis19.TitleFont = new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Microsoft Sans Serif", 8F));
+            axis19.Visible = false;
+            axis20.LabelFont = new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Microsoft Sans Serif", 8F));
+            axis20.LabelsGap = 0;
+            axis20.LabelsVisible = false;
+            axis20.Line = new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None);
+            axis20.MajorTick = new DataDynamics.ActiveReports.Chart.Tick(new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), 0D, 0F, false);
+            axis20.MinorTick = new DataDynamics.ActiveReports.Chart.Tick(new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), 0D, 0F, false);
+            axis20.Position = 0D;
+            axis20.TickOffset = 0D;
+            axis20.TitleFont = new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Microsoft Sans Serif", 8F));
+            axis20.Visible = false;
+            chartArea4.Axes.AddRange(new DataDynamics.ActiveReports.Chart.AxisBase[] {
+            axis16,
+            axis17,
+            axis18,
+            axis19,
+            axis20});
+            chartArea4.Backdrop = new DataDynamics.ActiveReports.Chart.BackdropItem(DataDynamics.ActiveReports.Chart.Graphics.BackdropStyle.Transparent, System.Drawing.Color.White, System.Drawing.Color.White, DataDynamics.ActiveReports.Chart.Graphics.GradientType.Vertical, System.Drawing.Drawing2D.HatchStyle.DottedGrid, null, DataDynamics.ActiveReports.Chart.Graphics.PicturePutStyle.Stretched);
+            
+            chartArea4.Border = new DataDynamics.ActiveReports.Chart.Border(new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), 0, System.Drawing.Color.Black);
+            chartArea4.Light = new DataDynamics.ActiveReports.Chart.Light(new DataDynamics.ActiveReports.Chart.Graphics.Point3d(10F, 40F, 20F), DataDynamics.ActiveReports.Chart.LightType.InfiniteDirectional, 0.3F);
+            chartArea4.Name = "defaultArea";
+            chartArea4.Projection = new DataDynamics.ActiveReports.Chart.Projection(DataDynamics.ActiveReports.Chart.Graphics.ProjectionType.Orthogonal, 0.1F, 0.1F);
+            chartArea4.WallXY = new DataDynamics.ActiveReports.Chart.PlaneItem(new DataDynamics.ActiveReports.Chart.Graphics.Backdrop(System.Drawing.Color.White, ((byte)(33))));
+            chartArea4.WallYZ = new DataDynamics.ActiveReports.Chart.PlaneItem(new DataDynamics.ActiveReports.Chart.Graphics.Backdrop(System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224))))), ((byte)(0))));
+            
+            this.chartControl2.ChartAreas.AddRange(new DataDynamics.ActiveReports.Chart.ChartArea[] {
+            chartArea4});
+            this.chartControl2.ChartBorder = new DataDynamics.ActiveReports.Chart.Border(new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), 0, System.Drawing.Color.Black);
+            this.chartControl2.Height = 4F;
+            this.chartControl2.Left = 0F;
+            this.chartControl2.Name = "chartControl2";
+            series7.AxisX = axis16;
+            series7.AxisY = axis18;
+            series7.ChartArea = chartArea4;
+            series7.Legend = null;
+            series7.LegendText = "";
+            series7.Name = "Basic Week";
+            series7.Properties = new DataDynamics.ActiveReports.Chart.CustomProperties(new DataDynamics.ActiveReports.Chart.KeyValuePair[] {
+            new DataDynamics.ActiveReports.Chart.KeyValuePair("Marker", new DataDynamics.ActiveReports.Chart.Marker(6, DataDynamics.ActiveReports.Chart.MarkerStyle.Triangle, new DataDynamics.ActiveReports.Chart.Graphics.Backdrop(), new DataDynamics.ActiveReports.Chart.Graphics.Line(), new DataDynamics.ActiveReports.Chart.LabelInfo(new DataDynamics.ActiveReports.Chart.Graphics.Line(), new DataDynamics.ActiveReports.Chart.Graphics.Backdrop(), new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Arial", 6F)), "{Value:$#,##0}", DataDynamics.ActiveReports.Chart.Alignment.Top)))});
+            series7.Type = DataDynamics.ActiveReports.Chart.ChartType.Bar3D;
+            series8.AxisX = axis16;
+            series8.AxisY = axis18;
+            series8.ChartArea = chartArea4;
+            series8.Legend = null;
+            series8.LegendText = "";
+            series8.Name = "ComparisionWeek";
+            series8.Properties = new DataDynamics.ActiveReports.Chart.CustomProperties(new DataDynamics.ActiveReports.Chart.KeyValuePair[] {
+            new DataDynamics.ActiveReports.Chart.KeyValuePair("Marker", new DataDynamics.ActiveReports.Chart.Marker(6, DataDynamics.ActiveReports.Chart.MarkerStyle.Triangle, new DataDynamics.ActiveReports.Chart.Graphics.Backdrop(), new DataDynamics.ActiveReports.Chart.Graphics.Line(), new DataDynamics.ActiveReports.Chart.LabelInfo(new DataDynamics.ActiveReports.Chart.Graphics.Line(), new DataDynamics.ActiveReports.Chart.Graphics.Backdrop(), new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Arial", 6F)), "{Value:$#,##0}", DataDynamics.ActiveReports.Chart.Alignment.Top)))});
+            series8.Type = DataDynamics.ActiveReports.Chart.ChartType.Bar3D;
+            this.chartControl2.Series.AddRange(new DataDynamics.ActiveReports.Chart.Series[] {
+            series7,
+            series8});
+            title4.Alignment = DataDynamics.ActiveReports.Chart.Alignment.Center;
+            title4.Border = new DataDynamics.ActiveReports.Chart.Border(new DataDynamics.ActiveReports.Chart.Graphics.Line(System.Drawing.Color.Transparent, 0, DataDynamics.ActiveReports.Chart.Graphics.LineStyle.None), 0, System.Drawing.Color.Black);
+            title4.DockArea = chartArea4;
+            title4.Font = new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Microsoft Sans Serif", 8F));
+            title4.Name = "Title1";
+            title4.Text = "Calculated Waste Avoidance ";
+            this.chartControl2.Titles.AddRange(new DataDynamics.ActiveReports.Chart.Title[] {
+            title4});
+            this.chartControl2.Top = 4.656F;
+            this.chartControl2.UIOptions = DataDynamics.ActiveReports.Chart.UIOptions.ForceHitTesting;
+            this.chartControl2.Width = 7.948F;
+            // 
+            // lnBaseline
+            // 
+            this.lnBaseline.Height = 1.490116E-08F;
+            this.lnBaseline.Left = 0.708F;
+            this.lnBaseline.LineWeight = 1F;
+            this.lnBaseline.Name = "lnBaseline";
+            this.lnBaseline.Top = 0.187F;
+            this.lnBaseline.Visible = false;
+            this.lnBaseline.Width = 3.398F;
+            this.lnBaseline.X1 = 0.708F;
+            this.lnBaseline.X2 = 4.106F;
+            this.lnBaseline.Y1 = 0.187F;
+            this.lnBaseline.Y2 = 0.187F;
+            // 
+            // rptWasteAvoidance
+            // 
+            this.MasterReport = false;
+            this.PageSettings.PaperHeight = 11F;
+            this.PageSettings.PaperWidth = 8.5F;
+            this.PrintWidth = 10.4375F;
+            this.Sections.Add(this.pageHeader);
+            this.Sections.Add(this.ghWasteAvoidance);
+            this.Sections.Add(this.detail);
+            this.Sections.Add(this.groupFooter1);
+            this.Sections.Add(this.pageFooter);
+            this.StyleSheet.Add(new DDCssLib.StyleSheetRule("font-family: Arial; font-style: normal; text-decoration: none; font-weight: norma" +
+            "l; font-size: 10pt; color: Black", "Normal"));
+            this.StyleSheet.Add(new DDCssLib.StyleSheetRule("font-size: 16pt; font-weight: bold", "Heading1", "Normal"));
+            this.StyleSheet.Add(new DDCssLib.StyleSheetRule("font-family: Times New Roman; font-size: 14pt; font-weight: bold; font-style: ita" +
+            "lic", "Heading2", "Normal"));
+            this.StyleSheet.Add(new DDCssLib.StyleSheetRule("font-size: 13pt; font-weight: bold", "Heading3", "Normal"));
+            this.FetchData += new DataDynamics.ActiveReports.ActiveReport.FetchEventHandler(this.rptWasteAvoidance_FetchData);
+            this.ReportStart += new System.EventHandler(this.rptWasteAvoidance_ReportStart);
+            ((System.ComponentModel.ISupportInitialize)(this.txtSubTitle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSite)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPeriod)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblTitle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblMonth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPounds)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDollars)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNotes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAdjBL)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVariance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCumulative)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblDB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFilter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLeanPath)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtError)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTotalPounds)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartControl2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
+
+        }
+        #endregion
+
+        private DataDynamics.ActiveReports.TextBox txtSubTitle;
+        private DataDynamics.ActiveReports.TextBox txtSite;
+        private DataDynamics.ActiveReports.TextBox textBox1;
+        private DataDynamics.ActiveReports.TextBox textBox3;
+        private DataDynamics.ActiveReports.TextBox txtPeriod;
+        private DataDynamics.ActiveReports.Picture imgLogo;
+        private DataDynamics.ActiveReports.Label lblTitle;
+        private DataDynamics.ActiveReports.TextBox lblDB;
+        private DataDynamics.ActiveReports.TextBox txtFilter;
+        private DataDynamics.ActiveReports.Picture imgLeanPath;
+        private DataDynamics.ActiveReports.GroupHeader ghWasteAvoidance;
+        private DataDynamics.ActiveReports.GroupFooter groupFooter1;
+        private DataDynamics.ActiveReports.Label label1;
+        private DataDynamics.ActiveReports.Label label2;
+        private DataDynamics.ActiveReports.Label label4;
+        private DataDynamics.ActiveReports.Label label3;
+        private DataDynamics.ActiveReports.Label lblMonth;
+        private DataDynamics.ActiveReports.TextBox txtPounds;
+        private DataDynamics.ActiveReports.TextBox txtDollars;
+        private DataDynamics.ActiveReports.TextBox txtNotes;
+        private DataDynamics.ActiveReports.Label label6;
+        private DataDynamics.ActiveReports.Line line1;
+        private DataDynamics.ActiveReports.TextBox txtError;
+        private DataDynamics.ActiveReports.TextBox txtAdjBL;
+        private DataDynamics.ActiveReports.TextBox txtVariance;
+        private DataDynamics.ActiveReports.TextBox txtCumulative;
+        private DataDynamics.ActiveReports.Label label5;
+        private DataDynamics.ActiveReports.Label label7;
+        private DataDynamics.ActiveReports.ChartControl chartControl1;
+        private DataDynamics.ActiveReports.Label label8;
+        private DataDynamics.ActiveReports.TextBox txtTotalPounds;
+        private DataDynamics.ActiveReports.TextBox textBox4;
+        private DataDynamics.ActiveReports.TextBox textBox7;
+        private DataDynamics.ActiveReports.ChartControl chartControl2;
+        private DataDynamics.ActiveReports.Line lnBaseline;
+    }
+}

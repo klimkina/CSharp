@@ -1,0 +1,428 @@
+namespace Reports
+{
+    /// <summary>
+    /// Summary description for rptLowParticipation.
+    /// </summary>
+    partial class rptLowParticipation
+    {
+        private DataDynamics.ActiveReports.PageHeader rptHeader;
+        private DataDynamics.ActiveReports.Detail detail;
+        private DataDynamics.ActiveReports.PageFooter pageFooter;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+            }
+            base.Dispose(disposing);
+        }
+
+        #region ActiveReport Designer generated code
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rptLowParticipation));
+            this.rptHeader = new DataDynamics.ActiveReports.PageHeader();
+            this.lblTitle = new DataDynamics.ActiveReports.Label();
+            this.imgLogo = new DataDynamics.ActiveReports.Picture();
+            this.txtSubTitle = new DataDynamics.ActiveReports.TextBox();
+            this.detail = new DataDynamics.ActiveReports.Detail();
+            this.subReport1 = new DataDynamics.ActiveReports.SubReport();
+            this.subReport2 = new DataDynamics.ActiveReports.SubReport();
+            this.subReport3 = new DataDynamics.ActiveReports.SubReport();
+            this.subReport4 = new DataDynamics.ActiveReports.SubReport();
+            this.subReport5 = new DataDynamics.ActiveReports.SubReport();
+            this.subReport6 = new DataDynamics.ActiveReports.SubReport();
+            this.subReport7 = new DataDynamics.ActiveReports.SubReport();
+            this.subReport8 = new DataDynamics.ActiveReports.SubReport();
+            this.subReport9 = new DataDynamics.ActiveReports.SubReport();
+            this.pageFooter = new DataDynamics.ActiveReports.PageFooter();
+            this.txtFilter = new DataDynamics.ActiveReports.TextBox();
+            this.imgLeanPath = new DataDynamics.ActiveReports.Picture();
+            this.lblDB = new DataDynamics.ActiveReports.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.lblTitle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSubTitle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFilter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLeanPath)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblDB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            // 
+            // rptHeader
+            // 
+            this.rptHeader.CanShrink = true;
+            this.rptHeader.Controls.AddRange(new DataDynamics.ActiveReports.ARControl[] {
+            this.lblTitle,
+            this.imgLogo,
+            this.txtSubTitle});
+            this.rptHeader.Height = 0.34375F;
+            this.rptHeader.Name = "rptHeader";
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.Border.BottomColor = System.Drawing.Color.Black;
+            this.lblTitle.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.lblTitle.Border.LeftColor = System.Drawing.Color.Black;
+            this.lblTitle.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.lblTitle.Border.RightColor = System.Drawing.Color.Black;
+            this.lblTitle.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.lblTitle.Border.TopColor = System.Drawing.Color.Black;
+            this.lblTitle.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.lblTitle.Height = 0.3125F;
+            this.lblTitle.HyperLink = null;
+            this.lblTitle.Left = 0.0625F;
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Style = "color: White; text-align: center; font-weight: bold; background-color: Blue;" +
+                " font-size: 16pt; vertical-align: middle; ";
+            this.lblTitle.Text = "Low Participation Report";
+            this.lblTitle.Top = 0F;
+            this.lblTitle.Width = 9.1875F;
+            // 
+            // imgLogo
+            // 
+            this.imgLogo.Border.BottomColor = System.Drawing.Color.Black;
+            this.imgLogo.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.imgLogo.Border.LeftColor = System.Drawing.Color.Black;
+            this.imgLogo.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.imgLogo.Border.RightColor = System.Drawing.Color.Black;
+            this.imgLogo.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.imgLogo.Border.TopColor = System.Drawing.Color.Black;
+            this.imgLogo.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.imgLogo.Height = 0.32F;
+            this.imgLogo.Image = ((System.Drawing.Image)(resources.GetObject("imgLogo.Image")));
+            this.imgLogo.ImageData = ((System.IO.Stream)(resources.GetObject("imgLogo.ImageData")));
+            this.imgLogo.Left = 0.0625F;
+            this.imgLogo.LineWeight = 0F;
+            this.imgLogo.Name = "imgLogo";
+            this.imgLogo.SizeMode = DataDynamics.ActiveReports.SizeModes.Stretch;
+            this.imgLogo.Top = 0F;
+            this.imgLogo.Width = 0.625F;
+            // 
+            // txtSubTitle
+            // 
+            this.txtSubTitle.Border.BottomColor = System.Drawing.Color.Black;
+            this.txtSubTitle.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.txtSubTitle.Border.LeftColor = System.Drawing.Color.Black;
+            this.txtSubTitle.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.txtSubTitle.Border.RightColor = System.Drawing.Color.Black;
+            this.txtSubTitle.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.txtSubTitle.Border.TopColor = System.Drawing.Color.Black;
+            this.txtSubTitle.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.txtSubTitle.Height = 0.01F;
+            this.txtSubTitle.Left = 0.0625F;
+            this.txtSubTitle.Name = "txtSubTitle";
+            this.txtSubTitle.Style = "text-align: center; ";
+            this.txtSubTitle.Text = null;
+            this.txtSubTitle.Top = 0.32F;
+            this.txtSubTitle.Width = 9.1875F;
+            // 
+            // detail
+            // 
+            this.detail.CanShrink = true;
+            this.detail.ColumnCount = 2;
+            this.detail.ColumnSpacing = 0F;
+            this.detail.Controls.AddRange(new DataDynamics.ActiveReports.ARControl[] {
+            this.subReport1,
+            this.subReport2,
+            this.subReport3,
+            this.subReport4,
+            this.subReport5,
+            this.subReport6,
+            this.subReport7,
+            this.subReport8,
+            this.subReport9});
+            this.detail.Height = 1.395833F;
+            this.detail.Name = "detail";
+            // 
+            // subReport1
+            // 
+            this.subReport1.Border.BottomColor = System.Drawing.Color.Black;
+            this.subReport1.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport1.Border.LeftColor = System.Drawing.Color.Black;
+            this.subReport1.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport1.Border.RightColor = System.Drawing.Color.Black;
+            this.subReport1.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport1.Border.TopColor = System.Drawing.Color.Black;
+            this.subReport1.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport1.CloseBorder = false;
+            this.subReport1.Height = 0.125F;
+            this.subReport1.Left = 0.0625F;
+            this.subReport1.Name = "subReport1";
+            this.subReport1.Report = null;
+            this.subReport1.ReportName = "subReport1";
+            this.subReport1.Top = 0F;
+            this.subReport1.Width = 4.5625F;
+            // 
+            // subReport2
+            // 
+            this.subReport2.Border.BottomColor = System.Drawing.Color.Black;
+            this.subReport2.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport2.Border.LeftColor = System.Drawing.Color.Black;
+            this.subReport2.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport2.Border.RightColor = System.Drawing.Color.Black;
+            this.subReport2.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport2.Border.TopColor = System.Drawing.Color.Black;
+            this.subReport2.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport2.CloseBorder = false;
+            this.subReport2.Height = 0.125F;
+            this.subReport2.Left = 0.0625F;
+            this.subReport2.Name = "subReport2";
+            this.subReport2.Report = null;
+            this.subReport2.ReportName = "subReport1";
+            this.subReport2.Top = 0.15625F;
+            this.subReport2.Width = 4.5625F;
+            // 
+            // subReport3
+            // 
+            this.subReport3.Border.BottomColor = System.Drawing.Color.Black;
+            this.subReport3.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport3.Border.LeftColor = System.Drawing.Color.Black;
+            this.subReport3.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport3.Border.RightColor = System.Drawing.Color.Black;
+            this.subReport3.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport3.Border.TopColor = System.Drawing.Color.Black;
+            this.subReport3.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport3.CloseBorder = false;
+            this.subReport3.Height = 0.125F;
+            this.subReport3.Left = 0.0625F;
+            this.subReport3.Name = "subReport3";
+            this.subReport3.Report = null;
+            this.subReport3.ReportName = "subReport1";
+            this.subReport3.Top = 0.3125F;
+            this.subReport3.Width = 4.5625F;
+            // 
+            // subReport4
+            // 
+            this.subReport4.Border.BottomColor = System.Drawing.Color.Black;
+            this.subReport4.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport4.Border.LeftColor = System.Drawing.Color.Black;
+            this.subReport4.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport4.Border.RightColor = System.Drawing.Color.Black;
+            this.subReport4.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport4.Border.TopColor = System.Drawing.Color.Black;
+            this.subReport4.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport4.CloseBorder = false;
+            this.subReport4.Height = 0.125F;
+            this.subReport4.Left = 0.0625F;
+            this.subReport4.Name = "subReport4";
+            this.subReport4.Report = null;
+            this.subReport4.ReportName = "subReport1";
+            this.subReport4.Top = 0.46875F;
+            this.subReport4.Width = 4.5625F;
+            // 
+            // subReport5
+            // 
+            this.subReport5.Border.BottomColor = System.Drawing.Color.Black;
+            this.subReport5.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport5.Border.LeftColor = System.Drawing.Color.Black;
+            this.subReport5.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport5.Border.RightColor = System.Drawing.Color.Black;
+            this.subReport5.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport5.Border.TopColor = System.Drawing.Color.Black;
+            this.subReport5.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport5.CloseBorder = false;
+            this.subReport5.Height = 0.125F;
+            this.subReport5.Left = 0.0625F;
+            this.subReport5.Name = "subReport5";
+            this.subReport5.Report = null;
+            this.subReport5.ReportName = "subReport1";
+            this.subReport5.Top = 0.625F;
+            this.subReport5.Width = 4.5625F;
+            // 
+            // subReport6
+            // 
+            this.subReport6.Border.BottomColor = System.Drawing.Color.Black;
+            this.subReport6.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport6.Border.LeftColor = System.Drawing.Color.Black;
+            this.subReport6.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport6.Border.RightColor = System.Drawing.Color.Black;
+            this.subReport6.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport6.Border.TopColor = System.Drawing.Color.Black;
+            this.subReport6.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport6.CloseBorder = false;
+            this.subReport6.Height = 0.125F;
+            this.subReport6.Left = 0.0625F;
+            this.subReport6.Name = "subReport6";
+            this.subReport6.Report = null;
+            this.subReport6.ReportName = "subReport1";
+            this.subReport6.Top = 0.78125F;
+            this.subReport6.Width = 4.5625F;
+            // 
+            // subReport7
+            // 
+            this.subReport7.Border.BottomColor = System.Drawing.Color.Black;
+            this.subReport7.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport7.Border.LeftColor = System.Drawing.Color.Black;
+            this.subReport7.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport7.Border.RightColor = System.Drawing.Color.Black;
+            this.subReport7.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport7.Border.TopColor = System.Drawing.Color.Black;
+            this.subReport7.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport7.CloseBorder = false;
+            this.subReport7.Height = 0.125F;
+            this.subReport7.Left = 0.0625F;
+            this.subReport7.Name = "subReport7";
+            this.subReport7.Report = null;
+            this.subReport7.ReportName = "subReport1";
+            this.subReport7.Top = 0.9375F;
+            this.subReport7.Width = 4.5625F;
+            // 
+            // subReport8
+            // 
+            this.subReport8.Border.BottomColor = System.Drawing.Color.Black;
+            this.subReport8.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport8.Border.LeftColor = System.Drawing.Color.Black;
+            this.subReport8.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport8.Border.RightColor = System.Drawing.Color.Black;
+            this.subReport8.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport8.Border.TopColor = System.Drawing.Color.Black;
+            this.subReport8.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport8.CloseBorder = false;
+            this.subReport8.Height = 0.125F;
+            this.subReport8.Left = 0.0625F;
+            this.subReport8.Name = "subReport8";
+            this.subReport8.Report = null;
+            this.subReport8.ReportName = "subReport1";
+            this.subReport8.Top = 1.09375F;
+            this.subReport8.Width = 4.5625F;
+            // 
+            // subReport9
+            // 
+            this.subReport9.Border.BottomColor = System.Drawing.Color.Black;
+            this.subReport9.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport9.Border.LeftColor = System.Drawing.Color.Black;
+            this.subReport9.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport9.Border.RightColor = System.Drawing.Color.Black;
+            this.subReport9.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport9.Border.TopColor = System.Drawing.Color.Black;
+            this.subReport9.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.subReport9.CloseBorder = false;
+            this.subReport9.Height = 0.125F;
+            this.subReport9.Left = 0.0625F;
+            this.subReport9.Name = "subReport9";
+            this.subReport9.Report = null;
+            this.subReport9.ReportName = "subReport1";
+            this.subReport9.Top = 1.25F;
+            this.subReport9.Width = 4.5625F;
+            // 
+            // pageFooter
+            // 
+            this.pageFooter.Controls.AddRange(new DataDynamics.ActiveReports.ARControl[] {
+            this.txtFilter,
+            this.imgLeanPath,
+            this.lblDB});
+            this.pageFooter.Height = 0.40625F;
+            this.pageFooter.Name = "pageFooter";
+            // 
+            // txtFilter
+            // 
+            this.txtFilter.Border.BottomColor = System.Drawing.Color.Black;
+            this.txtFilter.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.txtFilter.Border.LeftColor = System.Drawing.Color.Black;
+            this.txtFilter.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.txtFilter.Border.RightColor = System.Drawing.Color.Black;
+            this.txtFilter.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.txtFilter.Border.TopColor = System.Drawing.Color.Black;
+            this.txtFilter.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.txtFilter.Height = 0.1875F;
+            this.txtFilter.Left = 0.125F;
+            this.txtFilter.Name = "txtFilter";
+            this.txtFilter.Style = "font-style: italic; font-size: 8pt; ";
+            this.txtFilter.Text = "textBox1";
+            this.txtFilter.Top = 0F;
+            this.txtFilter.Width = 8.4375F;
+            // 
+            // imgLeanPath
+            // 
+            this.imgLeanPath.Border.BottomColor = System.Drawing.Color.Black;
+            this.imgLeanPath.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.imgLeanPath.Border.LeftColor = System.Drawing.Color.Black;
+            this.imgLeanPath.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.imgLeanPath.Border.RightColor = System.Drawing.Color.Black;
+            this.imgLeanPath.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.imgLeanPath.Border.TopColor = System.Drawing.Color.Black;
+            this.imgLeanPath.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.imgLeanPath.Height = 0.3125F;
+            this.imgLeanPath.Image = ((System.Drawing.Image)(resources.GetObject("imgLeanPath.Image")));
+            this.imgLeanPath.ImageData = ((System.IO.Stream)(resources.GetObject("imgLeanPath.ImageData")));
+            this.imgLeanPath.Left = 8.625F;
+            this.imgLeanPath.LineWeight = 0F;
+            this.imgLeanPath.Name = "imgLeanPath";
+            this.imgLeanPath.SizeMode = DataDynamics.ActiveReports.SizeModes.Stretch;
+            this.imgLeanPath.Top = 0.0625F;
+            this.imgLeanPath.Width = 0.625F;
+            // 
+            // lblDB
+            // 
+            this.lblDB.Border.BottomColor = System.Drawing.Color.Black;
+            this.lblDB.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.lblDB.Border.LeftColor = System.Drawing.Color.Black;
+            this.lblDB.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.lblDB.Border.RightColor = System.Drawing.Color.Black;
+            this.lblDB.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.lblDB.Border.TopColor = System.Drawing.Color.Black;
+            this.lblDB.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+            this.lblDB.Height = 0.1875F;
+            this.lblDB.Left = 0.125F;
+            this.lblDB.Name = "lblDB";
+            this.lblDB.Style = "font-size: 8pt; ";
+            this.lblDB.Text = null;
+            this.lblDB.Top = 0.1875F;
+            this.lblDB.Width = 8.4375F;
+            // 
+            // rptLowParticipation
+            // 
+            this.MasterReport = false;
+            this.PageSettings.DefaultPaperSize = false;
+            this.PageSettings.Margins.Bottom = 0.75F;
+            this.PageSettings.Margins.Left = 0.75F;
+            this.PageSettings.Margins.Right = 0.75F;
+            this.PageSettings.Margins.Top = 0.75F;
+            this.PageSettings.Orientation = DataDynamics.ActiveReports.Document.PageOrientation.Landscape;
+            this.PageSettings.PaperHeight = 11.69F;
+            this.PageSettings.PaperWidth = 8.27F;
+            this.PrintWidth = 9.28125F;
+            this.Sections.Add(this.rptHeader);
+            this.Sections.Add(this.detail);
+            this.Sections.Add(this.pageFooter);
+            this.StyleSheet.Add(new DDCssLib.StyleSheetRule("font-family: Arial; font-style: normal; text-decoration: none; font-weight: norma" +
+                        "l; font-size: 10pt; color: Black; ", "Normal"));
+            this.StyleSheet.Add(new DDCssLib.StyleSheetRule("font-size: 16pt; font-weight: bold; ", "Heading1", "Normal"));
+            this.StyleSheet.Add(new DDCssLib.StyleSheetRule("font-family: Times New Roman; font-size: 14pt; font-weight: bold; font-style: ita" +
+                        "lic; ", "Heading2", "Normal"));
+            this.StyleSheet.Add(new DDCssLib.StyleSheetRule("font-size: 13pt; font-weight: bold; ", "Heading3", "Normal"));
+            this.ReportStart += new System.EventHandler(this.rptLowParticipation_ReportStart);
+            ((System.ComponentModel.ISupportInitialize)(this.lblTitle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSubTitle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFilter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLeanPath)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblDB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
+
+        }
+        #endregion
+
+        private DataDynamics.ActiveReports.Picture imgLogo;
+        private DataDynamics.ActiveReports.Label lblTitle;
+        private DataDynamics.ActiveReports.SubReport subReport1;
+        private DataDynamics.ActiveReports.TextBox txtSubTitle;
+        private DataDynamics.ActiveReports.SubReport subReport2;
+        private DataDynamics.ActiveReports.SubReport subReport3;
+        private DataDynamics.ActiveReports.SubReport subReport4;
+        private DataDynamics.ActiveReports.SubReport subReport5;
+        private DataDynamics.ActiveReports.SubReport subReport6;
+        private DataDynamics.ActiveReports.SubReport subReport7;
+        private DataDynamics.ActiveReports.SubReport subReport8;
+        private DataDynamics.ActiveReports.SubReport subReport9;
+        private DataDynamics.ActiveReports.TextBox txtFilter;
+        private DataDynamics.ActiveReports.Picture imgLeanPath;
+        private DataDynamics.ActiveReports.TextBox lblDB;
+    }
+}

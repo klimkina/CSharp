@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="LMan4.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="LGen4_com_licensemanager4web_LicenseManagerWebService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://activate.leanpath.com/LicenseManager4Web.asmx</Value>
+    </Setting>
+    <Setting Name="LMan4_com_leanpath_activate_UpdateManager" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://activate.leanpath.com/UpdateManager.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

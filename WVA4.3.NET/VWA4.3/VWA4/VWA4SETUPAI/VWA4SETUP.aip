@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT Type="Advanced Installer" CreateVersion="7.5.2" version="8.6" Modules="simple" RootPath="." Language="en" Id="{8ACC10B4-EF9A-4187-A180-112DD4DBB4BD}">
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="AI_MINDOTNETVERSION" MultiBuildValue="DefaultBuild:2.0" ValueLocId="-"/>
+    <ROW Property="AI_UPGRADE" Value="No"/>
+    <ROW Property="ALLUSERS" Value="2"/>
+    <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
+    <ROW Property="ARPCONTACT" Value="Dave Britton"/>
+    <ROW Property="ARPHELPTELEPHONE" Value="(503) 620-6512"/>
+    <ROW Property="ARPPRODUCTICON" Value="VW.exe" Type="8"/>
+    <ROW Property="ARPURLINFOABOUT" Value="http://www.leanpath.com"/>
+    <ROW Property="Manufacturer" Value="LeanPath, Inc." ValueLocId="*"/>
+    <ROW Property="ProductCode" Value="1033:{F86B2FF5-DF40-402A-81DF-6B2D2A3ECF9A} " Type="16"/>
+    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductName" Value="ValuWaste Advantage 4" ValueLocId="*"/>
+    <ROW Property="ProductVersion" Value="4.3.0.28"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
+    <ROW Property="UpgradeCode" Value="{1D6DE509-F667-43FC-80E3-C013FB78FC9F}"/>
+    <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsType9XDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
+    <ROW Directory="DesktopFolder" Directory_Parent="TARGETDIR" DefaultDir="Deskto~1|DesktopFolder" IsPseudoRoot="1"/>
+    <ROW Directory="LeanPath_DIR" Directory_Parent="ProgramMenuFolder" DefaultDir="LeanPath"/>
+    <ROW Directory="ProgramMenuFolder" Directory_Parent="TARGETDIR" DefaultDir="Progra~1|ProgramMenuFolder" IsPseudoRoot="1"/>
+    <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="ActiveReports.Chart.dll" ComponentId="{DD3D480F-D296-47B5-B790-98055F4F7C28}" Directory_="APPDIR" Attributes="0" KeyPath="ActiveReports.Chart.dll"/>
+    <ROW Component="ActiveReports.CodeDomSerializer6.dll" ComponentId="{7ED2BA95-6526-4B5C-A921-DB1C89A74EA9}" Directory_="APPDIR" Attributes="0" KeyPath="ActiveReports.CodeDomSerializer6.dll"/>
+    <ROW Component="ActiveReports.Document.dll" ComponentId="{D58CBF1E-89B8-4FB0-9CA0-EC0C8E72FC20}" Directory_="APPDIR" Attributes="0" KeyPath="ActiveReports.Document.dll"/>
+    <ROW Component="ActiveReports.HtmlExport.dll" ComponentId="{3575B68F-D097-45F8-A43A-E937853D9348}" Directory_="APPDIR" Attributes="0" KeyPath="ActiveReports.HtmlExport.dll"/>
+    <ROW Component="ActiveReports.Interop.dll" ComponentId="{78E31451-5964-489C-80FA-068119F1E168}" Directory_="APPDIR" Attributes="0" KeyPath="ActiveReports.Interop.dll"/>
+    <ROW Component="ActiveReports.PdfExport.dll" ComponentId="{67952A83-5CBB-4CCF-AE42-436E8A821E0E}" Directory_="APPDIR" Attributes="0" KeyPath="ActiveReports.PdfExport.dll"/>
+    <ROW Component="ActiveReports.RtfExport.dll" ComponentId="{328F269E-B196-443F-BA12-81873D6656C6}" Directory_="APPDIR" Attributes="0" KeyPath="ActiveReports.RtfExport.dll"/>
+    <ROW Component="ActiveReports.TextExport.dll" ComponentId="{6C6E4FB8-5F43-4473-83A7-A426957EFE91}" Directory_="APPDIR" Attributes="0" KeyPath="ActiveReports.TextExport.dll"/>
+    <ROW Component="ActiveReports.Viewer6.dll" ComponentId="{D1AA98AA-3196-4BE5-9E0F-53C14A209A94}" Directory_="APPDIR" Attributes="0" KeyPath="ActiveReports.Viewer6.dll"/>
+    <ROW Component="ActiveReports.XlsExport.dll" ComponentId="{1D9AC71F-89DB-46CD-A104-9D515AB7FC08}" Directory_="APPDIR" Attributes="0" KeyPath="ActiveReports.XlsExport.dll"/>
+    <ROW Component="ActiveReports6.dll" ComponentId="{C76C14C2-3564-4D37-86B0-912AE829D729}" Directory_="APPDIR" Attributes="0" KeyPath="ActiveReports6.dll"/>
+    <ROW Component="DevExpress.BonusSkins.v11.1.dll" ComponentId="{DE1CA000-C712-4E16-BBF0-B87AA6BEEFF5}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.BonusSkins.v11.1.dll"/>
+    <ROW Component="DevExpress.Data.v11.1.dll" ComponentId="{C1B79E8D-B775-4B66-9D6D-D6CBBDE0FE2A}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Data.v11.1.dll"/>
+    <ROW Component="DevExpress.Utils.v11.1.dll" ComponentId="{E47C8D82-DB82-4C40-9A7B-E36A7ED82D01}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Utils.v11.1.dll"/>
+    <ROW Component="DevExpress.XtraEditors.v11.1.dll" ComponentId="{938D2013-BB5C-4F86-8916-8333C6DF16F5}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraEditors.v11.1.dll"/>
+    <ROW Component="DevExpress.XtraLayout.v11.1.dll" ComponentId="{3F96E292-D12B-4EEF-B812-8599E3B0D0F4}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraLayout.v11.1.dll"/>
+    <ROW Component="DevExpress.XtraTreeList.v11.1.dll" ComponentId="{7F2A5360-BD54-4765-803D-0DB84C878540}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraTreeList.v11.1.dll"/>
+    <ROW Component="DevExpress.XtraVerticalGrid.v11.1.dll" ComponentId="{8CE02882-C1BE-49C8-9B60-9A81D8515562}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraVerticalGrid.v11.1.dll"/>
+    <ROW Component="DevExpress.XtraWizard.v11.1.dll" ComponentId="{02858FD8-76B2-476A-A193-AF2D3602C1B3}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraWizard.v11.1.dll"/>
+    <ROW Component="EULA_2010_March_14_.rtf" ComponentId="{BB320404-F3AD-403A-8038-5D7018247B7A}" Directory_="APPDIR" Attributes="0" KeyPath="VWA4.2EULA.rtf" Type="0"/>
+    <ROW Component="Infragistics2.Documents.v10.3.dll" ComponentId="{AD744213-0CF9-4D1D-9CF5-4187BAB6D196}" Directory_="APPDIR" Attributes="0" KeyPath="Infragistics2.Documents.v10.3.dll"/>
+    <ROW Component="Infragistics2.Shared.v10.3.dll" ComponentId="{5CE36151-09C2-49AF-B1FE-E344242DE84F}" Directory_="APPDIR" Attributes="0" KeyPath="Infragistics2.Shared.v10.3.dll"/>
+    <ROW Component="Infragistics2.Win.Misc.v10.3.dll" ComponentId="{C6CD25E0-369A-46B6-971D-7AF613318209}" Directory_="APPDIR" Attributes="0" KeyPath="Infragistics2.Win.Misc.v10.3.dll"/>
+    <ROW Component="Infragistics2.Win.UltraWinCalcManager._1" ComponentId="{DE9AC6BB-0467-409A-8B9B-7EE4F5B4F7B2}" Directory_="APPDIR" Attributes="0" KeyPath="Infragistics2.Win.UltraWinCalcManager.v10.3.dll"/>
+    <ROW Component="Infragistics2.Win.UltraWinChart.v10.3.dl" ComponentId="{64FADD84-4041-4D08-8610-BC5DF816DFD3}" Directory_="APPDIR" Attributes="0" KeyPath="Infragistics2.Win.UltraWinChart.v10.3.dll"/>
+    <ROW Component="Infragistics2.Win.UltraWinDataSource.v_1" ComponentId="{81AD0DFF-1623-4E0C-B025-F2D83EAF2F4F}" Directory_="APPDIR" Attributes="0" KeyPath="Infragistics2.Win.UltraWinDataSource.v10.3.dll"/>
+    <ROW Component="Infragistics2.Win.UltraWinEditors.v10.3." ComponentId="{AFE9E56E-E9AA-4181-AA67-F1191EB33A2D}" Directory_="APPDIR" Attributes="0" KeyPath="Infragistics2.Win.UltraWinEditors.v10.3.dll"/>
+    <ROW Component="Infragistics2.Win.UltraWinExplorerBar._1" ComponentId="{65CBF0AD-14C2-4C9D-8634-D65A355A0EE4}" Directory_="APPDIR" Attributes="0" KeyPath="Infragistics2.Win.UltraWinExplorerBar.v10.3.dll"/>
+    <ROW Component="Infragistics2.Win.UltraWinGrid.Documen_1" ComponentId="{F016C3D7-FA97-4CBC-8FB5-EEB8FF6845DF}" Directory_="APPDIR" Attributes="0" KeyPath="Infragistics2.Win.UltraWinGrid.DocumentExport.v10.3.dll"/>
+    <ROW Component="Infragistics2.Win.UltraWinGrid.v10.3.dll" ComponentId="{920A960D-5264-4701-A779-74CC03F3488A}" Directory_="APPDIR" Attributes="0" KeyPath="Infragistics2.Win.UltraWinGrid.v10.3.dll"/>
+    <ROW Component="Infragistics2.Win.UltraWinListView.v10.3" ComponentId="{33F45A2C-576A-45EC-956C-55999A2683F7}" Directory_="APPDIR" Attributes="0" KeyPath="Infragistics2.Win.UltraWinListView.v10.3.dll"/>
+    <ROW Component="Infragistics2.Win.UltraWinMaskedEdit.v_1" ComponentId="{470EF6D3-0E65-4EA1-90F9-0B73C96539F2}" Directory_="APPDIR" Attributes="0" KeyPath="Infragistics2.Win.UltraWinMaskedEdit.v10.3.dll"/>
+    <ROW Component="Infragistics2.Win.UltraWinPrintPreview_1" ComponentId="{AE8F19D5-285A-45A2-83C4-BD5F04153946}" Directory_="APPDIR" Attributes="0" KeyPath="Infragistics2.Win.UltraWinPrintPreviewDialog.v10.3.dll"/>
+    <ROW Component="Infragistics2.Win.UltraWinSchedule.v10.3" ComponentId="{254A4CD9-4590-4D34-86C6-753D9211FA1E}" Directory_="APPDIR" Attributes="0" KeyPath="Infragistics2.Win.UltraWinSchedule.v10.3.dll"/>
+    <ROW Component="Infragistics2.Win.UltraWinStatusBar.v1_1" ComponentId="{272D9E86-B68A-483E-AE07-8FD567AEB85B}" Directory_="APPDIR" Attributes="0" KeyPath="Infragistics2.Win.UltraWinStatusBar.v10.3.dll"/>
+    <ROW Component="Infragistics2.Win.UltraWinTabControl.v_1" ComponentId="{C494102A-5EA8-4E84-AB7F-775B1D381766}" Directory_="APPDIR" Attributes="0" KeyPath="Infragistics2.Win.UltraWinTabControl.v10.3.dll"/>
+    <ROW Component="Infragistics2.Win.UltraWinToolbars.v10.3" ComponentId="{17473E41-660E-4ADC-9AE1-E7AB45CF7B9B}" Directory_="APPDIR" Attributes="0" KeyPath="Infragistics2.Win.UltraWinToolbars.v10.3.dll"/>
+    <ROW Component="Infragistics2.Win.UltraWinTree.v10.3.dll" ComponentId="{1A0ED8C0-5000-4D1A-853F-69DD37895632}" Directory_="APPDIR" Attributes="0" KeyPath="Infragistics2.Win.UltraWinTree.v10.3.dll"/>
+    <ROW Component="Infragistics2.Win.v10.3.dll" ComponentId="{A0318D99-7C2E-4F78-9712-358A998E2F3B}" Directory_="APPDIR" Attributes="0" KeyPath="Infragistics2.Win.v10.3.dll"/>
+    <ROW Component="Ionic.Zip.dll" ComponentId="{D2252E73-09D2-4D6E-8342-F248C12B1348}" Directory_="APPDIR" Attributes="0" KeyPath="Ionic.Zip.dll"/>
+    <ROW Component="LeanPath" ComponentId="{BC75933B-BA0D-4247-BBF8-0704B9ED6AB5}" Directory_="LeanPath_DIR" Attributes="0"/>
+    <ROW Component="OpenNETCF.Desktop.Communication.dll" ComponentId="{A27034E2-5F98-42DB-8D7E-3954917DC4C7}" Directory_="APPDIR" Attributes="0" KeyPath="OpenNETCF.Desktop.Communication.dll"/>
+    <ROW Component="Reports.dll" ComponentId="{AB9B7A6B-D00A-48D0-82A7-BB742B2A180C}" Directory_="APPDIR" Attributes="0" KeyPath="Reports.dll"/>
+    <ROW Component="UserControls.dll" ComponentId="{DD65EF6A-498C-43AF-B7BC-09DD679A6643}" Directory_="APPDIR" Attributes="0" KeyPath="UserControls.dll"/>
+    <ROW Component="VWA4.exe" ComponentId="{BB40C6EE-10EE-40EA-BCFE-790E91DBFBB8}" Directory_="APPDIR" Attributes="0" KeyPath="VWA4.exe"/>
+    <ROW Component="VWA4Common.dll" ComponentId="{30376A92-0AF0-4CD0-98C2-B4CE0F239A99}" Directory_="APPDIR" Attributes="0" KeyPath="VWA4Common.dll"/>
+    <ROW Component="VWA4DD.exe" ComponentId="{48DE1210-7259-4AF8-8B83-DB63880E6911}" Directory_="APPDIR" Attributes="0" KeyPath="VWA4DD.exe"/>
+    <ROW Component="VWAUpdater.exe" ComponentId="{DCE65C37-7183-438F-B27D-B650D1204182}" Directory_="APPDIR" Attributes="0" KeyPath="VWAUpdater.exe"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="ActiveReports.Chart.dll ActiveReports.CodeDomSerializer6.dll ActiveReports.Document.dll ActiveReports.HtmlExport.dll ActiveReports.Interop.dll ActiveReports.PdfExport.dll ActiveReports.RtfExport.dll ActiveReports.TextExport.dll ActiveReports.Viewer6.dll ActiveReports.XlsExport.dll ActiveReports6.dll DevExpress.BonusSkins.v11.1.dll DevExpress.Data.v11.1.dll DevExpress.Utils.v11.1.dll DevExpress.XtraEditors.v11.1.dll DevExpress.XtraLayout.v11.1.dll DevExpress.XtraTreeList.v11.1.dll DevExpress.XtraVerticalGrid.v11.1.dll DevExpress.XtraWizard.v11.1.dll EULA_2010_March_14_.rtf Infragistics2.Documents.v10.3.dll Infragistics2.Shared.v10.3.dll Infragistics2.Win.Misc.v10.3.dll Infragistics2.Win.UltraWinCalcManager._1 Infragistics2.Win.UltraWinChart.v10.3.dl Infragistics2.Win.UltraWinDataSource.v_1 Infragistics2.Win.UltraWinEditors.v10.3. Infragistics2.Win.UltraWinExplorerBar._1 Infragistics2.Win.UltraWinGrid.Documen_1 Infragistics2.Win.UltraWinGrid.v10.3.dll Infragistics2.Win.UltraWinListView.v10.3 Infragistics2.Win.UltraWinMaskedEdit.v_1 Infragistics2.Win.UltraWinPrintPreview_1 Infragistics2.Win.UltraWinSchedule.v10.3 Infragistics2.Win.UltraWinStatusBar.v1_1 Infragistics2.Win.UltraWinTabControl.v_1 Infragistics2.Win.UltraWinToolbars.v10.3 Infragistics2.Win.UltraWinTree.v10.3.dll Infragistics2.Win.v10.3.dll Ionic.Zip.dll LeanPath OpenNETCF.Desktop.Communication.dll Reports.dll UserControls.dll VWA4.exe VWA4Common.dll VWA4DD.exe VWAUpdater.exe"/>
+    <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="ActiveReports.Chart.dll" Component_="ActiveReports.Chart.dll" FileName="Active~6.dll|ActiveReports.Chart.dll" Attributes="0" SourcePath="..\..\lib\ActiveReports.Chart.dll" SelfReg="false" NextFile="ActiveReports.CodeDomSerializer6.dll"/>
+    <ROW File="ActiveReports.CodeDomSerializer6.dll" Component_="ActiveReports.CodeDomSerializer6.dll" FileName="Active~7.dll|ActiveReports.CodeDomSerializer6.dll" Attributes="0" SourcePath="..\..\lib\ActiveReports.CodeDomSerializer6.dll" SelfReg="false" NextFile="ActiveReports.Document.dll"/>
+    <ROW File="ActiveReports.Document.dll" Component_="ActiveReports.Document.dll" FileName="Active~8.dll|ActiveReports.Document.dll" Attributes="0" SourcePath="..\..\lib\ActiveReports.Document.dll" SelfReg="false" NextFile="ActiveReports.HtmlExport.dll"/>
+    <ROW File="ActiveReports.HtmlExport.dll" Component_="ActiveReports.HtmlExport.dll" FileName="Active~9.dll|ActiveReports.HtmlExport.dll" Attributes="0" SourcePath="..\..\lib\ActiveReports.HtmlExport.dll" SelfReg="false" NextFile="ActiveReports.Interop.dll"/>
+    <ROW File="ActiveReports.Interop.dll" Component_="ActiveReports.Interop.dll" FileName="Activ~10.dll|ActiveReports.Interop.dll" Attributes="0" SourcePath="..\..\lib\ActiveReports.Interop.dll" SelfReg="false" NextFile="ActiveReports.PdfExport.dll"/>
+    <ROW File="ActiveReports.PdfExport.dll" Component_="ActiveReports.PdfExport.dll" FileName="Activ~11.dll|ActiveReports.PdfExport.dll" Attributes="0" SourcePath="..\..\lib\ActiveReports.PdfExport.dll" SelfReg="false"/>
+    <ROW File="ActiveReports.RtfExport.dll" Component_="ActiveReports.RtfExport.dll" FileName="Active~1.dll|ActiveReports.RtfExport.dll" Attributes="0" SourcePath="..\..\lib\ActiveReports.RtfExport.dll" SelfReg="false" NextFile="ActiveReports.TextExport.dll"/>
+    <ROW File="ActiveReports.TextExport.dll" Component_="ActiveReports.TextExport.dll" FileName="Active~2.dll|ActiveReports.TextExport.dll" Attributes="0" SourcePath="..\..\lib\ActiveReports.TextExport.dll" SelfReg="false" NextFile="ActiveReports.Viewer6.dll"/>
+    <ROW File="ActiveReports.Viewer6.dll" Component_="ActiveReports.Viewer6.dll" FileName="Active~3.dll|ActiveReports.Viewer6.dll" Attributes="0" SourcePath="..\..\lib\ActiveReports.Viewer6.dll" SelfReg="false" NextFile="ActiveReports.XlsExport.dll"/>
+    <ROW File="ActiveReports.XlsExport.dll" Component_="ActiveReports.XlsExport.dll" FileName="Active~4.dll|ActiveReports.XlsExport.dll" Attributes="0" SourcePath="..\..\lib\ActiveReports.XlsExport.dll" SelfReg="false" NextFile="ActiveReports6.dll"/>
+    <ROW File="ActiveReports6.dll" Component_="ActiveReports6.dll" FileName="Active~5.dll|ActiveReports6.dll" Attributes="0" SourcePath="..\..\lib\ActiveReports6.dll" SelfReg="false" NextFile="ActiveReports.Chart.dll"/>
+    <ROW File="DevExpress.BonusSkins.v11.1.dll" Component_="DevExpress.BonusSkins.v11.1.dll" FileName="DevEx~12.dll|DevExpress.BonusSkins.v11.1.dll" Attributes="0" SourcePath="..\..\lib\DevExpress.BonusSkins.v11.1.dll" SelfReg="false" NextFile="DevExpress.Data.v11.1.dll"/>
+    <ROW File="DevExpress.Data.v11.1.dll" Component_="DevExpress.Data.v11.1.dll" FileName="DevEx~13.dll|DevExpress.Data.v11.1.dll" Attributes="0" SourcePath="..\..\lib\DevExpress.Data.v11.1.dll" SelfReg="false" NextFile="DevExpress.Utils.v11.1.dll"/>
+    <ROW File="DevExpress.Utils.v11.1.dll" Component_="DevExpress.Utils.v11.1.dll" FileName="DevEx~14.dll|DevExpress.Utils.v11.1.dll" Attributes="0" SourcePath="..\..\lib\DevExpress.Utils.v11.1.dll" SelfReg="false" NextFile="DevExpress.XtraEditors.v11.1.dll"/>
+    <ROW File="DevExpress.XtraEditors.v11.1.dll" Component_="DevExpress.XtraEditors.v11.1.dll" FileName="DevEx~15.dll|DevExpress.XtraEditors.v11.1.dll" Attributes="0" SourcePath="..\..\lib\DevExpress.XtraEditors.v11.1.dll" SelfReg="false" NextFile="DevExpress.XtraLayout.v11.1.dll"/>
+    <ROW File="DevExpress.XtraLayout.v11.1.dll" Component_="DevExpress.XtraLayout.v11.1.dll" FileName="DevEx~16.dll|DevExpress.XtraLayout.v11.1.dll" Attributes="0" SourcePath="..\..\lib\DevExpress.XtraLayout.v11.1.dll" SelfReg="false" NextFile="DevExpress.XtraTreeList.v11.1.dll"/>
+    <ROW File="DevExpress.XtraTreeList.v11.1.dll" Component_="DevExpress.XtraTreeList.v11.1.dll" FileName="DevEx~17.dll|DevExpress.XtraTreeList.v11.1.dll" Attributes="0" SourcePath="..\..\lib\DevExpress.XtraTreeList.v11.1.dll" SelfReg="false" NextFile="Infragistics2.Shared.v10.3.dll"/>
+    <ROW File="DevExpress.XtraVerticalGrid.v11.1.dll" Component_="DevExpress.XtraVerticalGrid.v11.1.dll" FileName="DevEx~10.dll|DevExpress.XtraVerticalGrid.v11.1.dll" Attributes="0" SourcePath="..\..\lib\DevExpress.XtraVerticalGrid.v11.1.dll" SelfReg="false" NextFile="DevExpress.XtraWizard.v11.1.dll"/>
+    <ROW File="DevExpress.XtraWizard.v11.1.dll" Component_="DevExpress.XtraWizard.v11.1.dll" FileName="DevEx~11.dll|DevExpress.XtraWizard.v11.1.dll" Attributes="0" SourcePath="..\..\lib\DevExpress.XtraWizard.v11.1.dll" SelfReg="false" NextFile="Infragistics2.Documents.v10.3.dll"/>
+    <ROW File="Infragistics2.Documents.v10.3.dll" Component_="Infragistics2.Documents.v10.3.dll" FileName="Infra~20.dll|Infragistics2.Documents.v10.3.dll" Attributes="0" SourcePath="..\..\lib\Infragistics2.Documents.v10.3.dll" SelfReg="false" NextFile="Infragistics2.Win.Misc.v10.3.dll"/>
+    <ROW File="Infragistics2.Shared.v10.3.dll" Component_="Infragistics2.Shared.v10.3.dll" FileName="Infrag~1.dll|Infragistics2.Shared.v10.3.dll" Attributes="0" SourcePath="..\..\lib\Infragistics2.Shared.v10.3.dll" SelfReg="false" NextFile="Infragistics2.Win.UltraWinChart.v10.3.dll"/>
+    <ROW File="Infragistics2.Win.Misc.v10.3.dll" Component_="Infragistics2.Win.Misc.v10.3.dll" FileName="Infra~21.dll|Infragistics2.Win.Misc.v10.3.dll" Attributes="0" SourcePath="..\..\lib\Infragistics2.Win.Misc.v10.3.dll" SelfReg="false" NextFile="DevExpress.BonusSkins.v11.1.dll"/>
+    <ROW File="Infragistics2.Win.UltraWinCalcManager.v10.3.dll" Component_="Infragistics2.Win.UltraWinCalcManager._1" FileName="Infra~24.dll|Infragistics2.Win.UltraWinCalcManager.v10.3.dll" Attributes="0" SourcePath="..\..\lib\Infragistics2.Win.UltraWinCalcManager.v10.3.dll" SelfReg="false" NextFile="Infragistics2.Win.UltraWinMaskedEdit.v10.3.dll"/>
+    <ROW File="Infragistics2.Win.UltraWinChart.v10.3.dll" Component_="Infragistics2.Win.UltraWinChart.v10.3.dl" FileName="Infrag~2.dll|Infragistics2.Win.UltraWinChart.v10.3.dll" Attributes="0" SourcePath="..\..\lib\Infragistics2.Win.UltraWinChart.v10.3.dll" SelfReg="false" NextFile="Infragistics2.Win.UltraWinDataSource.v10.3.dll"/>
+    <ROW File="Infragistics2.Win.UltraWinDataSource.v10.3.dll" Component_="Infragistics2.Win.UltraWinDataSource.v_1" FileName="Infra~19.dll|Infragistics2.Win.UltraWinDataSource.v10.3.dll" Attributes="0" SourcePath="..\..\lib\Infragistics2.Win.UltraWinDataSource.v10.3.dll" SelfReg="false" NextFile="Infragistics2.Win.UltraWinEditors.v10.3.dll"/>
+    <ROW File="Infragistics2.Win.UltraWinEditors.v10.3.dll" Component_="Infragistics2.Win.UltraWinEditors.v10.3." FileName="Infra~22.dll|Infragistics2.Win.UltraWinEditors.v10.3.dll" Attributes="0" SourcePath="..\..\lib\Infragistics2.Win.UltraWinEditors.v10.3.dll" SelfReg="false" NextFile="Infragistics2.Win.UltraWinExplorerBar.v10.3.dll"/>
+    <ROW File="Infragistics2.Win.UltraWinExplorerBar.v10.3.dll" Component_="Infragistics2.Win.UltraWinExplorerBar._1" FileName="Infra~23.dll|Infragistics2.Win.UltraWinExplorerBar.v10.3.dll" Attributes="0" SourcePath="..\..\lib\Infragistics2.Win.UltraWinExplorerBar.v10.3.dll" SelfReg="false" NextFile="Infragistics2.Win.UltraWinCalcManager.v10.3.dll"/>
+    <ROW File="Infragistics2.Win.UltraWinGrid.DocumentExport.v10.3.dll" Component_="Infragistics2.Win.UltraWinGrid.Documen_1" FileName="Infra~28.dll|Infragistics2.Win.UltraWinGrid.DocumentExport.v10.3.dll" Attributes="0" SourcePath="..\..\lib\Infragistics2.Win.UltraWinGrid.DocumentExport.v10.3.dll" SelfReg="false" NextFile="Infragistics2.Win.UltraWinGrid.v10.3.dll"/>
+    <ROW File="Infragistics2.Win.UltraWinGrid.v10.3.dll" Component_="Infragistics2.Win.UltraWinGrid.v10.3.dll" FileName="Infra~29.dll|Infragistics2.Win.UltraWinGrid.v10.3.dll" Attributes="0" SourcePath="..\..\lib\Infragistics2.Win.UltraWinGrid.v10.3.dll" SelfReg="false" NextFile="Infragistics2.Win.UltraWinListView.v10.3.dll"/>
+    <ROW File="Infragistics2.Win.UltraWinListView.v10.3.dll" Component_="Infragistics2.Win.UltraWinListView.v10.3" FileName="Infra~30.dll|Infragistics2.Win.UltraWinListView.v10.3.dll" Attributes="0" SourcePath="..\..\lib\Infragistics2.Win.UltraWinListView.v10.3.dll" SelfReg="false" NextFile="ActiveReports.RtfExport.dll"/>
+    <ROW File="Infragistics2.Win.UltraWinMaskedEdit.v10.3.dll" Component_="Infragistics2.Win.UltraWinMaskedEdit.v_1" FileName="Infrag~3.dll|Infragistics2.Win.UltraWinMaskedEdit.v10.3.dll" Attributes="0" SourcePath="..\..\lib\Infragistics2.Win.UltraWinMaskedEdit.v10.3.dll" SelfReg="false" NextFile="Infragistics2.Win.UltraWinPrintPreviewDialog.v10.3.dll"/>
+    <ROW File="Infragistics2.Win.UltraWinPrintPreviewDialog.v10.3.dll" Component_="Infragistics2.Win.UltraWinPrintPreview_1" FileName="Infrag~4.dll|Infragistics2.Win.UltraWinPrintPreviewDialog.v10.3.dll" Attributes="0" SourcePath="..\..\lib\Infragistics2.Win.UltraWinPrintPreviewDialog.v10.3.dll" SelfReg="false" NextFile="Infragistics2.Win.UltraWinSchedule.v10.3.dll"/>
+    <ROW File="Infragistics2.Win.UltraWinSchedule.v10.3.dll" Component_="Infragistics2.Win.UltraWinSchedule.v10.3" FileName="Infrag~5.dll|Infragistics2.Win.UltraWinSchedule.v10.3.dll" Attributes="0" SourcePath="..\..\lib\Infragistics2.Win.UltraWinSchedule.v10.3.dll" SelfReg="false" NextFile="Infragistics2.Win.UltraWinStatusBar.v10.3.dll"/>
+    <ROW File="Infragistics2.Win.UltraWinStatusBar.v10.3.dll" Component_="Infragistics2.Win.UltraWinStatusBar.v1_1" FileName="Infrag~6.dll|Infragistics2.Win.UltraWinStatusBar.v10.3.dll" Attributes="0" SourcePath="..\..\lib\Infragistics2.Win.UltraWinStatusBar.v10.3.dll" SelfReg="false" NextFile="Infragistics2.Win.UltraWinTabControl.v10.3.dll"/>
+    <ROW File="Infragistics2.Win.UltraWinTabControl.v10.3.dll" Component_="Infragistics2.Win.UltraWinTabControl.v_1" FileName="Infrag~7.dll|Infragistics2.Win.UltraWinTabControl.v10.3.dll" Attributes="0" SourcePath="..\..\lib\Infragistics2.Win.UltraWinTabControl.v10.3.dll" SelfReg="false" NextFile="Infragistics2.Win.UltraWinToolbars.v10.3.dll"/>
+    <ROW File="Infragistics2.Win.UltraWinToolbars.v10.3.dll" Component_="Infragistics2.Win.UltraWinToolbars.v10.3" FileName="Infra~25.dll|Infragistics2.Win.UltraWinToolbars.v10.3.dll" Attributes="0" SourcePath="..\..\lib\Infragistics2.Win.UltraWinToolbars.v10.3.dll" SelfReg="false" NextFile="Infragistics2.Win.UltraWinTree.v10.3.dll"/>
+    <ROW File="Infragistics2.Win.UltraWinTree.v10.3.dll" Component_="Infragistics2.Win.UltraWinTree.v10.3.dll" FileName="Infra~26.dll|Infragistics2.Win.UltraWinTree.v10.3.dll" Attributes="0" SourcePath="..\..\lib\Infragistics2.Win.UltraWinTree.v10.3.dll" SelfReg="false" NextFile="Infragistics2.Win.v10.3.dll"/>
+    <ROW File="Infragistics2.Win.v10.3.dll" Component_="Infragistics2.Win.v10.3.dll" FileName="Infra~27.dll|Infragistics2.Win.v10.3.dll" Attributes="0" SourcePath="..\..\lib\Infragistics2.Win.v10.3.dll" SelfReg="false" NextFile="Infragistics2.Win.UltraWinGrid.DocumentExport.v10.3.dll"/>
+    <ROW File="Ionic.Zip.dll" Component_="Ionic.Zip.dll" FileName="IonicZ~1.dll|Ionic.Zip.dll" Attributes="0" SourcePath="..\..\lib\Ionic.Zip.dll" SelfReg="false" NextFile="OpenNETCF.Desktop.Communication.dll"/>
+    <ROW File="OpenNETCF.Desktop.Communication.dll" Component_="OpenNETCF.Desktop.Communication.dll" FileName="OpenNE~1.dll|OpenNETCF.Desktop.Communication.dll" Attributes="0" SourcePath="..\..\lib\OpenNETCF.Desktop.Communication.dll" SelfReg="false" NextFile="Reports.dll"/>
+    <ROW File="Reports.dll" Component_="Reports.dll" FileName="Reports.dll" Attributes="0" SourcePath="..\..\Reports\bin\x86\Release\Reports.dll" SelfReg="false" NextFile="UserControls.dll"/>
+    <ROW File="UserControls.dll" Component_="UserControls.dll" FileName="UserCo~1.dll|UserControls.dll" Attributes="0" SourcePath="..\..\UserControls\bin\Release\UserControls.dll" SelfReg="false" NextFile="VWA4.exe"/>
+    <ROW File="VWA4.2EULA.rtf" Component_="EULA_2010_March_14_.rtf" FileName="VWA42E~1.rtf|VWA4.2EULA.rtf" Attributes="0" SourcePath="..\VWA4.2EULA.rtf" SelfReg="false" NextFile="VWAUpdater.exe"/>
+    <ROW File="VWA4.exe" Component_="VWA4.exe" FileName="VWA4.exe" Attributes="0" SourcePath="..\bin\x86\Release\VWA4.exe" SelfReg="false" NextFile="VWA4Common.dll"/>
+    <ROW File="VWA4Common.dll" Component_="VWA4Common.dll" FileName="VWA4Co~1.dll|VWA4Common.dll" Attributes="0" SourcePath="..\..\VWA4Common\bin\x86\Release\VWA4Common.dll" SelfReg="false" NextFile="VWA4DD.exe"/>
+    <ROW File="VWA4DD.exe" Component_="VWA4DD.exe" FileName="VWA4DD.exe" Attributes="0" SourcePath="..\..\..\..\VWA4.2.Delphi_Trunk\VWA4.2DD_2006\VWA4DD.exe" SelfReg="false" NextFile="VWA4.2EULA.rtf"/>
+    <ROW File="VWAUpdater.exe" Component_="VWAUpdater.exe" FileName="VWAUpd~1.exe|VWAUpdater.exe" Attributes="0" SourcePath="..\..\VWA4Updater\bin\Debug\VWAUpdater.exe" SelfReg="false" NextFile="DevExpress.XtraVerticalGrid.v11.1.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFolder="." PackageFileName="VWA4Setup_v[|ProductVersion]" Languages="en" InstallationType="4"/>
+    <ATTRIBUTE name="CurrentBuild" value="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
+    <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
+    <ROW Path="&lt;AI_DICTS&gt;ui_en.ail"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
+    <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
+    <ROW Fragment="FolderDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\FolderDlg.aip"/>
+    <ROW Fragment="SequenceDialogs.aip" Path="&lt;AI_THEMES&gt;classic\fragments\SequenceDialogs.aip"/>
+    <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
+    <ROW Fragment="StaticUIStrings.aip" Path="&lt;AI_FRAGS&gt;StaticUIStrings.aip"/>
+    <ROW Fragment="UI.aip" Path="&lt;AI_THEMES&gt;classic\fragments\UI.aip"/>
+    <ROW Fragment="Validation.aip" Path="&lt;AI_FRAGS&gt;Validation.aip"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiAppSearchComponent">
+    <ROW Property="AI_DOTNET20_SEARCH" Signature_="AI_DotNet20SearchSgn" Builds="DefaultBuild"/>
+    <ROW Property="AI_DOTNET30_SEARCH" Signature_="AI_DotNet30SearchSgn" Builds="DefaultBuild"/>
+    <ROW Property="AI_DOTNET35_CLIENTPROFILE_SEARCH" Signature_="AI_DotNet35ClientProfileSearchSgn" Builds="DefaultBuild"/>
+    <ROW Property="AI_DOTNET35_SEARCH" Signature_="AI_DotNet35SearchSgn" Builds="DefaultBuild"/>
+    <ROW Property="AI_DOTNET40_CLIENTPROFILE_SEARCH" Signature_="AI_DotNet40ClientProfileSearchSgn" Builds="DefaultBuild"/>
+    <ROW Property="AI_DOTNET40_SEARCH" Signature_="AI_DotNet40SearchSgn" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
+    <ATTRIBUTE name="FixedSizeBitmaps" value="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
+    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_INSTALL" Ordering="88"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceWelcomeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="2"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="PatchWelcomeDlg" Condition="AI_PATCH" Ordering="1"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_PATCH" Ordering="3"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="ChangeButton" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="301"/>
+    <ROW Dialog_="ResumeDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_RESUME" Ordering="299"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_MAINT" Ordering="197"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_PATCH" Ordering="198"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_INSTALL" Ordering="199"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="201"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
+    <ROW Directory_="LeanPath_DIR" Component_="LeanPath"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_PREPARE_UPGRADE" Type="65" Source="aicustact.dll" Target="PrepareUpgrade"/>
+    <ROW Action="AI_RESTORE_LOCATION" Type="65" Source="aicustact.dll" Target="RestoreLocation"/>
+    <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
+    <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
+    <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]" MultiBuildTarget="DefaultBuild:[ProgramFilesFolder]\LeanPath\ValuWaste4"/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
+    <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
+    <ROW Name="LP.exe" SourcePath="..\LP.ico" Index="0"/>
+    <ROW Name="VW.exe" SourcePath="..\VW.ico" Index="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="748"/>
+    <ROW Action="AI_STORE_LOCATION" Condition="Not Installed" Sequence="1501"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1399"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="51"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="748"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="51"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
+    <ROW Condition="(AI_DOTNET20_SEARCH = &quot;#1&quot;) OR (AI_DOTNET30_SEARCH = &quot;#1&quot;) OR (AI_DOTNET35_SEARCH = &quot;#1&quot;) OR (AI_DOTNET35_CLIENTPROFILE_SEARCH = &quot;#1&quot;) OR (AI_DOTNET40_CLIENTPROFILE_SEARCH = &quot;#1&quot;) OR (AI_DOTNET40_SEARCH = &quot;#1&quot;) OR (AI_DOTNET40_CLIENTPROFILE_SEARCH = &quot;#1&quot;) OR (AI_DOTNET40_SEARCH = &quot;#1&quot;)" Description="[ProductName] cannot be installed on systems with .NET Framework version lower than [AI_MINDOTNETVERSION]" DescriptionLocId="AI.LaunchCondition.DotNET" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsType9XDisplay]" DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRegLocatorComponent">
+    <ROW Signature_="AI_DotNet20SearchSgn" Root="2" Key="SOFTWARE\Microsoft\NET Framework Setup\NDP\v2.0.50727" Name="Install" Type="2"/>
+    <ROW Signature_="AI_DotNet30SearchSgn" Root="2" Key="SOFTWARE\Microsoft\NET Framework Setup\NDP\v3.0\Setup" Name="InstallSuccess" Type="2"/>
+    <ROW Signature_="AI_DotNet35ClientProfileSearchSgn" Root="2" Key="SOFTWARE\Microsoft\NET Framework Setup\DotNetClient\v3.5" Name="Install" Type="2"/>
+    <ROW Signature_="AI_DotNet35SearchSgn" Root="2" Key="SOFTWARE\Microsoft\NET Framework Setup\NDP\v3.5" Name="Install" Type="2"/>
+    <ROW Signature_="AI_DotNet40ClientProfileSearchSgn" Root="2" Key="SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Client" Name="Install" Type="2"/>
+    <ROW Signature_="AI_DotNet40SearchSgn" Root="2" Key="SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full" Name="Install" Type="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
+    <ROW Shortcut="Uninstall_ValuWaste_Advantage_4" Directory_="LeanPath_DIR" Name="Uninst~1|Uninstall ValuWaste Advantage 4" Component_="LeanPath" Target="[SystemFolder]msiexec.exe" Arguments="/x [ProductCode]" Hotkey="0" Icon_="LP.exe" IconIndex="0" ShowCmd="1"/>
+    <ROW Shortcut="ValuWaste_Advantage_4" Directory_="LeanPath_DIR" Name="ValuWa~1|ValuWaste Advantage 4" Component_="VWA4.exe" Target="[#VWA4.exe]" Hotkey="0" Icon_="LP.exe" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
+    <ROW Shortcut="ValuWaste_Advantage_4_1" Directory_="DesktopFolder" Name="ValuWa~1|ValuWaste Advantage 4" Component_="VWA4.exe" Target="[#VWA4.exe]" Hotkey="0" Icon_="LP.exe" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
+    <ATTRIBUTE name="UsedTheme" value="classic"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMax="[|ProductVersion]" Attributes="1025" ActionProperty="OLDPRODUCTS"/>
+  </COMPONENT>
+</DOCUMENT>

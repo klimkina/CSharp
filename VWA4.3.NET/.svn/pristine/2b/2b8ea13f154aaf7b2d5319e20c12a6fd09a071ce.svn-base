@@ -1,0 +1,481 @@
+﻿namespace UserControls
+{
+    partial class UCLowParticipationParameters
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCLowParticipationParameters));
+			this.panelHideParams = new System.Windows.Forms.Panel();
+			this.popupShowHide = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.hideParametersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.lblHidden = new System.Windows.Forms.Label();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.panelParams = new System.Windows.Forms.Panel();
+			this.panelRightTop = new System.Windows.Forms.Panel();
+			this.ucTreeFilter1 = new UserControls.UCTreeFilter();
+			this.ucConfigParameters1 = new UserControls.UCConfigParameters();
+			this.panelLeft = new System.Windows.Forms.Panel();
+			this.ucBaseParameters1 = new UserControls.UCBaseParameters();
+			this.panelLeftTop = new System.Windows.Forms.Panel();
+			this.ucGoalListbyCompletionParameters1 = new UserControls.UCGoalListbyCompletionParameters();
+            this.ucGoalHistoryParameters1 = new UserControls.UCGoalHistoryParameters();
+            this.ucGoalWeeklyStatucParameters1 = new ucGoaLWeeklyStatusParameters();
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.ucDateRangeParameters1 = new UserControls.UCDateRangeParameters();
+			this.ucDateRangePeriodParameters1 = new UserControls.UCDateRangePeriodParameters();
+			this.ucLowParticipation1 = new UserControls.UCLowParticipation();
+			this.ucEmployeeParameters1 = new UserControls.UCEmployeeParameters();
+			this.ucTrackerComparisionParameters1 = new UserControls.UCTrackerComparisionParameters();
+			this.ucTrendParameters1 = new UserControls.UCTrendParameters();
+			this.ucCrossTabParameters1 = new UserControls.UCCrossTabParameters();
+			this.ucComparisionParameters1 = new UserControls.UCComparisionParameters();
+			this.ucDetailsParameters1 = new UserControls.UCDetailsParameters();
+			this.ucWeeklyTabularParameters1 = new UserControls.UCWeeklyTabularParameters();
+			this.ucSWATParameters1 = new UserControls.UCSWATParameters();
+			this.ucFinancialParameters1 = new UserControls.UCFinancialParameters();
+			this.ucEmployeeTransactionsParameters1 = new UserControls.UCEmployeeTransactionsParameters();
+			this.ucEmpty = new UserControls.UCEmpty();
+			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+			this.panelHideParams.SuspendLayout();
+			this.popupShowHide.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			this.panelParams.SuspendLayout();
+			this.panelRightTop.SuspendLayout();
+			this.panelLeft.SuspendLayout();
+			this.panelLeftTop.SuspendLayout();
+			this.groupBox1.SuspendLayout();
+			this.SuspendLayout();
+			// 
+			// panelHideParams
+			// 
+			this.panelHideParams.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.panelHideParams.BackColor = System.Drawing.Color.White;
+			this.panelHideParams.ContextMenuStrip = this.popupShowHide;
+			this.panelHideParams.Controls.Add(this.lblHidden);
+			this.panelHideParams.Controls.Add(this.pictureBox1);
+			this.panelHideParams.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.panelHideParams.Location = new System.Drawing.Point(0, 269);
+			this.panelHideParams.Name = "panelHideParams";
+			this.panelHideParams.Size = new System.Drawing.Size(1097, 15);
+			this.panelHideParams.TabIndex = 49;
+			// 
+			// popupShowHide
+			// 
+			this.popupShowHide.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.hideParametersToolStripMenuItem});
+			this.popupShowHide.Name = "popupShowHide";
+			this.popupShowHide.Size = new System.Drawing.Size(162, 26);
+			// 
+			// hideParametersToolStripMenuItem
+			// 
+			this.hideParametersToolStripMenuItem.Name = "hideParametersToolStripMenuItem";
+			this.hideParametersToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+			this.hideParametersToolStripMenuItem.Text = "Hide Parameters";
+			this.hideParametersToolStripMenuItem.Click += new System.EventHandler(this.hideParametersToolStripMenuItem_Click);
+			// 
+			// lblHidden
+			// 
+			this.lblHidden.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.lblHidden.AutoSize = true;
+			this.lblHidden.Location = new System.Drawing.Point(9, 2);
+			this.lblHidden.Name = "lblHidden";
+			this.lblHidden.Size = new System.Drawing.Size(95, 13);
+			this.lblHidden.TabIndex = 50;
+			this.lblHidden.Text = "Report Parameters";
+			this.toolTip1.SetToolTip(this.lblHidden, "Right click to show parameters");
+			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.BackColor = System.Drawing.Color.White;
+			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+			this.pictureBox1.Location = new System.Drawing.Point(0, 3);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(14, 10);
+			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pictureBox1.TabIndex = 49;
+			this.pictureBox1.TabStop = false;
+			// 
+			// panelParams
+			// 
+			this.panelParams.AutoSize = true;
+			this.panelParams.BackColor = System.Drawing.Color.White;
+			this.panelParams.ContextMenuStrip = this.popupShowHide;
+			this.panelParams.Controls.Add(this.panelRightTop);
+			this.panelParams.Controls.Add(this.panelLeft);
+			this.panelParams.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panelParams.Location = new System.Drawing.Point(0, 0);
+			this.panelParams.Name = "panelParams";
+			this.panelParams.Size = new System.Drawing.Size(1097, 284);
+			this.panelParams.TabIndex = 50;
+			// 
+			// panelRightTop
+			// 
+			this.panelRightTop.AutoSize = true;
+			this.panelRightTop.BackColor = System.Drawing.Color.White;
+			this.panelRightTop.Controls.Add(this.ucTreeFilter1);
+			this.panelRightTop.Controls.Add(this.ucConfigParameters1);
+			this.panelRightTop.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panelRightTop.Location = new System.Drawing.Point(569, 0);
+			this.panelRightTop.Name = "panelRightTop";
+			this.panelRightTop.Size = new System.Drawing.Size(528, 284);
+			this.panelRightTop.TabIndex = 2;
+			// 
+			// ucTreeFilter1
+			// 
+			this.ucTreeFilter1.Active = false;
+			this.ucTreeFilter1.BackColor = System.Drawing.Color.White;
+			this.ucTreeFilter1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.ucTreeFilter1.Location = new System.Drawing.Point(0, 0);
+			this.ucTreeFilter1.Name = "ucTreeFilter1";
+			//this.ucTreeFilter1.ParamList = ((System.Collections.Hashtable)(resources.GetObject("ucTreeFilter1.ParamList")));
+			this.ucTreeFilter1.Size = new System.Drawing.Size(528, 284);
+			this.ucTreeFilter1.TabIndex = 2;
+			this.ucTreeFilter1.Title = "Additional Filters";
+			this.ucTreeFilter1.TreeFilterChanged += new UserControls.UCTreeFilter.TreeFilterChangedEventHandler(this.ucTreeFilter1_TreeFilterChanged);
+			// 
+			// ucConfigParameters1
+			// 
+			this.ucConfigParameters1.Active = false;
+			this.ucConfigParameters1.BackColor = System.Drawing.Color.White;
+			this.ucConfigParameters1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.ucConfigParameters1.Location = new System.Drawing.Point(0, 0);
+			this.ucConfigParameters1.Name = "ucConfigParameters1";
+			this.ucConfigParameters1.Size = new System.Drawing.Size(528, 284);
+			this.ucConfigParameters1.TabIndex = 3;
+			this.ucConfigParameters1.Visible = false;
+			// 
+			// panelLeft
+			// 
+			this.panelLeft.AutoSize = true;
+			this.panelLeft.BackColor = System.Drawing.Color.White;
+			this.panelLeft.Controls.Add(this.ucBaseParameters1);
+			this.panelLeft.Controls.Add(this.panelLeftTop);
+			this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
+			this.panelLeft.Location = new System.Drawing.Point(0, 0);
+			this.panelLeft.Name = "panelLeft";
+			this.panelLeft.Size = new System.Drawing.Size(569, 284);
+			this.panelLeft.TabIndex = 1;
+			// 
+			// ucBaseParameters1
+			// 
+			this.ucBaseParameters1.Active = false;
+			this.ucBaseParameters1.BackColor = System.Drawing.Color.White;
+			this.ucBaseParameters1.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.ucBaseParameters1.EndDate = new System.DateTime(((long)(0)));
+			this.ucBaseParameters1.Location = new System.Drawing.Point(0, 144);
+			this.ucBaseParameters1.Name = "ucBaseParameters1";
+			this.ucBaseParameters1.Size = new System.Drawing.Size(569, 140);
+			this.ucBaseParameters1.StartDate = new System.DateTime(((long)(0)));
+			this.ucBaseParameters1.TabIndex = 52;
+			this.ucBaseParameters1.ViewReport += new UserControls.UCBaseParameters.ViewReportEventHandler(this.ucBaseParameters1_ViewReport);
+			this.ucBaseParameters1.ExportPDF += new UserControls.UCBaseParameters.ExportPDFEventHandler(this.ucBaseParameters1_ExportPDF);
+			this.ucBaseParameters1.Filter += new UserControls.UCBaseParameters.FilterEventHandler(this.ucBaseParameters1_Filter);
+			this.ucBaseParameters1.SaveParameters += new UserControls.UCBaseParameters.SaveParametersEventHandler(this.ucBaseParameters1_SaveParameters);
+			this.ucBaseParameters1.LoadParameters += new UserControls.UCBaseParameters.LoadParametersEventHandler(this.ucBaseParameters1_LoadParameters);
+			this.ucBaseParameters1.ExportRTF += new UserControls.UCBaseParameters.ExportRTFEventHandler(this.ucBaseParameters1_ExportRTF);
+			// 
+			// panelLeftTop
+			// 
+			this.panelLeftTop.AutoSize = true;
+			this.panelLeftTop.BackColor = System.Drawing.Color.White;
+			this.panelLeftTop.Controls.Add(this.ucGoalListbyCompletionParameters1);
+            this.panelLeftTop.Controls.Add(this.ucGoalHistoryParameters1);
+            this.panelLeftTop.Controls.Add(this.ucGoalWeeklyStatucParameters1);
+			this.panelLeftTop.Controls.Add(this.groupBox1);
+			this.panelLeftTop.Controls.Add(this.ucLowParticipation1);
+			this.panelLeftTop.Controls.Add(this.ucEmployeeParameters1);
+			this.panelLeftTop.Controls.Add(this.ucTrackerComparisionParameters1);
+			this.panelLeftTop.Controls.Add(this.ucTrendParameters1);
+			this.panelLeftTop.Controls.Add(this.ucCrossTabParameters1);
+			this.panelLeftTop.Controls.Add(this.ucComparisionParameters1);
+			this.panelLeftTop.Controls.Add(this.ucDetailsParameters1);
+			this.panelLeftTop.Controls.Add(this.ucWeeklyTabularParameters1);
+			this.panelLeftTop.Controls.Add(this.ucSWATParameters1);
+			this.panelLeftTop.Controls.Add(this.ucFinancialParameters1);
+			this.panelLeftTop.Controls.Add(this.ucEmployeeTransactionsParameters1);
+			this.panelLeftTop.Controls.Add(this.ucEmpty);
+			this.panelLeftTop.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panelLeftTop.Location = new System.Drawing.Point(0, 0);
+			this.panelLeftTop.Name = "panelLeftTop";
+			this.panelLeftTop.Size = new System.Drawing.Size(569, 284);
+			this.panelLeftTop.TabIndex = 51;
+			// 
+			// ucGoalListbyCompletionParameters1
+			// 
+			this.ucGoalListbyCompletionParameters1.Active = false;
+			this.ucGoalListbyCompletionParameters1.Location = new System.Drawing.Point(5, 1);
+			this.ucGoalListbyCompletionParameters1.Name = "ucGoalListbyCompletionParameters1";
+			this.ucGoalListbyCompletionParameters1.Size = new System.Drawing.Size(557, 131);
+			this.ucGoalListbyCompletionParameters1.TabIndex = 63;
+
+            this.ucGoalHistoryParameters1.Active = false;
+            this.ucGoalHistoryParameters1.Visible = false;
+            this.ucGoalHistoryParameters1.Location = new System.Drawing.Point(5, 1);
+            this.ucGoalHistoryParameters1.Name = "ucGoalHistoryParameters1";
+            this.ucGoalHistoryParameters1.TabIndex = 1000;
+            this.ucGoalHistoryParameters1.Size = new System.Drawing.Size(666, 117);
+
+            this.ucGoalWeeklyStatucParameters1.Active = false;
+            this.ucGoalWeeklyStatucParameters1.Visible = false;
+            this.ucGoalWeeklyStatucParameters1.Location = new System.Drawing.Point(5, 1);
+            this.ucGoalWeeklyStatucParameters1.Name = "ucGoalWeeklyStatucParameters1";
+            this.ucGoalWeeklyStatucParameters1.TabIndex = 1000;
+            this.ucGoalWeeklyStatucParameters1.Size = new System.Drawing.Size(666, 117);
+            // 
+			// groupBox1
+			// 
+			this.groupBox1.Controls.Add(this.ucDateRangeParameters1);
+			this.groupBox1.Controls.Add(this.ucDateRangePeriodParameters1);
+			this.groupBox1.Location = new System.Drawing.Point(257, 5);
+			this.groupBox1.Name = "groupBox1";
+			this.groupBox1.Size = new System.Drawing.Size(304, 72);
+			this.groupBox1.TabIndex = 55;
+			this.groupBox1.TabStop = false;
+			this.groupBox1.Text = "Period Used:";
+			// 
+			// ucDateRangeParameters1
+			// 
+			this.ucDateRangeParameters1.Active = false;
+			this.ucDateRangeParameters1.BackColor = System.Drawing.Color.White;
+			this.ucDateRangeParameters1.EndDate = new System.DateTime(2011, 3, 10, 16, 28, 44, 0);
+			this.ucDateRangeParameters1.Location = new System.Drawing.Point(1, 15);
+			this.ucDateRangeParameters1.Name = "ucDateRangeParameters1";
+			//this.ucDateRangeParameters1.ParamList = ((System.Collections.Hashtable)(resources.GetObject("ucDateRangeParameters1.ParamList")));
+			this.ucDateRangeParameters1.Size = new System.Drawing.Size(300, 55);
+			this.ucDateRangeParameters1.StartDate = new System.DateTime(2011, 3, 10, 16, 28, 44, 0);
+			this.ucDateRangeParameters1.TabIndex = 0;
+			this.ucDateRangeParameters1.StartDateChanged += new UserControls.UCDateRangeParameters.StartDateChangedEventHandler(this.ucDateRangeParameters1_StartDateChanged);
+			this.ucDateRangeParameters1.EndDateChanged += new UserControls.UCDateRangeParameters.EndDateChangedEventHandler(this.ucDateRangeParameters1_EndDateChanged);
+			// 
+			// ucDateRangePeriodParameters1
+			// 
+			this.ucDateRangePeriodParameters1.Active = false;
+			this.ucDateRangePeriodParameters1.BackColor = System.Drawing.Color.White;
+			this.ucDateRangePeriodParameters1.EndDate = new System.DateTime(2011, 3, 10, 16, 28, 44, 283);
+			this.ucDateRangePeriodParameters1.Location = new System.Drawing.Point(1, 15);
+			this.ucDateRangePeriodParameters1.Name = "ucDateRangePeriodParameters1";
+			this.ucDateRangePeriodParameters1.Size = new System.Drawing.Size(300, 55);
+			this.ucDateRangePeriodParameters1.StartDate = new System.DateTime(2011, 3, 10, 16, 28, 44, 283);
+			this.ucDateRangePeriodParameters1.TabIndex = 0;
+			this.ucDateRangePeriodParameters1.StartDateChanged += new UserControls.UCDateRangePeriodParameters.StartDateChangedEventHandler(this.ucDateRangePeriodParameters1_StartDateChanged);
+			this.ucDateRangePeriodParameters1.EndDateChanged += new UserControls.UCDateRangePeriodParameters.EndDateChangedEventHandler(this.ucDateRangePeriodParameters1_EndDateChanged);
+			// 
+			// ucLowParticipation1
+			// 
+			this.ucLowParticipation1.Active = false;
+			this.ucLowParticipation1.BackColor = System.Drawing.Color.White;
+			this.ucLowParticipation1.Location = new System.Drawing.Point(0, 5);
+			this.ucLowParticipation1.Name = "ucLowParticipation1";
+			//this.ucLowParticipation1.ParamList = ((System.Collections.Hashtable)(resources.GetObject("ucLowParticipation1.ParamList")));
+			this.ucLowParticipation1.Size = new System.Drawing.Size(250, 46);
+			this.ucLowParticipation1.TabIndex = 62;
+			this.ucLowParticipation1.Visible = false;
+			// 
+			// ucEmployeeParameters1
+			// 
+			this.ucEmployeeParameters1.Active = false;
+			this.ucEmployeeParameters1.BackColor = System.Drawing.Color.White;
+			this.ucEmployeeParameters1.Location = new System.Drawing.Point(0, 5);
+			this.ucEmployeeParameters1.Name = "ucEmployeeParameters1";
+			//this.ucEmployeeParameters1.ParamList = ((System.Collections.Hashtable)(resources.GetObject("ucEmployeeParameters1.ParamList")));
+			this.ucEmployeeParameters1.Size = new System.Drawing.Size(251, 62);
+			this.ucEmployeeParameters1.TabIndex = 61;
+			this.ucEmployeeParameters1.Visible = false;
+			// 
+			// ucTrackerComparisionParameters1
+			// 
+			this.ucTrackerComparisionParameters1.Active = false;
+			this.ucTrackerComparisionParameters1.BackColor = System.Drawing.Color.White;
+			this.ucTrackerComparisionParameters1.Location = new System.Drawing.Point(10, 15);
+			this.ucTrackerComparisionParameters1.Name = "ucTrackerComparisionParameters1";
+			//this.ucTrackerComparisionParameters1.ParamList = ((System.Collections.Hashtable)(resources.GetObject("ucTrackerComparisionParameters1.ParamList")));
+			this.ucTrackerComparisionParameters1.Size = new System.Drawing.Size(200, 50);
+			this.ucTrackerComparisionParameters1.TabIndex = 62;
+			this.ucTrackerComparisionParameters1.Visible = false;
+			// 
+			// ucTrendParameters1
+			// 
+			this.ucTrendParameters1.Active = false;
+			this.ucTrendParameters1.BackColor = System.Drawing.Color.White;
+			this.ucTrendParameters1.Location = new System.Drawing.Point(0, 5);
+			this.ucTrendParameters1.Name = "ucTrendParameters1";
+			this.ucTrendParameters1.Size = new System.Drawing.Size(256, 72);
+			this.ucTrendParameters1.TabIndex = 56;
+			this.ucTrendParameters1.Visible = false;
+			// 
+			// ucCrossTabParameters1
+			// 
+			this.ucCrossTabParameters1.Active = false;
+			this.ucCrossTabParameters1.BackColor = System.Drawing.Color.White;
+			this.ucCrossTabParameters1.Location = new System.Drawing.Point(0, 5);
+			this.ucCrossTabParameters1.Name = "ucCrossTabParameters1";
+			this.ucCrossTabParameters1.Size = new System.Drawing.Size(251, 72);
+			this.ucCrossTabParameters1.TabIndex = 60;
+			this.ucCrossTabParameters1.Visible = false;
+			this.ucCrossTabParameters1.CrossTabOnChanged += new UserControls.UCCrossTabParameters.CrossTabOnChangedEventHandler(this.ucCrossTabParameters1_CrossTabOnChanged);
+			this.ucCrossTabParameters1.RecentWeeksChecked += new UserControls.UCCrossTabParameters.RecentWeeksCheckedEventHandler(this.ucCrossTabParameters1_RecentWeeksChecked);
+			// 
+			// ucComparisionParameters1
+			// 
+			this.ucComparisionParameters1.Active = false;
+			this.ucComparisionParameters1.BackColor = System.Drawing.Color.White;
+			this.ucComparisionParameters1.Dock = System.Windows.Forms.DockStyle.Top;
+			this.ucComparisionParameters1.Location = new System.Drawing.Point(0, 0);
+			this.ucComparisionParameters1.Name = "ucComparisionParameters1";
+			this.ucComparisionParameters1.Size = new System.Drawing.Size(569, 87);
+			this.ucComparisionParameters1.TabIndex = 58;
+			this.ucComparisionParameters1.Visible = false;
+			this.ucComparisionParameters1.ComparisionTypeChanged += new UserControls.UCComparisionParameters.ComparisionTypeChangedEventHandler(this.ucComparisionParameters1_ComparisionTypeChanged);
+			// 
+			// ucDetailsParameters1
+			// 
+			this.ucDetailsParameters1.Active = false;
+			this.ucDetailsParameters1.BackColor = System.Drawing.Color.White;
+			this.ucDetailsParameters1.Location = new System.Drawing.Point(0, 5);
+			this.ucDetailsParameters1.Name = "ucDetailsParameters1";
+			this.ucDetailsParameters1.Size = new System.Drawing.Size(256, 88);
+			this.ucDetailsParameters1.TabIndex = 57;
+			this.ucDetailsParameters1.Visible = false;
+			this.ucDetailsParameters1.TimeFrameChanged += new UserControls.UCDetailsParameters.TimeFrameChangedEventHandler(this.ucDetailsParameters1_TimeFrameChanged);
+			// 
+			// ucWeeklyTabularParameters1
+			// 
+			this.ucWeeklyTabularParameters1.Active = false;
+			this.ucWeeklyTabularParameters1.BackColor = System.Drawing.Color.White;
+			this.ucWeeklyTabularParameters1.Location = new System.Drawing.Point(0, 0);
+			this.ucWeeklyTabularParameters1.Name = "ucWeeklyTabularParameters1";
+			//this.ucWeeklyTabularParameters1.ParamList = ((System.Collections.Hashtable)(resources.GetObject("ucWeeklyTabularParameters1.ParamList")));
+			this.ucWeeklyTabularParameters1.Size = new System.Drawing.Size(256, 72);
+			this.ucWeeklyTabularParameters1.TabIndex = 57;
+			this.ucWeeklyTabularParameters1.Visible = false;
+			// 
+			// ucSWATParameters1
+			// 
+			this.ucSWATParameters1.Active = false;
+			this.ucSWATParameters1.BackColor = System.Drawing.Color.White;
+			this.ucSWATParameters1.Location = new System.Drawing.Point(0, 5);
+			this.ucSWATParameters1.Name = "ucSWATParameters1";
+			//this.ucSWATParameters1.ParamList = ((System.Collections.Hashtable)(resources.GetObject("ucSWATParameters1.ParamList")));
+			this.ucSWATParameters1.Size = new System.Drawing.Size(245, 77);
+			this.ucSWATParameters1.TabIndex = 58;
+			this.ucSWATParameters1.Visible = false;
+			// 
+			// ucFinancialParameters1
+			// 
+			this.ucFinancialParameters1.Active = false;
+			this.ucFinancialParameters1.BackColor = System.Drawing.Color.White;
+			this.ucFinancialParameters1.Location = new System.Drawing.Point(0, 0);
+			this.ucFinancialParameters1.Name = "ucFinancialParameters1";
+			this.ucFinancialParameters1.Size = new System.Drawing.Size(566, 77);
+			this.ucFinancialParameters1.TabIndex = 59;
+			this.ucFinancialParameters1.Visible = false;
+			this.ucFinancialParameters1.SiteIDChanged += new UserControls.UCFinancialParameters.SiteIDChangedEventHandler(this.ucFinancialParameters1_SiteIDChanged);
+			// 
+			// ucEmployeeTransactionsParameters1
+			// 
+			this.ucEmployeeTransactionsParameters1.Active = false;
+			this.ucEmployeeTransactionsParameters1.BackColor = System.Drawing.Color.White;
+			this.ucEmployeeTransactionsParameters1.Location = new System.Drawing.Point(0, 0);
+			this.ucEmployeeTransactionsParameters1.Name = "ucEmployeeTransactionsParameters1";
+			//this.ucEmployeeTransactionsParameters1.ParamList = ((System.Collections.Hashtable)(resources.GetObject("ucEmployeeTransactionsParameters1.ParamList")));
+			this.ucEmployeeTransactionsParameters1.Size = new System.Drawing.Size(566, 77);
+			this.ucEmployeeTransactionsParameters1.TabIndex = 59;
+			this.ucEmployeeTransactionsParameters1.Visible = false;
+			// 
+			// ucEmpty
+			// 
+			this.ucEmpty.BackColor = System.Drawing.Color.White;
+			this.ucEmpty.Location = new System.Drawing.Point(0, 0);
+			this.ucEmpty.Name = "ucEmpty";
+			this.ucEmpty.Size = new System.Drawing.Size(566, 77);
+			this.ucEmpty.TabIndex = 60;
+			this.ucEmpty.Visible = false;
+			// 
+			// UCLowParticipationParameters
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.panelHideParams);
+			this.Controls.Add(this.panelParams);
+			this.Name = "UCLowParticipationParameters";
+			this.Size = new System.Drawing.Size(1097, 284);
+			this.panelHideParams.ResumeLayout(false);
+			this.panelHideParams.PerformLayout();
+			this.popupShowHide.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			this.panelParams.ResumeLayout(false);
+			this.panelParams.PerformLayout();
+			this.panelRightTop.ResumeLayout(false);
+			this.panelLeft.ResumeLayout(false);
+			this.panelLeft.PerformLayout();
+			this.panelLeftTop.ResumeLayout(false);
+			this.groupBox1.ResumeLayout(false);
+			this.ResumeLayout(false);
+			this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Panel panelHideParams;
+        private System.Windows.Forms.Label lblHidden;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panelParams;
+        private System.Windows.Forms.Panel panelLeftTop;
+		private System.Windows.Forms.Panel panelRightTop;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Panel panelLeft;
+        private System.Windows.Forms.ContextMenuStrip popupShowHide;
+        private System.Windows.Forms.ToolStripMenuItem hideParametersToolStripMenuItem;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private UCTreeFilter ucTreeFilter1;
+        private UCConfigParameters ucConfigParameters1;
+        private UCBaseParameters ucBaseParameters1;
+        private UCTrendParameters ucTrendParameters1;
+        private UCTrackerComparisionParameters ucTrackerComparisionParameters1;
+        private UCDateRangeParameters ucDateRangeParameters1;
+        private UCDateRangePeriodParameters ucDateRangePeriodParameters1;
+        private UCDetailsParameters ucDetailsParameters1;
+        private UCComparisionParameters ucComparisionParameters1;
+        
+        private UCCrossTabParameters ucCrossTabParameters1;
+        //private UCFirstDayOfWeek ucFirstDayOfWeek1;
+        private UCLowParticipation ucLowParticipation1;
+        private UCEmployeeParameters ucEmployeeParameters1;
+        private UCWeeklyTabularParameters ucWeeklyTabularParameters1;
+        private UCSWATParameters ucSWATParameters1;
+        private UCFinancialParameters ucFinancialParameters1;
+        private UCEmployeeTransactionsParameters ucEmployeeTransactionsParameters1;
+		//private UCWasteAvoidanceParameters ucWasteAvoidanceParameters1;
+        //private UCWasteAvoidanceParameters ucWasteAvoidanceParameters1;
+		private UCEmpty ucEmpty;
+		private UCGoalListbyCompletionParameters ucGoalListbyCompletionParameters1;
+        private UCGoalHistoryParameters ucGoalHistoryParameters1;
+        private ucGoaLWeeklyStatusParameters ucGoalWeeklyStatucParameters1;
+    }
+}

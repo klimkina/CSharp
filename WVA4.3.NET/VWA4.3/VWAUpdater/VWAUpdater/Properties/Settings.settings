@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="VWAUpdater.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="VWAUpdater_com_licensemanager4web_LicenseManagerWebService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://activate.leanpath.com/LicenseManager4Web.asmx</Value>
+    </Setting>
+    <Setting Name="VWAUpdater_com_updatemanager_UpdateManager" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://activate.leanpath.com/UpdateManager.asmx</Value>
+    </Setting>
+    <Setting Name="ws_username" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">LMAN</Value>
+    </Setting>
+    <Setting Name="ws_password" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">530E9D3B-7ACC-4F9D-B16F-2FEBA545C8B1</Value>
+    </Setting>
+    <Setting Name="VWAFilePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Users\Stephen\Documents\VWA4.3.NET_Trunk\VWA4.3new\VWA4\VWA4.3\VWA4\bin\x86\Debug\VWA4.exe</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,363 @@
+using System;
+using System.Drawing;
+using System.Collections;
+using System.ComponentModel;
+using DataDynamics.ActiveReports;
+using DataDynamics.ActiveReports.Document;
+using System.Windows.Forms;
+using System.Data;
+using System.Text.RegularExpressions;
+using System.Globalization;
+
+namespace Reports
+{
+    /// <summary>
+    /// Summary description for rptEmployeeTransactions.
+    /// </summary>
+    public partial class rptEmployeeTransactions : DataDynamics.ActiveReports.ActiveReport
+    {
+        private UserControls.ReportParameters _InputParameters;
+        public rptEmployeeTransactions(UserControls.ReportParameters InputParameters)
+        {
+            //
+            // Required for Windows Form Designer support
+            //
+            InitializeComponent();
+            _InputParameters = InputParameters;
+        }
+        private void SetLogo()
+        {
+            try
+            {
+                System.Drawing.Image img;
+                if (_InputParameters["IsCustomLogo"] != null && bool.Parse(_InputParameters["IsCustomLogo"].ParamValue)
+                    && VWA4Common.GlobalSettings.LogoUpperLeftStream != null)
+                {
+                    img = System.Drawing.Image.FromStream(VWA4Common.GlobalSettings.LogoUpperLeftStream);
+                    //this.imgLogo.Height = (img.Height / img.VerticalResolution);
+                    //this.imgLogo.Width = (img.Width / img.HorizontalResolution);
+                    this.imgLogo.Image = img;
+                }
+                else
+                    this.imgLogo.Visible = false;
+                if (_InputParameters["IsLeanPathLogo"] != null && bool.Parse(_InputParameters["IsLeanPathLogo"].ParamValue)
+                    && VWA4Common.GlobalSettings.LogoLowerRightStream != null)
+                {
+                    img = System.Drawing.Image.FromStream(VWA4Common.GlobalSettings.LogoLowerRightStream);
+                    this.imgLeanPath.Image = img;
+                }
+                else
+                    this.imgLeanPath.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(null, "Error loading logo: " + ex.Message, "Error loading image from file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private DataDynamics.ActiveReports.TextBox[] txtDates;
+        private DataDynamics.ActiveReports.TextBox[] hdrDates;
+        private DataDynamics.ActiveReports.Line[] lineHeader;
+        private DataDynamics.ActiveReports.Line[] lineText;
+        private void CreateTextBoxes(int num)
+        {
+            txtDates = new DataDynamics.ActiveReports.TextBox[num];
+            hdrDates = new DataDynamics.ActiveReports.TextBox[num];
+            lineHeader = new DataDynamics.ActiveReports.Line[num];
+            lineText = new DataDynamics.ActiveReports.Line[num];
+
+            float size = Math.Min(5F / num, 0.8F); //results + total
+            float left = 0.875F, height = 0.1875F, line_height = 0.1875F;// 0.25F;
+            for (int i = 0; i < num; i++)
+            {
+                txtDates[i] = new DataDynamics.ActiveReports.TextBox();
+                txtDates[i].Border.BottomColor = System.Drawing.Color.Black;
+                txtDates[i].Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+                txtDates[i].Border.LeftColor = System.Drawing.Color.Black;
+                txtDates[i].Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+                txtDates[i].Border.RightColor = System.Drawing.Color.Black;
+                txtDates[i].Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+                txtDates[i].Border.TopColor = System.Drawing.Color.Black;
+                txtDates[i].Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+                txtDates[i].Height = height;
+                txtDates[i].Left = left + i * size;
+                txtDates[i].Name = "txtDates" + i;
+                txtDates[i].Style = "font-size: 8pt; ";
+                txtDates[i].Text = null;
+                txtDates[i].Top = 0F;
+                txtDates[i].Width = size;
+                txtDates[i].DataField = "result" + i;
+                txtDates[i].Alignment = TextAlignment.Center;
+                this.detail.Controls.Add(txtDates[i]);
+
+                hdrDates[i] = new DataDynamics.ActiveReports.TextBox();
+                hdrDates[i].Border.BottomColor = System.Drawing.Color.Black;
+                hdrDates[i].Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+                hdrDates[i].Border.LeftColor = System.Drawing.Color.Black;
+                hdrDates[i].Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+                hdrDates[i].Border.RightColor = System.Drawing.Color.Black;
+                hdrDates[i].Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+                hdrDates[i].Border.TopColor = System.Drawing.Color.Black;
+                hdrDates[i].Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+                hdrDates[i].Height = height;
+                hdrDates[i].Left = left + i * size;
+                hdrDates[i].Name = "hdrDates" + i;
+                hdrDates[i].Style = "font-weight: bold; ";
+                hdrDates[i].Text = null;
+                hdrDates[i].Top = 0F;
+                hdrDates[i].Width = size;
+                hdrDates[i].OutputFormat = "d-MMM";
+                hdrDates[i].Alignment = TextAlignment.Center;
+                this.gpHeader.Controls.Add(hdrDates[i]);
+
+                // 
+                // lineHeader
+                // 
+                lineHeader[i] = new Line();
+                this.lineHeader[i].AnchorBottom = true;
+                this.lineHeader[i].Border.BottomColor = System.Drawing.Color.Black;
+                this.lineHeader[i].Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+                this.lineHeader[i].Border.LeftColor = System.Drawing.Color.Black;
+                this.lineHeader[i].Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+                this.lineHeader[i].Border.RightColor = System.Drawing.Color.Black;
+                this.lineHeader[i].Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+                this.lineHeader[i].Border.TopColor = System.Drawing.Color.Black;
+                this.lineHeader[i].Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+                this.lineHeader[i].Height = line_height;
+                this.lineHeader[i].Left = left + size * (i + 1);
+                this.lineHeader[i].LineWeight = 1F;
+                this.lineHeader[i].Name = "lineHeader" + i;
+                this.lineHeader[i].Top = 0F;
+                this.lineHeader[i].Width = 0F;
+                this.lineHeader[i].X1 = left + size * (i + 1);
+                this.lineHeader[i].X2 = left + size * (i + 1);
+                this.lineHeader[i].Y1 = 0F;
+                this.lineHeader[i].Y2 = line_height;
+                this.gpHeader.Controls.Add(lineHeader[i]);
+                // 
+                // lineText
+                // 
+                lineText[i] = new Line();
+                this.lineText[i].AnchorBottom = true;
+                this.lineText[i].Border.BottomColor = System.Drawing.Color.Black;
+                this.lineText[i].Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+                this.lineText[i].Border.LeftColor = System.Drawing.Color.Black;
+                this.lineText[i].Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+                this.lineText[i].Border.RightColor = System.Drawing.Color.Black;
+                this.lineText[i].Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+                this.lineText[i].Border.TopColor = System.Drawing.Color.Black;
+                this.lineText[i].Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None;
+                this.lineText[i].Height = line_height;
+                this.lineText[i].Left = left + size * (i + 1);
+                this.lineText[i].LineWeight = 1F;
+                this.lineText[i].Name = "lineText" + i;
+                this.lineText[i].Top = 0F;
+                this.lineText[i].Width = 0F;
+                this.lineText[i].X1 = left + size * (i + 1);
+                this.lineText[i].X2 = left + size * (i + 1);
+                this.lineText[i].Y1 = 0F;
+                this.lineText[i].Y2 = line_height;
+                this.detail.Controls.Add(lineText[i]);
+            }
+            hdrTotal.Left = left + num * size;
+            txtTotal.Left = hdrTotal.Left;
+            line14.X2 = hdrTotal.Left + hdrTotal.Width;
+            line15.X2 = line14.X2;
+            line1.X2 = line14.X2;
+            line22.X1 = line14.X2;
+            line27.X1 = line14.X2;
+            line22.X2 = line14.X2;
+            line27.X2 = line14.X2;
+            lnBottom.Width = line14.Width;
+            lnBottom2.Width = line14.Width;
+            //line22.BringToFront();
+            //line27.BringToFront();
+        }
+        private DataTable _ChartData;
+        private int _iRow;
+        private bool _IsTwoColumn = false;
+        private void rptEmployeeTransactions_ReportStart(object sender, EventArgs e)
+        {
+            this._iRow = 0;
+
+            DateTime start = DateTime.Parse(_InputParameters["PeriodStartDate"].ParamValue);
+
+            this.txtFilter.Text = VWA4Common.VWACommon.RemoveDisplayFilterPeriod(_InputParameters["Filter"].DisplayValue);
+            if (this.txtFilter.Text != "")
+                this.txtFilter.Text = "Filters used: " + this.txtFilter.Text;
+            txtPeriod.Text = start.ToString("MM/dd/yyyy", CultureInfo.GetCultureInfo("en-US")) + " - " + 
+                start.AddDays(7 * int.Parse(_InputParameters["NumberOfWeeks"].ParamValue)).ToString("MM/dd/yyyy", CultureInfo.GetCultureInfo("en-US"));
+            txtReportedBy.Text = _InputParameters["EmployeeMode"].ParamValue;
+            if (_InputParameters["Title"] != null && _InputParameters["Title"].ParamValue != "")
+                this.lblTitle.Text = _InputParameters["Title"].ParamValue;
+            else
+                this.lblTitle.Text = "Transactions by Week by Employee";
+            txtSubTitle.Text = _InputParameters["SubTitle"].ParamValue;
+            this.lblDB.Text = "Current DataBase:" + UserControls.VWAPath.ViewWasteDBName;
+            SetLogo();
+            CreateTextBoxes(int.Parse(_InputParameters["NumberOfWeeks"].ParamValue));
+            //Retrieve data
+            //Dataset to hold data
+            _ChartData = new DataTable();
+            string criteria;
+            string format = "";
+            switch (_InputParameters["EmployeeMode"].ParamValue)
+            {
+                case "Costs":
+                    criteria = " SUM(WasteCost) ";
+                    format = "#,##0.";
+                    txtTotal.OutputFormat = "$#,##0.";
+                    break;
+                case "Weights":
+                    criteria = " SUM(Weight - NItems*ContainerWeight) ";
+                    format = "#,##0.";
+                    txtTotal.OutputFormat = "#,##0. lbs";
+                    break;
+                default:
+                    criteria = " COUNT(*) ";
+                    break;
+            }
+            string where = " WHERE SiteID = " + _InputParameters["SiteID"].ParamValue;
+            
+            if (_InputParameters["Filter"] != null && _InputParameters["Filter"].ParamValue != "")
+                where += " AND (" + _InputParameters["Filter"].ParamValue + " )";
+			bool isWasteClassesUsed = false; // (VWA4Common.SecurityManager.GetSecurityManager().GetPermission("Allowed Waste Classes") != "-1") || (_InputParameters["WasteClasses"].ParamValue.ToString() != "");
+			//if (_InputParameters["WasteClasses"].ParamValue.ToString() != "")
+			//    where += " AND (" + _InputParameters["WasteClasses"].ParamValue.ToString() + " )";
+			//else // if (VWA4Common.SecurityManager.GetSecurityManager().GetPermission("Allowed Waste Classes") != "-1")
+			//    where += " AND (" +  VWA4Common.VWACommon.GetWasteClasses() + ")";
+
+            string where2 = "";
+            string select = @"SELECT  A0.UserTypeID, TypeName, result0";
+            string from = @" FROM (SELECT UserTypeID, TypeName, MAX(res0) AS result0 " +
+                    " FROM(SELECT UserTypeID, TypeName, " + criteria + " AS res0 " +
+                    " FROM (Weights LEFT JOIN UserType ON Weights.UserTypeID = UserType.TypeID) LEFT JOIN Transfers ON Weights.TransKey = Transfers.TransKey " +
+                    where + (where == "" ? " WHERE " : " AND " ) +
+                    " Weights.Timestamp >= #" + start.ToString("MM/dd/yyyy", CultureInfo.GetCultureInfo("en-US")) + "# AND Weights.Timestamp < #" + start.AddDays(7).ToString("MM/dd/yyyy", CultureInfo.GetCultureInfo("en-US")) + "# " +
+                    " GROUP BY UserTypeID, TypeName " +
+                    " UNION SELECT TypeID AS UserTypeID, TypeName, 0 as res0 FROM UserType) " +
+                    " GROUP BY UserTypeID, TypeName) AS A0";
+            where2 = "";
+            string and = "result0 > 0";
+            string total = "result0";
+            _IsTwoColumn = int.Parse(_InputParameters["NumberOfWeeks"].ParamValue) <= 2;
+            if (_IsTwoColumn)
+            {
+                this.detail.ColumnCount = 2;
+                gpReport.RepeatStyle = RepeatStyle.OnColumn;
+                gpReport.ColumnGroupKeepTogether = true;
+                gpFooter.ColumnLayout = true;
+            }
+            else
+            {
+                lnBottom2.Visible = false;
+            }
+            hdrDates[0].Value = start;
+            for (int i = 1; i < int.Parse(_InputParameters["NumberOfWeeks"].ParamValue); i++)
+            {
+                start = start.AddDays(7);
+                hdrDates[i].Value = start;
+                txtDates[i].OutputFormat = format;
+                select += ", result" + i;
+                from += @",(SELECT UserTypeID, MAX(res" + i + ") AS result" + i +
+                        " FROM(SELECT UserTypeID, " + criteria + " AS res" + i +
+                        " FROM (Weights LEFT JOIN Transfers ON Weights.TransKey = Transfers.TransKey) " +
+                        (isWasteClassesUsed ? " LEFT JOIN FoodType ON Weights.FoodTypeID = FoodType.TypeID " : "") +
+                        where + (where == "" ? " WHERE " : " AND ") +
+                        " Weights.Timestamp >= #" + start.ToString("MM/dd/yyyy", CultureInfo.GetCultureInfo("en-US")) + "# AND Weights.Timestamp < #" + start.AddDays(7).ToString("MM/dd/yyyy", CultureInfo.GetCultureInfo("en-US")) + "# " +
+                        " GROUP BY UserTypeID " +
+                        " UNION SELECT TypeID AS UserTypeID, 0 as res" + i + " FROM UserType) " +
+                        " GROUP BY UserTypeID) AS A" + i;
+                if (where2 == "")
+                    where2 = " WHERE A0.UserTypeID = A1.UserTypeID";
+                else
+                    where2 += " AND A0.UserTypeID = A" + i + ".UserTypeID";
+                and += " OR result" + i + " > 0";
+                total += " + result" + i;
+            }
+            txtDates[0].OutputFormat = format;
+            
+            select += ", " + total + " AS summary ";
+            if (where2 == "")
+                where2 = " WHERE " + and;
+            else
+                where2 += " AND (" + and + ")";
+            string order = " ORDER BY " + total + " DESC";
+            _ChartData = VWA4Common.DB.Retrieve(select + from + where2 + order);
+
+            this.DataSource = _ChartData;
+            this.DataMember = _ChartData.TableName;
+            
+            if (_ChartData.Rows.Count <= 0)
+            {
+                if (bool.Parse(VWA4Common.GlobalSettings.ShowEmptyReports))
+                {
+                    txtError.Text = "No Data for this period";
+                    gpReport.Visible = false;
+                    this.gpFooter.Visible = false;
+                    this.detail.Visible = false;
+                }
+                else
+                    this.Cancel();
+            }
+            //End retrieving data
+
+            this.Document.Printer.Landscape = false;
+            this.PrintWidth = this.PageSettings.PaperWidth - (this.PageSettings.Margins.Left + this.PageSettings.Margins.Right);
+            m_DetailHeight = this.PageSettings.PaperHeight - (this.PageSettings.Margins.Top + this.PageSettings.Margins.Bottom) - 
+                this.pageHeader.Height - this.pageFooter.Height - gpHeader.Height; 
+        }
+
+        private float _currHeight = 0F;
+        private float _currHeight2 = 0F;
+        private float m_DetailHeight = 0F;
+
+        private void detail_Format(object sender, EventArgs e)
+        {
+            // Check _iRow value to see if we need to highlight the row or not.
+            if (this._iRow % 2 == 0)
+                this.detail.BackColor = Color.Transparent;
+            else
+                this.detail.BackColor = Color.LightYellow;
+            this._iRow++;
+            
+        }
+
+        private void rptEmployeeTransactions_PageEnd(object sender, EventArgs e)
+        {
+            float Y = this.PageSettings.Margins.Top + pageHeader.Height + gpHeader.Height + (_currHeight + _currHeight2)/2;
+            
+            this.CurrentPage.ForeColor = System.Drawing.Color.Black;
+            this.CurrentPage.PenStyle = DataDynamics.ActiveReports.Document.PenStyles.Solid;
+            this.CurrentPage.PenWidth = 1;
+
+            if (!(_IsFirstColumn && _ChartData.Rows.Count == _iRow))// show group footer here if ended in first column
+                this.CurrentPage.DrawLine(lnBottom.X1 + this.PageSettings.Margins.Left, Y, lnBottom.X2 + this.PageSettings.Margins.Left, Y);
+            if (!_IsFirstColumn && !(_ChartData.Rows.Count == _iRow))// hide second line if ended on first line or group footer shoul be shown 
+                this.CurrentPage.DrawLine(lnBottom2.X1 + this.PageSettings.Margins.Left, Y, lnBottom2.X2 + this.PageSettings.Margins.Left, Y);
+            
+        }
+
+        bool _IsFirstColumn = true;
+        private void detail_AfterPrint(object sender, EventArgs e)
+        {
+            if ( _IsFirstColumn && (_currHeight + detail.Height <= m_DetailHeight))
+            {
+                _currHeight += detail.Height;
+            }
+            else
+            {
+                _IsFirstColumn = false;
+                _currHeight2 += detail.Height;
+            }
+        }
+
+        private void rptEmployeeTransactions_PageStart(object sender, EventArgs e)
+        {
+            _currHeight = 0;
+            _currHeight2 = 0;
+            _IsFirstColumn = true;
+        }
+
+    }
+}

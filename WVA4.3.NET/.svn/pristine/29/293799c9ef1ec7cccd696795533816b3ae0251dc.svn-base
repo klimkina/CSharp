@@ -1,0 +1,785 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{73F89F52-619B-4617-B9BB-E2D301FBBAF2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Reports</RootNamespace>
+    <AssemblyName>Reports</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <StartupObject>
+    </StartupObject>
+    <ApplicationIcon>VW_appicon.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ActiveReports.Chart, Version=6.2.3164.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ActiveReports.Document, Version=6.2.3164.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ActiveReports.PdfExport, Version=6.2.3164.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ActiveReports.RtfExport, Version=6.2.3164.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ActiveReports.Viewer6, Version=6.2.3164.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ActiveReports6, Version=6.2.3164.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Documents.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Documents.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinEditors.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinEditors.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinExplorerBar.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinExplorerBar.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinGrid.DocumentExport.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinGrid.DocumentExport.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinGrid.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinGrid.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinListView.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinListView.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinPrintPreviewDialog.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinPrintPreviewDialog.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinSchedule.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinSchedule.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinTabControl.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinTabControl.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinToolbars.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinToolbars.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinTree.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinTree.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Shared.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Shared.v10.3.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.Misc.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.Misc.v10.3.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.v10.3.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Accessibility" />
+    <Reference Include="DevExpress.Printing.v11.1.Core, Version=11.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Data.v11.1, Version=11.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v11.1, Version=11.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v11.1, Version=11.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v11.1, Version=11.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="OpenNETCF.Desktop.Communication, Version=2.9.3574.21360, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\OpenNETCF.Desktop.Communication.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="rptGoalHistory.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptGoalHistory.Designer.cs">
+      <DependentUpon>rptGoalHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddReportSerie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddReportSerie.Designer.cs">
+      <DependentUpon>frmAddReportSerie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditFormFormSeries.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditFormFormSeries.Designer.cs">
+      <DependentUpon>frmEditFormFormSeries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFormFormSeriesProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFormFormSeriesProperties.Designer.cs">
+      <DependentUpon>frmFormFormSeriesProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFormProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFormProperties.Designer.cs">
+      <DependentUpon>frmFormProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMapParameters.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMapParameters.Designer.cs">
+      <DependentUpon>frmMapParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewForm.Designer.cs">
+      <DependentUpon>frmNewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewSeries.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewSeries.Designer.cs">
+      <DependentUpon>frmNewSeries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportViewer.Designer.cs">
+      <DependentUpon>frmReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSeriesProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSeriesProperties.Designer.cs">
+      <DependentUpon>frmSeriesProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptARTrend.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptARTrend.Designer.cs">
+      <DependentUpon>rptARTrend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptBudgetActualComparison .cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptBudgetActualComparison .Designer.cs">
+      <DependentUpon>rptBudgetActualComparison .cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptComparision.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptComparision.Designer.cs">
+      <DependentUpon>rptComparision.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptConfigButtons.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptConfigButtons.Designer.cs">
+      <DependentUpon>rptConfigButtons.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptConfigDB.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptConfigDB.Designer.cs">
+      <DependentUpon>rptConfigDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptConfigMenus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptConfigMenus.Designer.cs">
+      <DependentUpon>rptConfigMenus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptConfigSites.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptConfigSites.Designer.cs">
+      <DependentUpon>rptConfigSites.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptConfigSubTypes.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptConfigSubTypes.Designer.cs">
+      <DependentUpon>rptConfigSubTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptConfigTrackers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptConfigTrackers.Designer.cs">
+      <DependentUpon>rptConfigTrackers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptConfigTypes.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptConfigTypes.Designer.cs">
+      <DependentUpon>rptConfigTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptConfiguration.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptConfiguration.Designer.cs">
+      <DependentUpon>rptConfiguration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptCrossTab.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptCrossTab.Designer.cs">
+      <DependentUpon>rptCrossTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptDetails.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptDetails.Designer.cs">
+      <DependentUpon>rptDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptEmployee.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptEmployee.Designer.cs">
+      <DependentUpon>rptEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptEmployeeException.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptEmployeeException.Designer.cs">
+      <DependentUpon>rptEmployeeException.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptEmployeeRecognition.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptEmployeeRecognition.Designer.cs">
+      <DependentUpon>rptEmployeeRecognition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptEmployeeTransactions.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptEmployeeTransactions.Designer.cs">
+      <DependentUpon>rptEmployeeTransactions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptEvent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptEvent.Designer.cs">
+      <DependentUpon>rptEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptEventSub.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptEventSub.Designer.cs">
+      <DependentUpon>rptEventSub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptFinancialSummary.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptFinancialSummary.Designer.cs">
+      <DependentUpon>rptFinancialSummary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptFinancials.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptFinancials.Designer.cs">
+      <DependentUpon>rptFinancials.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptFinancialYOYComparision.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptFinancialYOYComparision.Designer.cs">
+      <DependentUpon>rptFinancialYOYComparision.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptForm.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptForm.Designer.cs">
+      <DependentUpon>rptForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptFormSeries.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptFormSeries.Designer.cs">
+      <DependentUpon>rptFormSeries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptGoalList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptGoalList.Designer.cs">
+      <DependentUpon>rptGoalList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptGoalListbyCompletion.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptGoalListbyCompletion.Designer.cs">
+      <DependentUpon>rptGoalListbyCompletion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptGoalProgress.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptGoalProgress.Designer.cs">
+      <DependentUpon>rptGoalProgress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptGoalWeeklyStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptGoalWeeklyStatus.Designer.cs">
+      <DependentUpon>rptGoalWeeklyStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptLowParticipation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptLowParticipation.Designer.cs">
+      <DependentUpon>rptLowParticipation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptLowReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptLowReport.Designer.cs">
+      <DependentUpon>rptLowReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptPreShiftMeetingForm.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptPreShiftMeetingForm.Designer.cs">
+      <DependentUpon>rptPreShiftMeetingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptProducedItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptProducedItem.Designer.cs">
+      <DependentUpon>rptProducedItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptProducedItemSub.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptProducedItemSub.Designer.cs">
+      <DependentUpon>rptProducedItemSub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptSWATForm.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptSWATForm.Designer.cs">
+      <DependentUpon>rptSWATForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptSWATNotes.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptSWATNotes.Designer.cs">
+      <DependentUpon>rptSWATNotes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptTopReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptTopReport.Designer.cs">
+      <DependentUpon>rptTopReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="rptWasteAvoidance.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptWasteAvoidance.Designer.cs">
+      <DependentUpon>rptWasteAvoidance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCWeeklyReports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCWeeklyReports.Designer.cs">
+      <DependentUpon>UCWeeklyReports.cs</DependentUpon>
+    </Compile>
+    <None Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="rptGoalHistory.resx">
+      <DependentUpon>rptGoalHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddReportSerie.resx">
+      <DependentUpon>frmAddReportSerie.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMapParameters.resx">
+      <DependentUpon>frmMapParameters.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportViewer.resx">
+      <DependentUpon>frmReportViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptARTrend.resx">
+      <DependentUpon>rptARTrend.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptBudgetActualComparison .resx">
+      <DependentUpon>rptBudgetActualComparison .cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptComparision.resx">
+      <DependentUpon>rptComparision.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptConfigButtons.resx">
+      <DependentUpon>rptConfigButtons.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptConfigDB.resx">
+      <DependentUpon>rptConfigDB.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptConfigMenus.resx">
+      <DependentUpon>rptConfigMenus.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptConfigSites.resx">
+      <DependentUpon>rptConfigSites.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptConfigSubTypes.resx">
+      <DependentUpon>rptConfigSubTypes.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptConfigTrackers.resx">
+      <DependentUpon>rptConfigTrackers.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptConfigTypes.resx">
+      <DependentUpon>rptConfigTypes.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptConfiguration.resx">
+      <DependentUpon>rptConfiguration.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptCrossTab.resx">
+      <DependentUpon>rptCrossTab.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptDetails.resx">
+      <DependentUpon>rptDetails.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptEmployee.resx">
+      <DependentUpon>rptEmployee.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptEmployeeException.resx">
+      <DependentUpon>rptEmployeeException.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptEmployeeRecognition.resx">
+      <DependentUpon>rptEmployeeRecognition.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptEmployeeTransactions.resx">
+      <DependentUpon>rptEmployeeTransactions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptEvent.resx">
+      <DependentUpon>rptEvent.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptEventSub.resx">
+      <DependentUpon>rptEventSub.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptFinancialSummary.resx">
+      <DependentUpon>rptFinancialSummary.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptFinancials.resx">
+      <DependentUpon>rptFinancials.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptFinancialYOYComparision.resx">
+      <DependentUpon>rptFinancialYOYComparision.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptGoalList.resx">
+      <DependentUpon>rptGoalList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptGoalListbyCompletion.resx">
+      <DependentUpon>rptGoalListbyCompletion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptGoalProgress.resx">
+      <DependentUpon>rptGoalProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptGoalWeeklyStatus.resx">
+      <DependentUpon>rptGoalWeeklyStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptLowParticipation.resx">
+      <DependentUpon>rptLowParticipation.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptLowReport.resx">
+      <DependentUpon>rptLowReport.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptPreShiftMeetingForm.resx">
+      <DependentUpon>rptPreShiftMeetingForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptProducedItem.resx">
+      <DependentUpon>rptProducedItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptProducedItemSub.resx">
+      <DependentUpon>rptProducedItemSub.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptSWATForm.resx">
+      <DependentUpon>rptSWATForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptSWATNotes.resx">
+      <DependentUpon>rptSWATNotes.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptTopReport.resx">
+      <DependentUpon>rptTopReport.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptTrackerComparison.resx">
+      <DependentUpon>rptTrackerComparison.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptTransfers.resx">
+      <DependentUpon>rptTransfers.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptWasteAvoidance.resx">
+      <DependentUpon>rptWasteAvoidance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptWeeklyTabular.resx">
+      <DependentUpon>rptWeeklyTabular.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCEnterSWATMinutes.resx">
+      <DependentUpon>UCEnterSWATMinutes.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCMapParameters.resx">
+      <DependentUpon>UCMapParameters.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCReportSerie.resx">
+      <DependentUpon>UCReportSerie.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCReportViewer.resx">
+      <DependentUpon>UCReportViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCViewParameters.resx">
+      <DependentUpon>UCViewParameters.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UCWeeklyReports.resx">
+      <DependentUpon>UCWeeklyReports.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="rptTrackerComparison.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptTrackerComparison.Designer.cs">
+      <DependentUpon>rptTrackerComparison.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptTransfers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptTransfers.Designer.cs">
+      <DependentUpon>rptTransfers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptWeeklyTabular.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptWeeklyTabular.Designer.cs">
+      <DependentUpon>rptWeeklyTabular.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCEnterSWATMinutes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCEnterSWATMinutes.Designer.cs">
+      <DependentUpon>UCEnterSWATMinutes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCManageForms.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCManageForms.Designer.cs">
+      <DependentUpon>UCManageForms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCMapParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCMapParameters.Designer.cs">
+      <DependentUpon>UCMapParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCReportSerie.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCReportSerie.Designer.cs">
+      <DependentUpon>UCReportSerie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCReportViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCReportViewer.Designer.cs">
+      <DependentUpon>UCReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCViewParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCViewParameters.Designer.cs">
+      <DependentUpon>UCViewParameters.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UserControls\UserControls.csproj">
+      <Project>{BC787C49-76A0-4836-9369-AEA31EF55151}</Project>
+      <Name>UserControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VWA4Common\VWA4Common.csproj">
+      <Project>{757AF02D-486C-49C4-962E-26A88E5A8EE2}</Project>
+      <Name>VWA4Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmEditFormFormSeries.resx">
+      <DependentUpon>frmEditFormFormSeries.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFormFormSeriesProperties.resx">
+      <DependentUpon>frmFormFormSeriesProperties.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFormProperties.resx">
+      <DependentUpon>frmFormProperties.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewForm.resx">
+      <DependentUpon>frmNewForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewSeries.resx">
+      <DependentUpon>frmNewSeries.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSeriesProperties.resx">
+      <DependentUpon>frmSeriesProperties.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\VW_appicon.ico" />
+    <EmbeddedResource Include="rptForm.resx">
+      <DependentUpon>rptForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptFormSeries.resx">
+      <DependentUpon>rptFormSeries.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCManageForms.resx">
+      <DependentUpon>UCManageForms.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="VW_appicon.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

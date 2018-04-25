@@ -1,0 +1,207 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Text;
+using System.Windows.Forms;
+
+namespace UserControls
+{
+    public partial class UCSiteChooser : UserControl
+    {
+        private VWA4Common.DBDetector dbDetector = null; // subscribe for db change
+        public UCSiteChooser()
+        {
+            InitializeComponent();
+            if (dbDetector == null)
+            {
+                dbDetector = VWA4Common.DBDetector.GetDBDetector();
+                dbDetector.DBPathChanged += new VWA4Common.DBDetectorEventHandler(dbDetector_PathChanged);
+            }
+			Init();
+        }
+        public string SiteID
+        {
+            get 
+            { 
+                if((VWA4Common.VWACommon.MyListBoxItem)cbSite.SelectedItem != null)
+                    return ((VWA4Common.VWACommon.MyListBoxItem)cbSite.SelectedItem).ItemData.Split(',')[0];
+                return null;
+            }
+            set { SetSite(value); }
+        }
+        public string SiteName
+        {
+            get
+            {
+                if ((VWA4Common.VWACommon.MyListBoxItem)cbSite.SelectedItem != null) 
+                    return ((VWA4Common.VWACommon.MyListBoxItem)cbSite.SelectedItem).ItemData.Split(',')[1];
+                return null;
+            }
+        }
+        public string TypeCatalogID
+        {
+            get
+            {
+                if ((VWA4Common.VWACommon.MyListBoxItem)cbSite.SelectedItem != null) 
+                    return ((VWA4Common.VWACommon.MyListBoxItem)cbSite.SelectedItem).ItemData.Split(',')[2];
+                return null;
+            }
+            set { SetTypeCatalog(value); }
+        }
+        public string TypeCatalogName
+        {
+            get
+            {
+                if ((VWA4Common.VWACommon.MyListBoxItem)cbSite.SelectedItem != null) 
+                    return ((VWA4Common.VWACommon.MyListBoxItem)cbSite.SelectedItem).ItemData.Split(',')[3];
+                return null;
+            }
+        }
+        public void Init()
+        {
+            cbSite.Items.Clear();
+            DataTable siteDataTable = new DataTable();
+            int i = 0;
+			int currentsite = 0;
+            string sql = @"SELECT Sites.ID, LicensedSite, TypeCatalogs.ID AS TypeCatalogID, TypeCatalogs.TypeCatalogName AS TypeCatalogName " +
+                        " FROM Sites LEFT  JOIN TypeCatalogs ON Sites.TypeCatalogID = TypeCatalogs.ID " +
+                        " WHERE Active = True";
+            siteDataTable = VWA4Common.DB.Retrieve(sql);
+            
+            foreach (DataRow row in siteDataTable.Rows)
+            {
+                i = cbSite.Items.Add(new VWA4Common.VWACommon.MyListBoxItem(row.ItemArray[1].ToString(),
+                    row.ItemArray[0].ToString() + "," + row.ItemArray[1].ToString() + "," + row.ItemArray[2].ToString() + "," + row.ItemArray[3].ToString()));
+				// Remember which item is the current site
+				if ((int)row.ItemArray[0] == VWA4Common.GlobalSettings.CurrentSiteID)
+				{ // this is the current site
+					currentsite = i;
+				}
+			}
+            // Initialize to the current site
+			if (cbSite.Items.Count > 0) cbSite.SelectedIndex = currentsite;
+        }
+        public void SetTypeCatalog(string typeCatalogID)
+        {
+            for (int i = 0; i < cbSite.Items.Count; i++ )
+            {
+                string[] site = ((VWA4Common.VWACommon.MyListBoxItem)cbSite.Items[i]).ItemData.Split(',');
+                if(site[2].Equals(typeCatalogID))
+                {
+                    cbSite.SelectedIndex = i;
+                    break;
+                }
+            }
+        }
+        public void SetSite(string siteID)
+        {
+            for (int i = 0; i < cbSite.Items.Count; i++)
+            {
+                string[] site = ((VWA4Common.VWACommon.MyListBoxItem)cbSite.Items[i]).ItemData.Split(',');
+                if (site[0].Equals(siteID))
+                {
+                    cbSite.SelectedIndex = i;
+                    break;
+                }
+            }
+        }
+        public void EnableAllSites(bool isEnable)
+        {
+            //add "All Sites" to comboBox
+            if (!isEnable)
+            {
+                if (((VWA4Common.VWACommon.MyListBoxItem)(cbSite.Items[0])).ItemData.Split(',')[0] == "-1")
+                {
+                    int i = cbSite.SelectedIndex;
+                    cbSite.Items.RemoveAt(0);
+                    cbSite.SelectedIndex = i - 1;
+                }
+            }
+            else
+            {
+                if (((VWA4Common.VWACommon.MyListBoxItem)(cbSite.Items[0])).ItemData.Split(',')[0] != "-1")
+                    cbSite.Items.Insert(0, new VWA4Common.VWACommon.MyListBoxItem("All Sites",
+                        "-1,All Sites,0,"));
+            }
+        }
+        public void SetAllSites()
+        {
+            //add "All Sites" to comboBox
+            EnableAllSites(true);
+
+            cbSite.SelectedIndex = 0;
+            cbSite.Enabled = false;
+        }
+        public void Enable()
+        {
+            cbSite.Enabled = true;
+        }
+        public class SiteEventArgs : EventArgs
+        {
+            private string _SiteID;
+
+            public string SiteID
+            {
+                get { return _SiteID; }
+            }
+            private string _SiteName;
+
+            public string SiteName
+            {
+                get { return _SiteName; }
+            }
+            private string _TypeCatalogID;
+
+            public string TypeCatalogID
+            {
+                get { return _TypeCatalogID; }
+            }
+            private string _TypeCatalogName;
+
+            public string TypeCatalogName
+            {
+                get { return _TypeCatalogName; }
+            }
+           
+            public SiteEventArgs(string key)
+            {
+                string[] site = key.Split(',');
+                _SiteID = site[0];
+                _SiteName = site[1];
+                _TypeCatalogID = site[2];
+                _TypeCatalogName = site[3];
+            }
+        }
+
+        public delegate void SiteChangedEventHandler(object sender, SiteEventArgs e);
+        private SiteChangedEventHandler siteChanged;
+        public event SiteChangedEventHandler SiteChanged
+        {
+            add { siteChanged += value; }
+            remove { siteChanged -= value; }
+        }
+        public void SetSiteChanged()
+        {
+            OnSiteChanged(new SiteEventArgs(((VWA4Common.VWACommon.MyListBoxItem)cbSite.SelectedItem).ItemData));
+        }
+        protected virtual void OnSiteChanged(SiteEventArgs e)
+        {
+            if (siteChanged != null)
+                siteChanged(this, e);
+        }
+        
+        private void cbSite_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // catch pressing enter key means user finished input
+            if (sender != null)
+                SetSiteChanged();
+        }
+
+        void dbDetector_PathChanged(object sender, EventArgs e)
+        {
+            Init();
+        }
+    }
+}

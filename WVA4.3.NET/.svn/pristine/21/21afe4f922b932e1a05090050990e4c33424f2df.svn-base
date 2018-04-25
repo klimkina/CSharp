@@ -1,0 +1,153 @@
+using System;
+using System.Drawing;
+using System.Collections;
+using System.ComponentModel;
+using DataDynamics.ActiveReports;
+using DataDynamics.ActiveReports.Document;
+using System.Windows.Forms;
+using System.Data;
+using System.Text.RegularExpressions;
+using System.Globalization;
+
+namespace Reports
+{
+    /// <summary>
+    /// Summary description for rptEmployeeTransactions.
+    /// </summary>
+    public partial class rptTransfers : DataDynamics.ActiveReports.ActiveReport
+    {
+        private UserControls.ReportParameters _InputParameters;
+        public rptTransfers(UserControls.ReportParameters InputParameters)
+        {
+            //
+            // Required for Windows Form Designer support
+            //
+            InitializeComponent();
+            _InputParameters = InputParameters;
+        }
+        private void SetLogo()
+        {
+            try
+            {
+                System.Drawing.Image img;
+                if (_InputParameters["IsCustomLogo"] != null && bool.Parse(_InputParameters["IsCustomLogo"].ParamValue)
+                    && VWA4Common.GlobalSettings.LogoUpperLeftStream != null)
+                {
+                    img = System.Drawing.Image.FromStream(VWA4Common.GlobalSettings.LogoUpperLeftStream);
+                    //this.imgLogo.Height = (img.Height / img.VerticalResolution);
+                    //this.imgLogo.Width = (img.Width / img.HorizontalResolution);
+                    this.imgLogo.Image = img;
+                }
+                else
+                    this.imgLogo.Visible = false;
+                if (_InputParameters["IsLeanPathLogo"] != null && bool.Parse(_InputParameters["IsLeanPathLogo"].ParamValue)
+                    && VWA4Common.GlobalSettings.LogoLowerRightStream != null)
+                {
+                    img = System.Drawing.Image.FromStream(VWA4Common.GlobalSettings.LogoLowerRightStream);
+                    this.imgLeanPath.Image = img;
+                }
+                else
+                    this.imgLeanPath.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(null, "Error loading logo: " + ex.Message, "Error loading image from file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        
+        private int _iRow;
+        private void rptTransfers_ReportStart(object sender, EventArgs e)
+        {
+            this._iRow = 0;
+
+            if (!Boolean.Parse(_InputParameters["IsToggleFooter"].ParamValue))
+            {
+                this.txtFilter.Text = VWA4Common.VWACommon.RemoveDisplayFilterPeriod(_InputParameters["Filter"].DisplayValue);
+                if (_InputParameters["Filter"] != null && _InputParameters["Filter"].ParamValue != "")
+                {
+                    this.txtFilter.Text = VWA4Common.VWACommon.RemoveDisplayFilterPeriod(_InputParameters["Filter"].DisplayValue);
+                    if (this.txtFilter.Text != "")
+                        this.txtFilter.Text = "Filters used: " + this.txtFilter.Text;
+                }
+
+                this.lblDB.Text = "Current DataBase:" + UserControls.VWAPath.ViewWasteDBName;
+            }
+            txtPeriod.Text = DateTime.Parse(_InputParameters["StartDate"].ParamValue).ToString("MM/dd/yyyy", CultureInfo.GetCultureInfo("en-US")) + " - " + DateTime.Parse(_InputParameters["EndDate"].ParamValue).ToString("MM/dd/yyyy", CultureInfo.GetCultureInfo("en-US"));
+            if (_InputParameters["Title"] != null && _InputParameters["Title"].ParamValue != "")
+                this.lblTitle.Text = _InputParameters["Title"].ParamValue;
+            else
+                this.lblTitle.Text = "Transfers Information";
+            txtSubTitle.Text = _InputParameters["SubTitle"].ParamValue;
+            
+            SetLogo();
+            //Retrieve data
+            //Dataset to hold data
+            DataTable _ChartData = new DataTable();
+
+            string where = " WHERE Transfers.SiteID = " + _InputParameters["SiteID"].ParamValue +
+                " AND Transfers.Timestamp >= #" + _InputParameters["StartDate"].ParamValue +
+                "# AND Transfers.Timestamp < #" + _InputParameters["EndDate"].ParamValue + "#";
+
+            _InputParameters["Filter"].ParamValue = VWA4Common.VWACommon.RemoveFilterPeriod(_InputParameters["Filter"].ParamValue);
+            if (_InputParameters["Filter"] != null && _InputParameters["Filter"].ParamValue != "")
+                where += " AND (" + _InputParameters["Filter"].ParamValue + " )";
+
+			bool isWasteClassesUsed = false; // (VWA4Common.SecurityManager.GetSecurityManager().GetPermission("Allowed Waste Classes") != "-1") || (_InputParameters["WasteClasses"].ParamValue.ToString() != "");
+			//if (_InputParameters["WasteClasses"].ParamValue.ToString() != "")
+			//    where += " AND (" + _InputParameters["WasteClasses"].ParamValue.ToString() + " )";
+			//else // if (VWA4Common.SecurityManager.GetSecurityManager().GetPermission("Allowed Waste Classes") != "-1")
+			//    where += " AND (" + VWA4Common.VWACommon.GetWasteClasses() + ")";
+
+            string select = @"SELECT COUNT(*) AS NumTrans, SUM(WasteCost) AS CostSum, SUM(Weights.Weight - Weights.NItems*Weights.ContainerWeight) AS WeightSum, " +
+                " Transfers.TransKey, Transfers.Timestamp AS TransTime, Transfers.IsPrior, LicensedSite AS Site, TypeCatalogName AS TypeCatalog, Terminals.TermName AS Terminal " +
+                " FROM ((((Transfers LEFT OUTER JOIN Weights ON Weights.TransKey = Transfers.TransKey) " +
+                " LEFT JOIN Terminals ON Transfers.TermID = Terminals.TermID) " +
+                " LEFT JOIN Sites ON Transfers.SiteID = Sites.ID)  LEFT OUTER JOIN TypeCatalogs ON Transfers.TypeCatalogID = TypeCatalogs.ID) " +
+                (isWasteClassesUsed ? " LEFT JOIN FoodType ON Weights.FoodTypeID = FoodType.TypeID " : "") +
+                where +
+                " GROUP BY Transfers.TransKey,  Transfers.Timestamp, Transfers.IsPrior, LicensedSite, TypeCatalogName, Terminals.TermName " +
+                " ORDER BY Transfers.Timestamp";
+            
+            _ChartData = VWA4Common.DB.Retrieve(select);
+
+            this.DataSource = _ChartData;
+            this.DataMember = _ChartData.TableName;
+
+            if (_ChartData.Rows.Count <= 0)
+            {
+                if (bool.Parse(VWA4Common.GlobalSettings.ShowEmptyReports))
+                {
+                    txtError.Text = "No Data for this period";
+                    this.groupHeader1.Visible = false;
+                    this.groupFooter1.Visible = false;
+                    this.detail.Visible = false;
+                }
+                else
+                    this.Cancel();
+            }
+            //End retrieving data
+
+            this.Document.Printer.Landscape = false;
+            this.PrintWidth = this.PageSettings.PaperWidth - (this.PageSettings.Margins.Left + this.PageSettings.Margins.Right);
+        }
+
+        private void detail_Format(object sender, EventArgs e)
+        {
+            // Check _iRow value to see if we need to highlight the row or not.
+            if (this._iRow % 2 == 0)
+                this.detail.BackColor = Color.Transparent;
+            else
+                this.detail.BackColor = Color.LightYellow;
+            if (txtWeight.Text == "" && txtCost.Text == "")
+                txtTransactions.Value = 0;
+            if (txtPrior.Text.ToLower() == "true")
+                txtPrior.Text = "Yes";
+            else
+                txtPrior.Text = "No";
+                
+            this._iRow++;
+        }
+
+    }
+}

@@ -1,0 +1,403 @@
+﻿using System;
+using System.Net;
+using System.Collections.Generic;
+using System.Text;
+using VWA4Common.Security;
+using System.IO;
+using System.Windows.Forms;
+using VWA4Common.com.licensemanager4web;
+
+namespace VWA4Common.Security
+{
+    public static class LicenseManager
+    {
+		private const string _LicenseFileName = "vw4license.txt";
+		private static string ValidChars = "TAZ2WSX3" + "QGB6YHN7" + "EDC4RFL5" + "UJM8K9VP";
+
+        public static bool ActivateLicense(int licenseId, string cpudId)
+        {
+            try
+            {
+                com.licensemanager4web.LicenseManagerWebService s = new com.licensemanager4web.LicenseManagerWebService();
+                s.Credentials = new NetworkCredential("VWA4", "530E9D3B-7ACC-4F9D-B16F-2FEBA545C8B1");
+
+                com.licensemanager4web.Activation a = s.ActivateLicense(licenseId, cpudId);                
+                com.licensemanager4web.LicenseFeaturesParams p = s.GetLicenseFeatureParams(licenseId);
+
+                a.ActivationCode = LicenseManager.GenerateActivationCode(cpudId, p.LicenseKey, p.ExtendedExpirationDate.ToString(), p.ExpirationWarningStartDate.ToString());
+                s.SaveActivationCode(a.ID, a.ActivationCode);
+
+                LicenseManager.LoadLicense(p, a);          
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private static void loadLicense(LicenseFeaturesParams p, com.licensemanager4web.Activation a)
+        {
+			VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ActivationCode"] = ""; 
+			VWA4Common.Security.LicenseUtility.GetLicenseUtility()["AddNewCollectionAvailable"] = p.AddNewCollection.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["AddNewReportAvailable"] = p.AddNewReport.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["AddUsersAvailable"] = p.AddUsers.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["AdministratorPassword"] = p.AdministratorPassword;
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["AdvancedMenuAvailable"] = p.AdvancedMenuAvailable.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["AMWTAvailable"] = p.EnterLogSheetData.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["CloneReportAvailable"] = p.Clone.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ConfiguratorAvailable"] = p.ConfiguratorInstalled.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ConfigureDaypartEntryAvailable"] = p.ConfigureDaypartEntry.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ConfigureDispositionEntryAvailable"] = p.ConfigureDispositionEntry.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ConfigurePrePostEntryAvailable"] = p.ConfigurePrePostEntry.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ConfigureStationEntryAvailable"] = p.ConfigureStationEntry.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["CPU_ID"] = "";
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["DaypartEntryAvailable"] = p.DaypartEntry.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["DefaultUserLevel"] = p.DefaultUserLevel.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["DispositionEntryAvailable"] = p.DispositionEntry.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["EnterFinancialsAvailable"] = p.EnterFinancialsAvailable.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["EnterSWATNotesAvailable"] = p.EnterSWATNotesAvailable.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ExpirationDate"] = p.ExpirationDate.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ExpirationWarningsBeginDate"] = p.ExpirationWarningStartDate.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ExpirationWarningsMode"] = p.ExpirationWarningsMode.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ExpirationWarningsFrequency"] = p.ExpirationWarningsFrequency.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ExpirationWarningsUnit"] = p.ExpirationWarningsUnit;
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["FoodCostAdjustmentsAvailable"] = p.FoodCostAdjustments.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["FoodWasteClassAllowed"] = p.AllowedWasteClassses.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ImportWasteDataAvailable"] = p.ImportWasteData.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["LicenseType"] = p.LicenseType.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ManageBaselinesAvailable"] = p.ManageBaselines.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ManageDETsAvailable"] = p.ManageDataEntryTemplates.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ManageEventClientsAvailable"] = p.ManageEventClients.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ManageEventOrdersAvailable"] = p.ManageEventOrders.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ManageLogFormsAvailable"] = p.ManageLogForms.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ManagePreferencesAvailable"] = p.ManagePreferences.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ManageReportsAvailable"] = p.ManageReportsSettingsShortcut.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ManageSitesAvailable"] = p.ManageSites.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ManageTrackersAvailable"] = p.ManageTrackers.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ManagerPassword"] = p.ManagerPassword;
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ManageTypesAvailable"] = p.ManageTypesAvailable.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["MaxNumberofFoodTypes"] = p.FoodTypeLimit.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["MaxNumberofLossTypes"] = p.LossTypeLimit.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["MaxNumberofSites"] = p.NumberOfSites.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["MaxNumberofTrackers"] = p.TrackerLimit.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["MaxNumberofUserTypes"] = p.UserTypeLimit.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["MaxNumberofDETs"] = p.DetLimits.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["MaxNumberofReports"] = p.ReportLimits.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["PrePostEntryAvailable"] = p.PrePostEntry.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ProductType"] = p.Product.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["RecurringTransactionsAvailable"] = p.RecurringTransactionsAvailable.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["RemoveUsersAvailable"] = p.RemoveUsers.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ShowSupportEmailAddress"] = p.ShowSupportEmailAddress.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ShowSupportPhoneNumber"] = p.ShowSupportPhoneNumber.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ShowSupportWebsite"] = p.ShowSupportWebSiteURL.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["StationEntryAvailable"] = p.StationEntry.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["SupportEmailAddress"] = p.SupportEmailAddress;
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["SupportPhoneNumber"] = p.SupportPhoneNumber;
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["UpdateTrackerAvailable"] = p.UpdateTracker.ToString();
+            ///**************
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ClientID"] = p.ClientID.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ClientName"] = p.ClientName;
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["Generatedby"] = p.GeneratedBy;
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["GeneratedDate"] = p.GeneratedDate.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["IsActivated"] = "False";
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["LicenseID"] = p.LicenseKey;
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["LicenseRecordID"] = p.LicenseID.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ProductVersionName"] = p.ProductVersionName;
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["SiteID"] = p.SiteID.ToString();
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["SiteName"] = p.SiteName;
+            VWA4Common.Security.LicenseUtility.GetLicenseUtility()["SupportWebsite"] = p.SupportWebSiteURL;
+            //VWA4Common.Security.LicenseUtility.GetLicenseUtility()["Create/Save New Reports"] = p.AddNewReport.ToString();
+
+            if (a != null)
+            {
+                VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ActivationCode"] = a.ActivationCode;
+                VWA4Common.Security.LicenseUtility.GetLicenseUtility()["IsActivated"] = a.IsActivated.ToString();
+                VWA4Common.Security.LicenseUtility.GetLicenseUtility()["CPU_ID"] = a.CPUID.ToString();
+                VWA4Common.Security.LicenseUtility.GetLicenseUtility()["ExpirationDate"] = p.ExtendedExpirationDate.ToString();
+            }
+        }
+
+        public static void LoadLicense(LicenseFeaturesParams p)
+        {
+            LicenseManager.loadLicense(p, null);
+        }
+
+        public static void LoadLicense(LicenseFeaturesParams p, com.licensemanager4web.Activation a)
+        {
+            LicenseManager.loadLicense(p, a);
+        }
+
+		public static bool InstallNewLicense(out string errmsg)
+		{
+			errmsg = "";
+			OpenFileDialog dlg = new System.Windows.Forms.OpenFileDialog();
+			dlg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+			dlg.Filter = "License (" + _LicenseFileName + ")|" + _LicenseFileName +
+						"|Text files (*.txt)|*.txt" +
+						"|All files (*.*)|*.*";
+
+			if (dlg.ShowDialog() == DialogResult.OK)
+			{ //
+				try
+				{ // Copy file to VAD
+					File.Copy(dlg.FileName, VWA4Common.GlobalSettings.VirtualAppDir + "\\" + _LicenseFileName, true);
+					return true;
+				}
+				catch (Exception ex)
+				{
+					errmsg = ex.Message;
+				}
+			}
+			return false;
+		}
+
+        public static bool LoadLicense()
+        {
+            string error = string.Empty;
+            LicenseManager.LoadLicense(VWA4Common.GlobalSettings.VirtualAppDir + "\\" + _LicenseFileName, out error);
+            return VWA4Common.GlobalSettings.LoadGlobalsfromLicenseFile(out error);
+        }
+
+        public static bool LoadLicense(string fileName, out string errmsg)
+        {
+			bool result = LicenseUtility.GetLicenseUtility().LoadLicense(fileName, out errmsg);
+			if (!result) return result;
+			/// License is available to load
+			return VWA4Common.GlobalSettings.LoadGlobalsfromLicenseFile(out errmsg);
+		}
+
+		public static void SaveLicense()
+		{
+			SaveLicense(VWA4Common.GlobalSettings.VirtualAppDir+ "\\" + _LicenseFileName);
+		}
+
+		public static void SaveLicense(string fileName)
+		{
+			LicenseUtility.GetLicenseUtility().SaveLicense(fileName);
+		}
+
+        public static bool IsInited()
+        {
+            return LicenseUtility.GetLicenseUtility().IsInited();
+        }
+
+        public static bool IsActivated()
+        {
+            throw new NotImplementedException();
+        }
+
+        public static TimeSpan GetExpirationFrequency()
+        {
+            return LicenseManager.GetExpirationFrequency(LicenseManager.GetValue("ExpirationWarningsUnit"), Convert.ToInt32(LicenseManager.GetValue("ExpirationWarningsFrequency")));
+        }
+
+        public static TimeSpan GetExpirationFrequency(string unit, int value)
+        {
+            switch (unit.ToLower())
+            {
+                case "minutes":
+                    return TimeSpan.FromMinutes(value);
+                case "hours":
+                    return TimeSpan.FromHours(value);
+                case "days":
+                    return TimeSpan.FromDays(value);
+                case "weeks":
+                    return TimeSpan.FromDays(value * 7);
+                default:
+                    return new TimeSpan();
+            }
+        }
+
+        public static string GetValue(string name)
+        {
+            return LicenseUtility.GetLicenseUtility().GetValue(name);
+        }
+
+        public static void SetValue(string name, string value)
+        {
+            LicenseUtility.GetLicenseUtility().SetValue(name, value);
+        }
+
+        public static string GenerateActivationCode(string cpuID, string licenseID, string expDate, string expWarningDate)
+        {
+            DateTime dt = DateTime.Parse(expDate);
+            string strDate = dt.ToString("MMddyyyy");
+            strDate = strDate.Substring(0, 4) + strDate.Substring(6, 2);
+            string code = cpuID.Substring(0, 2) + cpuID.Substring(cpuID.Length - 3, 2) + strDate;
+            code += ":" + licenseID;
+            code += "#" + expWarningDate;
+
+            UTF8Encoding textConverter = new UTF8Encoding();
+            byte[] passBytes = textConverter.GetBytes(code);
+
+            string res = toBase32String(passBytes);
+
+            return res;
+        }
+
+        public static bool CheckCPUId(string cpuID, string activationCode)
+        {
+            byte[] passBytes = fromBase32String(activationCode);
+            UTF8Encoding textConverter = new UTF8Encoding();
+            string code = textConverter.GetString(passBytes);
+
+            if (code.Substring(0, 2) == cpuID.Substring(0, 2) && code.Substring(2, 2) == cpuID.Substring(cpuID.Length - 3, 2))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static bool CheckLicenseId(string licenseID, string activationCode)
+        {
+            byte[] passBytes = fromBase32String(activationCode);
+            UTF8Encoding textConverter = new UTF8Encoding();
+            string code = textConverter.GetString(passBytes);
+            string lid = code.Substring(code.IndexOf(":") + 1, code.IndexOf("#") - (code.IndexOf(":") + 1));
+
+            return lid == licenseID;
+        }
+
+		public static bool ValidateLicense()
+		{
+			if (!bool.Parse(LicenseManager.GetValue("IsActivated"))) return false;
+
+			string licenseId = LicenseManager.GetValue("LicenseID");
+			string cpuid = VWA4Common.GlobalSettings.GetCPUID();
+			string activationcode = LicenseManager.GetValue("ActivationCode");
+			if (CheckCPUId(cpuid, activationcode))
+			{
+				if (CheckLicenseId(licenseId, activationcode))
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+        public static DateTime CalculateWarningsBeginDate(DateTime originalExpirationDate, DateTime originalWarningsStartDate, DateTime newExpirationDate)
+        {
+            return newExpirationDate.Subtract(originalExpirationDate.Subtract(originalWarningsStartDate));
+        }
+
+        public static string GetExpirationDate(string cpuID, string licenseID, string activationCode)
+        {
+            byte[] passBytes = fromBase32String(activationCode);
+            UTF8Encoding textConverter = new UTF8Encoding();
+            string code = textConverter.GetString(passBytes);
+            string res = "";
+            if (code.Substring(0, 2) == cpuID.Substring(0, 2) && code.Substring(2, 2) == cpuID.Substring(cpuID.Length - 3, 2))
+            {
+                string lid = code.Substring(code.IndexOf(":") + 1, code.IndexOf("#") - (code.IndexOf(":") + 1));
+                if (lid == licenseID)
+                {
+                    res = code.Substring(4, 2) + "/" + code.Substring(6, 2) + "/20" + code.Substring(8, 2);
+                    DateTime dt = DateTime.Parse(res);
+                    res = dt.ToString("MM/dd/yyyy");
+                }                
+            }
+            return res;
+        }
+
+        public static string GetExpirationWarningsBeginDate(string cpuID, string licenseID, string activationCode)
+        {
+            byte[] passBytes = fromBase32String(activationCode);
+            UTF8Encoding textConverter = new UTF8Encoding();
+            string code = textConverter.GetString(passBytes);
+            string res = "";
+            if (code.Substring(0, 2) == cpuID.Substring(0, 2) && code.Substring(2, 2) == cpuID.Substring(cpuID.Length - 3, 2))
+            {
+                string lid = code.Substring(code.IndexOf(":") + 1, code.IndexOf("#") - (code.IndexOf(":") + 1));
+                if (lid == licenseID)
+                {
+                    res = code.Substring(code.IndexOf("#") + 1, code.Length - (code.IndexOf("#") + 1));
+                    DateTime dt = DateTime.Parse(res);
+                    res = dt.ToString("MM/dd/yyyy");
+                }
+            }
+            return res;
+        }
+
+        private static string toBase32String(byte[] bytes)
+        {
+            StringBuilder sb = new StringBuilder();         // holds the base32 chars
+            byte index;
+            int hi = 5;
+            int currentByte = 0;
+
+            while (currentByte < bytes.Length)
+            {
+                // do we need to use the next byte?
+                if (hi > 8)
+                {
+                    // get the last piece from the current byte, shift it to the right
+                    // and increment the byte counter
+                    index = (byte)(bytes[currentByte++] >> (hi - 5));
+                    if (currentByte != bytes.Length)
+                    {
+                        // if we are not at the end, get the first piece from
+                        // the next byte, clear it and shift it to the left
+                        index = (byte)(((byte)(bytes[currentByte] << (16 - hi)) >> 3) | index);
+                    }
+
+                    hi -= 3;
+                }
+                else if (hi == 8)
+                {
+                    index = (byte)(bytes[currentByte++] >> 3);
+                    hi -= 3;
+                }
+                else
+                {
+
+                    // simply get the stuff from the current byte
+                    index = (byte)((byte)(bytes[currentByte] << (8 - hi)) >> 3);
+                    hi += 5;
+                }
+
+                sb.Append(ValidChars[index]);
+            }
+
+            return sb.ToString();
+        }
+
+        private static byte[] fromBase32String(string str)
+        {
+            int numBytes = str.Length * 5 / 8;
+            byte[] bytes = new Byte[numBytes];
+
+            // all UPPERCASE chars
+            str = str.ToUpper();
+
+            int bit_buffer;
+            int currentCharIndex;
+            int bits_in_buffer;
+
+            if (str.Length < 3)
+            {
+                bytes[0] = (byte)(ValidChars.IndexOf(str[0]) | ValidChars.IndexOf(str[1]) << 5);
+                return bytes;
+            }
+
+            bit_buffer = (ValidChars.IndexOf(str[0]) | ValidChars.IndexOf(str[1]) << 5);
+            bits_in_buffer = 10;
+            currentCharIndex = 2;
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                bytes[i] = (byte)bit_buffer;
+                bit_buffer >>= 8;
+                bits_in_buffer -= 8;
+                while (bits_in_buffer < 8 && currentCharIndex < str.Length)
+                {
+                    bit_buffer |= ValidChars.IndexOf(str[currentCharIndex++]) << bits_in_buffer;
+                    bits_in_buffer += 5;
+                }
+            }
+
+            return bytes;
+        }
+
+    }
+}

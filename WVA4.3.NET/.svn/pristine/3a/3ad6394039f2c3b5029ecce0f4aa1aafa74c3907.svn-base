@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>  
+  <configSections>
+        <sectionGroup name="applicationSettings" type="System.Configuration.ApplicationSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
+            <section name="LMan4.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+            <section name="Credentials" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+        </sectionGroup>
+    </configSections>
+  <appSettings>
+    <add key="LicenseManagerWebServiceUrl_Prod" value="http://activate.leanpath.com/LicenseManager4Web.asmx" />
+    <add key="LicenseManagerWebServiceUrl_Test" value="http://192.168.151.99:8888/LicenseManager4Web.asmx" />
+  </appSettings>
+    <applicationSettings>
+      
+        <LMan4.Properties.Settings>
+            <setting name="LGen4_com_licensemanager4web_LicenseManagerWebService" serializeAs="String">
+                <!-- TEST SITE -->
+              <!--<value>http://192.168.151.99:8888/LicenseManager4Web.asmx</value>-->
+                <!-- PRODUCTION SITE -->
+                <value>http://activate.leanpath.com/LicenseManager4Web.asmx</value>
+            </setting>
+            <setting name="LMan4_com_leanpath_activate_UpdateManager" serializeAs="String">
+                <value>http://activate.leanpath.com/UpdateManager.asmx</value>
+            </setting>
+        </LMan4.Properties.Settings>
+    </applicationSettings>
+</configuration>

@@ -1,0 +1,230 @@
+using System;
+using System.Drawing;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using DataDynamics.ActiveReports;
+using DataDynamics.ActiveReports.Document;
+using System.Data;
+using System.Windows.Forms;
+using System.Globalization;
+
+namespace Reports
+{
+    /// <summary>
+    /// Summary description for rptWasteAvoidance.
+    /// </summary>
+    public partial class rptWasteAvoidance : DataDynamics.ActiveReports.ActiveReport
+    {
+        public UserControls.ReportParameters _InputParameters;
+        public rptWasteAvoidance(UserControls.ReportParameters parameters)
+        {
+            //
+            // Required for Windows Form Designer support
+            //
+            InitializeComponent();
+            _InputParameters = parameters;
+        }
+
+        private void Set3D()
+        {
+            if (bool.Parse(_InputParameters["Is3D"].ParamValue))
+                chartControl1.ChartAreas[0].Projection.ProjectionType = DataDynamics.ActiveReports.Chart.Graphics.ProjectionType.Orthogonal;
+            else
+                chartControl1.ChartAreas[0].Projection.ProjectionType = DataDynamics.ActiveReports.Chart.Graphics.ProjectionType.Identical;
+            for (int i = 0; i < 2; i++)// bars used only for 2 series
+            {
+                DataDynamics.ActiveReports.Chart.Series s = this.chartControl1.Series[i];
+                if (bool.Parse(_InputParameters["Is3D"].ParamValue))
+                    s.Type = DataDynamics.ActiveReports.Chart.ChartType.Bar3D;
+                else
+                    s.Type = DataDynamics.ActiveReports.Chart.ChartType.Bar2D;
+            }
+        }
+        private void SetHorizontal()
+        {
+            if (bool.Parse(_InputParameters["IsHorizontal"].ParamValue))
+            {
+                for (int i = 0; i < 2; i++)// bars used only for 2 series
+                {
+                    DataDynamics.ActiveReports.Chart.Series s = this.chartControl1.Series[i];
+                    s.ChartArea.SwapAxesDirection = true;
+                    s.AxisX.LabelFont.Angle = 0;
+                    s.AxisY.LabelFont.Angle = 45;
+                    s.AxisX.TitleFont.Angle = -90;
+                    s.AxisY.TitleFont.Angle = 0;
+                    s.Marker.Label.Alignment = DataDynamics.ActiveReports.Chart.Alignment.Right;
+                }
+            }
+        }
+        private void SetLogo()
+        {
+            try
+            {
+                System.Drawing.Image img;
+                if (_InputParameters["IsCustomLogo"] != null && bool.Parse(_InputParameters["IsCustomLogo"].ParamValue)
+                    && VWA4Common.GlobalSettings.LogoUpperLeftStream != null)
+                {
+                    img = System.Drawing.Image.FromStream(VWA4Common.GlobalSettings.LogoUpperLeftStream);
+                    //this.imgLogo.Height = (img.Height / img.VerticalResolution);
+                    //this.imgLogo.Width = (img.Width / img.HorizontalResolution);
+                    this.imgLogo.Image = img;
+                }
+                else
+                    this.imgLogo.Visible = false;
+                if (_InputParameters["IsLeanPathLogo"] != null && bool.Parse(_InputParameters["IsLeanPathLogo"].ParamValue)
+                    && VWA4Common.GlobalSettings.LogoLowerRightStream != null)
+                {
+                    img = System.Drawing.Image.FromStream(VWA4Common.GlobalSettings.LogoLowerRightStream);
+                    this.imgLeanPath.Image = img;
+                }
+                else
+                    this.imgLeanPath.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(null, "Error loading logo: " + ex.Message, "Error loading image from file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void rptWasteAvoidance_ReportStart(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_InputParameters["Title"].ParamValue != "")
+                    this.lblTitle.Text = _InputParameters["Title"].ParamValue;
+                else
+                    this.lblTitle.Text = "Waste Avoidance Report";
+                txtSubTitle.Text = _InputParameters["SubTitle"].ParamValue;
+
+                if (_InputParameters["Filter"] != null && _InputParameters["Filter"].ParamValue != "")
+                    txtFilter.Text = "Filter used: " + _InputParameters["Filter"].DisplayValue;
+                txtSubTitle.Text = _InputParameters["SubTitle"].ParamValue;
+                this.lblDB.Text = "Current DataBase:" + UserControls.VWAPath.ViewWasteDBName;
+                SetLogo();
+                txtSite.Text = _InputParameters["SiteID"].DisplayValue;
+                DateTime start = DateTime.Parse(_InputParameters["StartDate"].ParamValue);
+                DateTime end = DateTime.Parse(_InputParameters["EndDate"].ParamValue); ;
+                txtPeriod.Text = start.ToString("MM/dd/yyyy") + "-" + end.ToString("MM/dd/yyyy");
+
+                //Dataset to hold data
+                DataTable _ChartData = new DataTable();
+                string criteria = "";
+                VWA4Common.VWADBUtils.CheckWeightDates();
+
+                if (bool.Parse(_InputParameters["IsPounds"].ParamValue))
+                {
+                    criteria = "SUM(Weight - NItems*ContainerWeight)";
+                    this.chartControl1.Series[0].AxisY.Title = "Waste, lbs.";
+                    this.chartControl1.Series[0].Marker.Label.Format = "{Value:#0} lbs";
+                    this.chartControl1.Series[1].Marker.Label.Format = "{Value:#0} lbs";
+
+                }
+                else
+                {
+                    criteria = "SUM(WasteCost)";
+                    this.chartControl1.Series[0].AxisY.Title = "Waste ($)";
+                }
+                string select = "";
+                string where = "";
+                if (_InputParameters["SiteID"].ParamValue != "-1") 
+                    where = " WHERE (SiteID = " + _InputParameters["SiteID"].ParamValue + ")";
+                if (_InputParameters["Filter"].ParamValue != "") 
+                {
+                    if(where == "")
+                        where = " WHERE (" + _InputParameters["Filter"].ParamValue + ") ";
+                    else
+                        where = where + " AND (" + _InputParameters["Filter"].ParamValue + ") ";
+                }
+                    
+
+
+                double bl = 0.0;
+                if (_InputParameters["SiteID"].ParamValue == "-1")
+                {
+                    Double.TryParse(VWA4Common.GlobalSettings.GetAllBaselineWeeklyWasteCost(), out bl);
+                }
+                else
+                {
+                    Double.TryParse(VWA4Common.GlobalSettings.GetBaselineWeeklyWasteCost(_InputParameters["SiteID"].ParamValue), out bl);
+                }
+
+                int daysOffset = 0;
+                string firstDayOfWeek = VWA4Common.GlobalSettings.FirstDayOfWeek;
+                if ((_InputParameters["SiteID"].ParamValue != "-1") && (_InputParameters["SiteID"].ParamValue != VWA4Common.GlobalSettings.CurrentSiteID.ToString()))
+                    firstDayOfWeek = VWA4Common.GlobalSettings.GetFirstDayOfWeek(int.Parse(_InputParameters["SiteID"].ParamValue));
+                if (this._InputParameters["WasteAvoidanceAggregatePeriod"].DisplayValue == "Week")//for weekly reports adjust VWA first day of week to Access First day of week
+                    daysOffset = (7 - VWA4Common.VWACommon.NumberOfDayOfWeek(firstDayOfWeek)) % 7;
+
+                string accessAggregate = ""; 
+                switch (_InputParameters["WasteAvoidanceAggregatePeriod"].DisplayValue)
+                {
+                    case "Week": 
+                        accessAggregate = "yyyyww";
+                        break;
+                    case "Month": 
+                        accessAggregate = "mm";
+                        break;
+                    case "Quarter": 
+                        accessAggregate = "q";
+                        break;
+                    case "Year": 
+                        accessAggregate = "yyyy";
+                        break;
+                    default:
+                        throw new Exception("Dev Error - Aggregate period not handled.");
+                }
+
+                select = @"SELECT  Format(Weights.Timestamp + " + daysOffset + ", '" + accessAggregate + "') as yDate, SUM(WasteCost) as Dollars, SUM (Weight) as Pounds, " +
+                    "'" + bl + "' as Baseline, IIF(SUM(WasteCost) <> 0,  ABS(SUM(WasteCost) - " + bl.ToString("0.####", CultureInfo.GetCultureInfo("en-US")) + "), " +
+                    bl.ToString("0.####", CultureInfo.GetCultureInfo("en-US")) + ") as Variance " +
+                    "FROM Weights LEFT JOIN Transfers ON Weights.TransKey = Transfers.TransKey " +
+                    where +
+                    " GROUP BY Format(Weights.Timestamp + " + daysOffset + ", '" + accessAggregate + "')  " +
+                    " ORDER BY  Format(Weights.Timestamp + " + daysOffset + ", '" + accessAggregate + "') ;";
+
+                DataTable dt = VWA4Common.DB.Retrieve(select);
+                _ChartData = dt;
+
+                if (_ChartData.Rows.Count > 0)
+                {
+                    this.chartControl1.DataSource = _ChartData;
+                    this.DataSource = _ChartData;
+
+                    SetLogo();
+
+                    this.chartControl1.ColorPalette = VWA4Common.VWACommon.GetPalette(_InputParameters["ChartColor"].ParamValue);
+                    this.chartControl1.Series[0].ValueMembersY = "Dollars";
+                    this.chartControl1.Series[0].ValueMemberX = "yDate";
+                }
+
+                Set3D();
+                SetHorizontal();
+
+
+                this.Document.Printer.Landscape = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private double _Cumulative = 0.0;
+        private void detail_Format(object sender, EventArgs e)
+        {
+            //_Cumulative += double.Parse(txtVariance.Text);
+            txtCumulative.Value = _Cumulative;
+        }
+
+        private void rptWasteAvoidance_FetchData(object sender, FetchEventArgs eArgs)
+        {
+            double d = 0;
+            if (Fields["Variance"].Value != null)
+            {
+                Double.TryParse(Fields["Variance"].Value.ToString(), out d);
+                _Cumulative += d;
+            }
+        }
+    }
+}

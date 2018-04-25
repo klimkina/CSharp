@@ -1,0 +1,445 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Text;
+using System.Windows.Forms;
+using System.Text.RegularExpressions;
+
+using Infragistics.Win.UltraWinGrid;
+using Infragistics.Win;
+
+
+namespace UserControls
+{
+    public partial class UCTreeFilter : UserControl, IReportParameters
+    {
+        private Hashtable _ParamTable = new Hashtable();
+        private string[] _ParamNames = { "SiteID", "TypeCatalog", "ReportType", "TreeFilter" };
+        private string[] _DefaultValues = { "0", "0", "Station", "" };
+        private string[] _DisplayValues = { "", "Master", "Station", "" };
+        private string[] _ParamTypes = { "String", "String", "String", "String" };
+
+        private string[] _ReportTypes = VWA4Common.VWACommon.ReportTypes;
+        private string _currReportType = "";
+
+        private RadioButton GetRadioButtonByName(string name)
+        {
+            switch (name)
+            {
+                case "Station":
+                    return radioStation;
+                case "Stations":
+                    return radioStation;
+                case "Food":
+                    return radioFood;
+                case "Loss":
+                    return radioLoss;
+                case "Disposition":
+                    return radioDisposition;
+                case "Container":
+                    return radioContainer;
+                case "Daypart":
+                case "DayPart":
+                    return radioDayPart;
+                case "Event Order":
+                case "EventOrder":
+                case "BEO":
+                case "EO":
+                    return radioEventOrder;
+                case "Days":
+                    return null;
+                default:
+                    return radioFood;
+            }
+        }
+        public void DisableRadioButtonByName(string name)
+        {
+            foreach (RadioButton radio in gpRadio.Controls)
+                radio.Enabled = true;
+            RadioButton radioDisabled = GetRadioButtonByName(name);
+            if(radioDisabled != null)
+                radioDisabled.Enabled = false;
+        }
+        public void EnableAllRadioButtons()
+        {
+            foreach (RadioButton radio in gpRadio.Controls)
+                radio.Enabled = true;
+        }
+        public UCTreeFilter()
+        {
+            InitializeComponent();
+
+            this.ucTreeView1.EnableCheckboxes = true;
+            InitDefault();
+        }
+        public void InitDefault()
+        {
+            _ParamTable.Clear();
+            //ucSiteChooser1.Init();
+            for (int i = 0; i < _ParamNames.Length; i++)
+            {
+                _ParamTable.Add(_ParamNames[i], new ReportParameter(_ParamNames[i], _DefaultValues[i], _DisplayValues[i], _ParamTypes[i]));
+            }
+            radioFood.Text = //VWA4Common.VWACommon.WasteProfile + 
+				"Food Type";
+        }
+
+        private void DisplayHashValues()
+        {
+            ucSiteChooser1.SiteID = ((ReportParameter)_ParamTable["SiteID"]).ParamValue.ToString();
+            
+            _currReportType = ((ReportParameter)_ParamTable["ReportType"]).ParamValue;
+            switch (_currReportType)
+            {
+                case "Station":
+                    radioStation.Checked = true;
+                    break;
+                case "Food":
+                    radioFood.Checked = true;
+                    break;
+                case "Loss":
+                    radioLoss.Checked = true;
+                    break;
+                case "Disposition":
+                    radioDisposition.Checked = true;
+                    break;
+                case "Daypart":
+                case "DayPart":
+                    radioDayPart.Checked = true;
+                    break;
+                case "EO":
+                case "BEO":
+                case "EventOrder":
+                    radioEventOrder.Checked = true;
+                    break;
+                default:
+                    break;
+            }
+            
+            this.ucTreeView1.SetTreeFilters(((ReportParameter)_ParamTable["TreeFilter"]).ParamValue);
+            if(_currReportType != "")
+                this.ucTreeView1.LoadTree(_currReportType);
+        }
+        public void SetTreeFilter(string filter)
+        {
+            ((ReportParameter)_ParamTable["TreeFilter"]).ParamValue = filter;
+            this.ucTreeView1.SetTreeFilters(filter);
+        }
+        public void EnableAllSites(bool isEnable)
+        {
+            ucSiteChooser1.EnableAllSites(isEnable);
+        }
+        public void SetAllSites()
+        {
+            ucSiteChooser1.SetAllSites();
+            
+        }
+        public void EnableSiteChooser()
+        {
+            ucSiteChooser1.Enable();
+
+        }
+        public bool IsAllSites
+        {
+            get
+            {
+                return ucSiteChooser1.IsAllSites;
+            }
+            set { ucSiteChooser1.EnableAllSites(value); }
+        }
+        public void HashLoad(Hashtable paramlist)
+        {
+            for (int i = 0; i < _ParamNames.Length; i++)
+            {
+                ReportParameter param;
+                if (paramlist.Contains(_ParamNames[i]))
+                {
+                    param = (ReportParameter)paramlist[_ParamNames[i]];
+                    _ParamTable[_ParamNames[i]] = param;
+                }
+            }
+            DisplayHashValues();
+        }
+        public bool IsValid()
+        {
+            return true;
+        }
+        public string GetValue(string name)
+        {
+            switch (name)
+            {
+                case "SiteID":
+                    return ucSiteChooser1.SiteID;
+                case "TypeCatalog":
+                    return ucSiteChooser1.TypeCatalogID;
+                case "ReportType":
+                    return _currReportType;
+                case "TreeFilter":
+                    string exclude = "";
+                    foreach (string reportTypeName in _ReportTypes)
+                        if (!GetRadioButtonByName(reportTypeName).Enabled)
+                            exclude = reportTypeName;
+                    return this.ucTreeView1.GetAllTreeFilters(exclude);
+                default:
+                    return "";
+            }
+        }
+        public void AddItem(ReportParameter param)
+        {
+            _ParamTable.Add(param.Name, param);
+        }
+        public void DeleteItem(string name)
+        {
+            _ParamTable.Remove(name);
+        }
+        public ReportParameter GetItem(string name)
+        {
+            switch (name)
+            {
+                case "SiteID":
+                    return new ReportParameter(name, ucSiteChooser1.SiteID, ucSiteChooser1.SiteName, "String");
+                case "TypeCatalog":
+                    return new ReportParameter(name, ucSiteChooser1.TypeCatalogID, ucSiteChooser1.TypeCatalogName, "String");
+                case "ReportType":
+                    string reportName = _currReportType;
+                    if (reportName == "BEO")
+                        reportName = "Event Order";
+                    return new ReportParameter(name, _currReportType, reportName, "String");
+                case "TreeFilter":
+                    string filter, displayFilter = "", exclude = "";
+                    foreach (string reportTypeName in _ReportTypes)
+                        if (!GetRadioButtonByName(reportTypeName).Enabled)
+                            exclude = reportTypeName;
+                    filter = this.ucTreeView1.GetAllTreeFilters(ref displayFilter, exclude);
+                    return new ReportParameter(name, filter, displayFilter, "String");
+                default:
+                    return null;
+            }
+        }
+
+        private IDictionaryEnumerator _ParamTableEnum;
+        public ReportParameter GetFirst()
+        {
+            _ParamTableEnum = _ParamTable.GetEnumerator();
+            return ((ReportParameter)_ParamTableEnum.Current);
+        }
+        public ReportParameter GetNext()
+        {
+            if (_ParamTableEnum == null)
+                _ParamTableEnum = _ParamTable.GetEnumerator();
+            else
+                _ParamTableEnum.MoveNext();
+            return ((ReportParameter)_ParamTableEnum.Current);
+        }
+        public string GetNameList()
+        {
+            string res = "";
+            SetValues();
+            foreach (object obj in _ParamTable)
+            {
+                ReportParameter param = (ReportParameter)obj;
+                if (res == "")
+                    res = param.Name;
+                else
+                    res += ", " + param.Name;
+            }
+            return res;
+        }
+        public string GetValueList()
+        {
+            string res = "";
+            SetValues();
+            foreach (object obj in _ParamTable)
+            {
+                ReportParameter param = (ReportParameter)obj;
+                if (res == "")
+                    res = param.ParamValue;
+                else
+                    res += ", " + param.ParamValue;
+            }
+            return res;
+        }
+        public string GetDisplayValueList()
+        {
+            string res = "";
+            SetValues();
+            foreach (object obj in _ParamTable)
+            {
+                ReportParameter param = (ReportParameter)obj;
+                if (res == "")
+                    res = param.DisplayValue;
+                else
+                    res += ", " + param.DisplayValue;
+            }
+            return res;
+        }
+        private void SetValues()
+        {
+            foreach (string name in _ParamNames)
+            {
+                ReportParameter param = GetItem(name);
+                if (param != null)
+                    _ParamTable[name] = param;
+            }
+        }
+        private bool _Active;
+        public bool Active
+        {
+            get { return _Active; }
+            set { _Active = value; }
+        }
+
+        public Hashtable ParamList
+        {
+            get {
+                SetValues();
+                return _ParamTable; 
+            }
+            set { this.HashLoad(value); }
+        }
+        public class TreeFiltersEventArgs : EventArgs
+        {
+            private string _TreeFilters;
+            private string _DisplayTreeFilters;
+
+            public string DisplayTreeFilters
+            {
+                get { return _DisplayTreeFilters; }
+                set { _DisplayTreeFilters = value; }
+            }
+            private string _SiteID;
+
+            public string SiteID
+            {
+                get { return _SiteID; }
+                set { _SiteID = value; }
+            }
+            private string _SiteName;
+
+            public string SiteName
+            {
+                get { return _SiteName; }
+                set { _SiteName = value; }
+            }
+            public string TreeFilters
+            {
+                get { return _TreeFilters; }
+                set { _TreeFilters = value; }
+            }
+            public TreeFiltersEventArgs(string filter, string displayFilter, string siteID, string siteName)
+            {
+                _TreeFilters = filter;
+                _DisplayTreeFilters = displayFilter;
+                _SiteID = siteID;
+                _SiteName = siteName;
+            }
+          
+        }
+        public delegate void TreeFilterChangedEventHandler(object sender, TreeFiltersEventArgs e);
+        private TreeFilterChangedEventHandler treeFilterChanged;
+        public event TreeFilterChangedEventHandler TreeFilterChanged
+        {
+            add { treeFilterChanged += value; }
+            remove { treeFilterChanged -= value; }
+        }
+        public void SetTreeFilterChanged(string filter, string displayFilter, string siteID, string siteName)
+        {
+            OnTreeFilterChanged(new TreeFiltersEventArgs(filter, displayFilter, siteID, siteName));
+        }
+        protected virtual void OnTreeFilterChanged(TreeFiltersEventArgs e)
+        {
+            if (treeFilterChanged != null)
+                treeFilterChanged(this, e);
+        }
+        private void groupBox3_Leave(object sender, EventArgs e)
+        {
+            string filter, displayFilter = "", exclude = "";
+            foreach (string name in _ReportTypes)
+                if (!GetRadioButtonByName(name).Enabled)
+                    exclude = name;
+            filter = ucTreeView1.GetAllTreeFilters(ref displayFilter, exclude);
+            SetTreeFilterChanged(filter, displayFilter, ucSiteChooser1.SiteID, ucSiteChooser1.SiteName);
+        }
+
+        private void ucSiteChooser1_SiteChanged(object sender, UCSiteChooser.SiteEventArgs e)
+        {
+            ucTreeView1.TypeCatalogID = e.TypeCatalogID;
+            SetTreeFilterChanged("", "", ucSiteChooser1.SiteID, ucSiteChooser1.SiteName);
+        }
+        private void SetTree(string name)
+        {
+            _currReportType = name;
+            ucTreeView1.TypeName = name;
+        }
+        private void radioStation_CheckedChanged(object sender, EventArgs e)
+        {
+            if(radioStation.Checked)
+                SetTree("Station");
+        }
+
+        private void radioFood_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioFood.Checked)
+                SetTree("Food");
+        }
+
+        private void radioLoss_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioLoss.Checked)
+                SetTree("Loss");
+        }
+
+        private void radioDisposition_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioDisposition.Checked)
+                SetTree("Disposition");
+        }
+
+        private void radioDayPart_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioDayPart.Checked)
+                SetTree("DayPart");
+        }
+
+        private void radioEventOrder_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioEventOrder.Checked)
+                SetTree("BEO");
+        }
+        public bool GetTreeItem(ref string type, ref string value, ref string display)
+        {
+            type = ucTreeView1.TypeName;
+            value = ucTreeView1.ID;
+            display = ucTreeView1.DisplayID;
+            return value != "";
+        }
+        public void ShowCheckBoxes(bool isShow)
+        {
+            ucTreeView1.EnableCheckboxes = isShow;
+        }
+        public string Title
+        {
+            get { return groupBox3.Text; }
+            set { groupBox3.Text = value; }
+        }
+        public void SetTreeID(string id)
+        {
+            ucTreeView1.ID = id;
+        }
+
+        private void radioContainer_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioContainer.Checked)
+                SetTree("Container");
+        }
+        public void Clear()
+        {
+            foreach (RadioButton radio in gpRadio.Controls)
+                radio.Checked = false;
+            ucTreeView1.Clear();
+        }
+    }
+}

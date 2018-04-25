@@ -1,0 +1,75 @@
+using System;
+using System.Drawing;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using DataDynamics.ActiveReports;
+using DataDynamics.ActiveReports.Document;
+using System.Windows.Forms;
+
+namespace Reports
+{
+    /// <summary>
+    /// Summary description for rptWasteAvoidance.
+    /// </summary>
+    public partial class rptWasteAvoidance : DataDynamics.ActiveReports.ActiveReport
+    {
+        public UserControls.ReportParameters _InputParameters;
+        public rptWasteAvoidance(UserControls.ReportParameters parameters)
+        {
+            //
+            // Required for Windows Form Designer support
+            //
+            InitializeComponent();
+            _InputParameters = parameters;
+        }
+        private void SetLogo()
+        {
+            try
+            {
+                System.Drawing.Image img;
+                if (_InputParameters["IsCustomLogo"] != null && bool.Parse(_InputParameters["IsCustomLogo"].ParamValue)
+                    && VWA4Common.GlobalSettings.LogoUpperLeftStream != null)
+                {
+                    img = System.Drawing.Image.FromStream(VWA4Common.GlobalSettings.LogoUpperLeftStream);
+                    //this.imgLogo.Height = (img.Height / img.VerticalResolution);
+                    //this.imgLogo.Width = (img.Width / img.HorizontalResolution);
+                    this.imgLogo.Image = img;
+                }
+                else
+                    this.imgLogo.Visible = false;
+                if (_InputParameters["IsLeanPathLogo"] != null && bool.Parse(_InputParameters["IsLeanPathLogo"].ParamValue)
+                    && VWA4Common.GlobalSettings.LogoLowerRightStream != null)
+                {
+                    img = System.Drawing.Image.FromStream(VWA4Common.GlobalSettings.LogoLowerRightStream);
+                    this.imgLeanPath.Image = img;
+                }
+                else
+                    this.imgLeanPath.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(null, "Error loading logo: " + ex.Message, "Error loading image from file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void rptWasteAvoidance_ReportStart(object sender, EventArgs e)
+        {
+            if (_InputParameters["Title"].ParamValue != "")
+                this.lblTitle.Text = _InputParameters["Title"].ParamValue;
+            else
+                this.lblTitle.Text = "Waste Avoidance Report";
+            if (_InputParameters["Filter"] != null && _InputParameters["Filter"].ParamValue != "")
+                txtFilter.Text = "Filter used: " + _InputParameters["Filter"].DisplayValue;
+            txtSubTitle.Text = _InputParameters["SubTitle"].ParamValue;
+            this.lblDB.Text = "Current DataBase:" + UserControls.VWAPath.ViewWasteDBName;
+            SetLogo();
+            txtSite.Text = _InputParameters["SiteID"].DisplayValue;
+            DateTime start = DateTime.Parse(_InputParameters["StartDate"].ParamValue);
+            DateTime end = DateTime.Parse(_InputParameters["EndDate"].ParamValue); ;
+            txtPeriod.Text = start.ToString("MM/dd/yyyy") + "-" + end.ToString("MM/dd/yyyy");
+
+            this.Document.Printer.Landscape = true;
+        }
+    }
+}

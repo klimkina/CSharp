@@ -1,0 +1,195 @@
+﻿using System;
+using System.Collections;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Text;
+using System.Windows.Forms;
+
+namespace UserControls
+{
+    public partial class UCWasteAvoidanceParameters : UserControl, IReportParameters
+    {
+        private Hashtable _ParamTable = new Hashtable();
+        private string[] _ParamNames = { "SiteID", "WasteAvoidanceAggregatePeriod", "IsDollars", "IsPounds" };
+
+        private string[] _ParamTypes = { "Number", "WasteAvoidanceAggregatePeriod", "Boolean", "Boolean" };
+        public UCWasteAvoidanceParameters()
+        {
+            InitializeComponent();
+        }
+
+        public void InitRunTime()
+        {
+            InitDefault();
+        }
+
+        public void EnableAllSites(bool isEnable)
+        {
+            ucSiteChooser1.EnableAllSites(isEnable);
+        }
+
+        public void InitDefault()
+        {
+            _ParamTable.Clear();
+
+            cbPeriod.SelectedIndex = 0; // week
+            chkDollars.Checked = true;
+            _ParamTable.Add("SiteID", new ReportParameter("SiteID", VWA4Common.GlobalSettings.CurrentSiteID.ToString(), VWA4Common.GlobalSettings.CurrentSiteName, "Number"));
+        
+        }
+        private void DisplayHashValues()
+        {
+            for (int i = 0; i < cbPeriod.Items.Count; i++)
+            {
+                if (cbPeriod.Items[i].ToString() == ((ReportParameter)_ParamTable["WasteAvoidanceAggregatePeriod"]).DisplayValue)
+                {
+                    cbPeriod.SelectedIndex = i;
+                    break;
+                }
+            }
+            ucSiteChooser1.SiteID = ((ReportParameter)_ParamTable["SiteID"]).DisplayValue.ToString();
+            chkDollars.Checked = bool.Parse(((ReportParameter)_ParamTable["IsDollars"]).DisplayValue.ToString());
+            chkPounds.Checked = bool.Parse(((ReportParameter)_ParamTable["IsPounds"]).DisplayValue.ToString());
+        }
+        public void HashLoad(Hashtable paramlist)
+        {
+            for (int i = 0; i < _ParamNames.Length; i++)
+            {
+                ReportParameter param;
+                if (paramlist.Contains(_ParamNames[i]))
+                {
+                    param = (ReportParameter)paramlist[_ParamNames[i]];
+                    _ParamTable[_ParamNames[i]] = param;
+                }
+            }
+            DisplayHashValues();
+        }
+        public bool IsValid()
+        {
+            return true;
+        }
+        public string GetValue(string name)
+        {
+            switch (name)
+            {
+                case "WasteAvoidanceAggregatePeriod":
+                    return VWA4Common.VWACommon.GetAccessPeriod(cbPeriod.SelectedItem.ToString());
+                case "SiteID":
+                    return ucSiteChooser1.SiteID;
+                case "IsDollars":
+                    return chkDollars.Checked.ToString();
+                case "IsPounds":
+                    return chkPounds.Checked.ToString();
+                default:
+                    return "";
+            }
+        }
+        public void AddItem(ReportParameter param)
+        {
+            _ParamTable.Add(param.Name, param);
+        }
+        public void DeleteItem(string name)
+        {
+            _ParamTable.Remove(name);
+        }
+        public ReportParameter GetItem(string name)
+        {
+            switch (name)
+            {
+                case "WasteAvoidanceAggregatePeriod":
+                    return new ReportParameter(name, VWA4Common.VWACommon.GetAccessPeriod(cbPeriod.SelectedItem.ToString()), cbPeriod.SelectedItem.ToString(), "WasteAvoidanceAggregatePeriod");
+                case "SiteID":
+                    return new ReportParameter(name, this.ucSiteChooser1.SiteID, this.ucSiteChooser1.SiteName, "Number");
+                case "IsDollars":
+                    return new ReportParameter(name, chkDollars.Checked.ToString(), chkDollars.Checked.ToString(), "Boolean");
+                case "IsPounds":
+                    return new ReportParameter(name, chkPounds.Checked.ToString(), chkPounds.Checked.ToString(), "Boolean");
+                default:
+                    return null;
+            }
+        }
+
+        private IDictionaryEnumerator _ParamTableEnum;
+        public ReportParameter GetFirst()
+        {
+            _ParamTableEnum = _ParamTable.GetEnumerator();
+            return ((ReportParameter)_ParamTableEnum.Current);
+        }
+        public ReportParameter GetNext()
+        {
+            if (_ParamTableEnum == null)
+                _ParamTableEnum = _ParamTable.GetEnumerator();
+            else
+                _ParamTableEnum.MoveNext();
+            return ((ReportParameter)_ParamTableEnum.Current);
+        }
+        public string GetNameList()
+        {
+            string res = "";
+            SetValues();
+            foreach (object obj in _ParamTable)
+            {
+                ReportParameter param = (ReportParameter)obj;
+                if (res == "")
+                    res = param.Name;
+                else
+                    res += ", " + param.Name;
+            }
+            return res;
+        }
+        public string GetValueList()
+        {
+            string res = "";
+            SetValues();
+            foreach (object obj in _ParamTable)
+            {
+                ReportParameter param = (ReportParameter)obj;
+                if (res == "")
+                    res = param.ParamValue;
+                else
+                    res += ", " + param.ParamValue;
+            }
+            return res;
+        }
+        public string GetDisplayValueList()
+        {
+            string res = "";
+            SetValues();
+            foreach (object obj in _ParamTable)
+            {
+                ReportParameter param = (ReportParameter)obj;
+                if (res == "")
+                    res = param.DisplayValue;
+                else
+                    res += ", " + param.DisplayValue;
+            }
+            return res;
+        }
+        private void SetValues()
+        {
+            foreach (string name in _ParamNames)
+            {
+                ReportParameter param = GetItem(name);
+                if (param != null)
+                    _ParamTable[name] = param;
+            }
+        }
+
+        private bool _Active;
+        public bool Active
+        {
+            get { return _Active; }
+            set { _Active = value; }
+        }
+        public Hashtable ParamList
+        {
+            get
+            {
+                SetValues();
+                return _ParamTable;
+            }
+            set { this.HashLoad(value); }
+        }
+    }
+}

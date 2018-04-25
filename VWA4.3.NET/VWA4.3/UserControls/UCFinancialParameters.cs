@@ -1,0 +1,204 @@
+﻿using System;
+using System.Collections;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Text;
+using System.Windows.Forms;
+
+namespace UserControls
+{
+    public partial class UCFinancialParameters : UserControl, IReportParameters
+    {
+        private Hashtable _ParamTable = new Hashtable();
+        private string[] _ParamNames = { "SiteID", "PeriodStartDate", "NumberOfMonths", "FinancialMode"};
+        private string[] _DefaultValues = { "0", DateTime.Now.ToString(), "12", "CPM"};
+        private string[] _DisplayValues = { "", DateTime.Now.ToString(), "12", "CPM" };
+        private string[] _ParamTypes = { "SiteID", "DateTime", "Number", "FinancialMode" };
+        public UCFinancialParameters()
+        {
+            InitializeComponent();
+        }
+        
+        public void InitDefault()
+        {
+            _ParamTable.Clear();
+            for (int i = 0; i < _ParamNames.Length; i++)
+            {
+                _ParamTable.Add(_ParamNames[i], new ReportParameter(_ParamNames[i], _DefaultValues[i], _DisplayValues[i], _ParamTypes[i]));
+            }
+            ucSiteChooser1.SiteID = VWA4Common.GlobalSettings.CurrentSiteID.ToString();
+            cbMode.SelectedIndex = VWA4Common.GlobalSettings.FoodCostReportPoints ? 0 : 1; 
+            DateTime start = DateTime.Parse(VWA4Common.GlobalSettings.StartDateOfSelectedWeek);
+            dtPeriodStart.Value = new DateTime(start.Year, start.Month, 1);
+            numOfMonths.Value = 12;
+        }
+        private void DisplayHashValues()
+        {
+            ucSiteChooser1.SiteID = ((ReportParameter)_ParamTable["SiteID"]).ParamValue;
+            dtPeriodStart.Value = DateTime.Parse(((ReportParameter)_ParamTable["PeriodStartDate"]).ParamValue);
+            cbMode.SelectedItem = ((ReportParameter)_ParamTable["FinancialMode"]).ParamValue;
+            numOfMonths.Value = int.Parse(((ReportParameter)_ParamTable["NumberOfMonths"]).ParamValue);
+        }
+        public void HashLoad(Hashtable paramlist)
+        {
+            for (int i = 0; i < _ParamNames.Length; i++)
+            {
+                ReportParameter param;
+                if (paramlist.Contains(_ParamNames[i]))
+                {
+                    param = (ReportParameter)paramlist[_ParamNames[i]];
+                    _ParamTable[_ParamNames[i]] = param;
+                }
+            }
+            DisplayHashValues();
+        }
+        public bool IsValid()
+        {
+            return true;
+        }
+        public string GetValue(string name)
+        {
+            switch (name)
+            {
+                case "SiteID": 
+                    return ucSiteChooser1.SiteID.ToString();
+                case "PeriodStartDate":
+                    return this.dtPeriodStart.Value.ToString("yyyy/MM/dd");
+                case "NumberOfMonths":
+                    return numOfMonths.Value.ToString();
+                case "FinancialMode":
+                    return cbMode.SelectedIndex == 0 ? "Points" : "CPM";
+                default:
+                    return "";
+            }
+        }
+        public void AddItem(ReportParameter param)
+        {
+            _ParamTable.Add(param.Name, param);
+        }
+        public void DeleteItem(string name)
+        {
+            _ParamTable.Remove(name);
+        }
+        public ReportParameter GetItem(string name)
+        {
+            switch (name)
+            {
+                case "SiteID":
+                    return new ReportParameter(name, ucSiteChooser1.SiteID.ToString(), ucSiteChooser1.SiteName.ToString(), "DayOfWeek");
+                case "PeriodStartDate":
+                    return new ReportParameter(name, this.dtPeriodStart.Value.ToString("yyyy/MM/dd"), this.dtPeriodStart.Value.ToString("yyyy/MM/dd"), "DateTime");
+                case "NumberOfMonths":
+                    return new ReportParameter(name, numOfMonths.Value.ToString(), numOfMonths.Value.ToString(), "Number");
+                case "FinancialMode":
+                    return new ReportParameter(name, cbMode.SelectedIndex == 0 ? "Points" : "CPM", cbMode.SelectedItem.ToString(), "FinancialMode");
+                default:
+                    return null;
+            }
+        }
+
+        private IDictionaryEnumerator _ParamTableEnum;
+        public ReportParameter GetFirst()
+        {
+            _ParamTableEnum = _ParamTable.GetEnumerator();
+            return ((ReportParameter)_ParamTableEnum.Current);
+        }
+        public ReportParameter GetNext()
+        {
+            if (_ParamTableEnum == null)
+                _ParamTableEnum = _ParamTable.GetEnumerator();
+            else
+                _ParamTableEnum.MoveNext();
+            return ((ReportParameter)_ParamTableEnum.Current);
+        }
+        public string GetNameList()
+        {
+            string res = "";
+            SetValues();
+            foreach (object obj in _ParamTable)
+            {
+                ReportParameter param = (ReportParameter)obj;
+                if (res == "")
+                    res = param.Name;
+                else
+                    res += ", " + param.Name;
+            }
+            return res;
+        }
+        public string GetValueList()
+        {
+            string res = "";
+            SetValues();
+            foreach (object obj in _ParamTable)
+            {
+                ReportParameter param = (ReportParameter)obj;
+                if (res == "")
+                    res = param.ParamValue;
+                else
+                    res += ", " + param.ParamValue;
+            }
+            return res;
+        }
+        public string GetDisplayValueList()
+        {
+            string res = "";
+            SetValues();
+            foreach (object obj in _ParamTable)
+            {
+                ReportParameter param = (ReportParameter)obj;
+                if (res == "")
+                    res = param.DisplayValue;
+                else
+                    res += ", " + param.DisplayValue;
+            }
+            return res;
+        }
+        private void SetValues()
+        {
+            foreach (string name in _ParamNames)
+            {
+                ReportParameter param  = GetItem(name);
+                if(param != null)
+                    _ParamTable[name] = param;  
+            }
+        }
+        
+        private bool _Active;
+        public bool Active
+        {
+            get { return _Active; }
+            set { _Active = value; }
+        }
+        public Hashtable ParamList
+        {
+            get {
+                SetValues();
+                return _ParamTable; 
+            }
+            set { this.HashLoad(value); }
+        }
+
+        public delegate void SiteIDChangedEventHandler(object sender, UCSiteChooser.SiteEventArgs e);
+        private SiteIDChangedEventHandler siteIDChanged;
+        public event SiteIDChangedEventHandler SiteIDChanged
+        {
+            add { siteIDChanged += value; }
+            remove { siteIDChanged -= value; }
+        }
+        public void SetSiteIDChanged(UCSiteChooser.SiteEventArgs e)
+        {
+            OnSiteIDChanged(e);
+        }
+        protected virtual void OnSiteIDChanged(UCSiteChooser.SiteEventArgs e)
+        {
+            if (siteIDChanged != null)
+                siteIDChanged(this, e);
+        }
+
+        private void ucSiteChooser1_SiteChanged(object sender, UCSiteChooser.SiteEventArgs e)
+        {
+            SetSiteIDChanged(e);
+        }
+    }
+}

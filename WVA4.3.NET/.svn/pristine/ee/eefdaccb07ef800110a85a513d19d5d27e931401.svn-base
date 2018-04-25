@@ -1,0 +1,313 @@
+using System;
+using System.Drawing;
+using System.Collections;
+using System.ComponentModel;
+using DataDynamics.ActiveReports;
+using DataDynamics.ActiveReports.Document;
+using System.Data;
+using System.Windows.Forms;
+using System.Text.RegularExpressions;
+using System.Globalization;
+
+namespace Reports
+{
+    /// <summary>
+    /// rptComparision - Comparison report.
+    /// </summary>
+    public partial class rptComparision : DataDynamics.ActiveReports.ActiveReport
+    {
+
+        private UserControls.ReportParameters _InputParameters;
+
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="parameters"></param>
+		public rptComparision(UserControls.ReportParameters parameters)
+        {
+            //
+            // Required for Windows Form Designer support
+            //
+            InitializeComponent();
+            _InputParameters = parameters;
+        }
+
+		private void Set3D()
+        {
+            if (bool.Parse(_InputParameters["Is3D"].ParamValue))
+                chartControl1.ChartAreas[0].Projection.ProjectionType = DataDynamics.ActiveReports.Chart.Graphics.ProjectionType.Orthogonal; 
+            else
+                chartControl1.ChartAreas[0].Projection.ProjectionType = DataDynamics.ActiveReports.Chart.Graphics.ProjectionType.Identical; 
+            for (int i = 0; i < 2; i++)// bars used only for 2 series
+            {
+                DataDynamics.ActiveReports.Chart.Series s = this.chartControl1.Series[i];
+                if (bool.Parse(_InputParameters["Is3D"].ParamValue))
+                    s.Type = DataDynamics.ActiveReports.Chart.ChartType.Bar3D;
+                else
+                    s.Type = DataDynamics.ActiveReports.Chart.ChartType.Bar2D;
+            }
+        }
+		private void SetHorizontal()
+        {
+            if (bool.Parse(_InputParameters["IsHorizontal"].ParamValue))
+            {
+                for (int i = 0; i < 2; i++)// bars used only for 2 series
+                {
+                    DataDynamics.ActiveReports.Chart.Series s = this.chartControl1.Series[i];
+                    s.ChartArea.SwapAxesDirection = true;
+                    s.AxisX.LabelFont.Angle = 0;
+                    s.AxisY.LabelFont.Angle = 45;
+                    s.AxisX.TitleFont.Angle = -90;
+                    s.AxisY.TitleFont.Angle = 0;
+                    s.Marker.Label.Alignment = DataDynamics.ActiveReports.Chart.Alignment.Right;
+                }
+            }
+        }
+        private void SetLogo()
+        {
+            try
+            {
+                System.Drawing.Image img;
+                if (_InputParameters["IsCustomLogo"] != null && bool.Parse(_InputParameters["IsCustomLogo"].ParamValue)
+                    && VWA4Common.GlobalSettings.LogoUpperLeftStream != null)
+                {
+                    img = System.Drawing.Image.FromStream(VWA4Common.GlobalSettings.LogoUpperLeftStream);
+                    //this.imgLogo.Height = (img.Height / img.VerticalResolution);
+                    //this.imgLogo.Width = (img.Width / img.HorizontalResolution);
+                    this.imgLogo.Image = img;
+                }
+                else
+                    this.imgLogo.Visible = false;
+                if (_InputParameters["IsLeanPathLogo"] != null && bool.Parse(_InputParameters["IsLeanPathLogo"].ParamValue)
+                    && VWA4Common.GlobalSettings.LogoLowerRightStream != null)
+                {
+                    img = System.Drawing.Image.FromStream(VWA4Common.GlobalSettings.LogoLowerRightStream);
+                    this.imgLeanPath.Image = img;
+                }
+                else
+                    this.imgLeanPath.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(null, "Error loading logo: " + ex.Message, "Error loading image from file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void rptComparision_ReportStart(object sender, EventArgs e)
+        {
+            //Dataset to hold data
+            DataTable _ChartData = new DataTable();
+            string criteria, top = "", title = ": $", end = "";
+            VWA4Common.VWADBUtils.CheckWeightDates();
+
+            if (bool.Parse(_InputParameters["IsShowLbs"].ParamValue))
+            {
+                criteria = "SUM(Weight - NItems*ContainerWeight)";
+                this.chartControl1.Series[0].AxisY.Title = "Waste, lbs.";
+                this.chartControl1.Series[0].Marker.Label.Format = "{Value:#0} lbs";
+                this.chartControl1.Series[1].Marker.Label.Format = "{Value:#0} lbs";
+                title = ": ";
+                end = " lbs";
+            }
+            else 
+            {
+                criteria = "SUM(WasteCost)";
+                this.chartControl1.Series[0].AxisY.Title = "Waste ($)";
+            }
+            string select = "";
+            string where = _InputParameters["SiteID"].ParamValue == VWA4Common.GlobalSettings.AllSitesValue ? "" : " WHERE SiteID = " + _InputParameters["SiteID"].ParamValue;
+            if (_InputParameters["Filter"].ParamValue != "")
+                if (where == "")
+                {
+                    where = " WHERE (" + _InputParameters["Filter"].ParamValue + ") AND";
+                }
+                else
+                {
+                    where += " AND (" + _InputParameters["Filter"].ParamValue + ") AND";
+                }
+            
+
+			bool isWasteClassesUsed = false; // (VWA4Common.SecurityManager.GetSecurityManager().GetPermission("Allowed Waste Classes") != "-1") || (_InputParameters["WasteClasses"].ParamValue.ToString() != "");
+			//if (_InputParameters["WasteClasses"].ParamValue.ToString() != "")
+			//    where += (where == "" ? "" : " (") + _InputParameters["WasteClasses"].ParamValue.ToString() + (where == "" ? "" : " ) AND ");
+			//else //if (VWA4Common.SecurityManager.GetSecurityManager().GetPermission("Allowed Waste Classes") != "-1")
+			//    where = (where == "" ? VWA4Common.VWACommon.GetWasteClasses() : where + " (" + VWA4Common.VWACommon.GetWasteClasses() + ") AND ");
+
+            if (int.Parse(_InputParameters["NumShown"].ParamValue) > 0)
+                top = " TOP " + _InputParameters["NumShown"].ParamValue;
+
+            // mila: we are using magical number 0.0001 instead of 0 due Active Reports bug Case 109583: Bar chart doesn't render if series has zero values.
+            if (_InputParameters["ComparisionType"].DisplayValue == "Days of Week")
+            {
+                select = @"SELECT Name, Waste, Waste2 FROM(" + 
+                    "SELECT " + top + " A.Name AS Name, Waste, Waste2  " +
+                    " FROM (SELECT Name, MAX(WasteValue) AS Waste FROM  " +
+                    " (SELECT DISTINCT Weekday(Timestamp) AS Name, Format(Timestamp,'yyyymmdd'), 0.0001 AS WasteValue  " +
+                    " FROM WeightDates WHERE " +
+                    " (Timestamp >= #" + _InputParameters["FirstWeekStart"].ParamValue + "# AND Timestamp < #" +
+                    DateTime.Parse(_InputParameters["FirstWeekStart"].ParamValue, CultureInfo.GetCultureInfo("en-US"), System.Globalization.DateTimeStyles.None).AddDays(7).ToString("MM/dd/yyyy", CultureInfo.GetCultureInfo("en-US")) + "#) " +
+                    " UNION     " +
+                    " SELECT Weekday(Weights.Timestamp) AS Name, Format(Weights.Timestamp,'yyyymmdd'), " + criteria + " AS WasteValue  " +
+                    " FROM ((Weights LEFT JOIN Transfers ON Transfers.TransKey = Weights.TransKey) LEFT JOIN LossType ON Weights.LossTypeID = LossType.TypeID)  " +
+                    (isWasteClassesUsed ? " LEFT JOIN FoodType ON Weights.FoodTypeID = FoodType.TypeID " : "") +
+                    where +
+                    " (Weights.Timestamp >= #" + _InputParameters["FirstWeekStart"].ParamValue + "# AND Weights.Timestamp < #" +
+                    DateTime.Parse(_InputParameters["FirstWeekStart"].ParamValue, CultureInfo.GetCultureInfo("en-US"), System.Globalization.DateTimeStyles.None).AddDays(7).ToString("MM/dd/yyyy", CultureInfo.GetCultureInfo("en-US")) + "#) " +
+                    " GROUP BY Weekday(Weights.Timestamp), Format(Weights.Timestamp,'yyyymmdd')) " +
+                    " GROUP BY Name )  AS A,   " +
+                    " (SELECT Name, MAX(WasteValue) AS Waste2 FROM  " +
+                    " (SELECT DISTINCT Weekday(Timestamp) AS Name, Format(Timestamp,'yyyymmdd'), 0.0001 AS WasteValue  " +
+                    " FROM WeightDates  WHERE " +
+                    " (Timestamp >= #" + _InputParameters["SecondWeekStart"].ParamValue + "# AND Timestamp < #" +
+                    DateTime.Parse(_InputParameters["SecondWeekStart"].ParamValue, CultureInfo.GetCultureInfo("en-US"), System.Globalization.DateTimeStyles.None).AddDays(7).ToString("MM/dd/yyyy", CultureInfo.GetCultureInfo("en-US")) + "#) " +
+                    " UNION  " +
+                    " SELECT Weekday(Weights.Timestamp) AS Name, Format(Weights.Timestamp,'yyyymmdd'), " + criteria + " AS WasteValue  " +
+                    " FROM ((Weights LEFT JOIN Transfers ON Transfers.TransKey = Weights.TransKey) LEFT JOIN LossType ON Weights.LossTypeID = LossType.TypeID)   " +
+                    (isWasteClassesUsed ? " LEFT JOIN FoodType ON Weights.FoodTypeID = FoodType.TypeID " : "") +
+                    where +
+                    " (Weights.Timestamp >= #" + _InputParameters["SecondWeekStart"].ParamValue + 
+                    "# AND Weights.Timestamp < #" +
+                    DateTime.Parse(_InputParameters["SecondWeekStart"].ParamValue, CultureInfo.GetCultureInfo("en-US"), System.Globalization.DateTimeStyles.None).AddDays(7).ToString("MM/dd/yyyy", CultureInfo.GetCultureInfo("en-US")) + "#) " +
+                    " GROUP BY Weekday(Weights.Timestamp), Format(Weights.Timestamp,'yyyymmdd')) " +
+                    " GROUP BY Name )  AS  B " +
+                    " WHERE A.Name=B.Name AND (A.Waste > 0.0001 OR B.Waste2 > 0.0001)   ORDER BY A.Name ASC)" +
+                    "ORDER BY Name " +( bool.Parse(_InputParameters["IsHorizontal"].ParamValue) ? " DESC;" : " ASC;");
+            }
+            else
+            {
+                string typeComparision = "Food";
+                if (_InputParameters["ComparisionType"].DisplayValue == "Loss Categories")
+                    typeComparision = "Loss";
+                else if (_InputParameters["ComparisionType"].DisplayValue == "Stations")
+                    typeComparision = "Station";
+                select = @"SELECT Name, Waste, Waste2 FROM(" +
+                    "SELECT " + top + " A.Name AS Name, Waste, Waste2 " +
+                    " FROM ( SELECT Name, MAX(WasteValue) AS Waste FROM " +
+                    "(SELECT DISTINCT TypeName AS Name, 0.0001 AS WasteValue FROM " + typeComparision + "Type " +
+                    " UNION   " +
+                    " SELECT " + typeComparision + "Type.TypeName AS Name, " + criteria + " AS WasteValue " +
+                    " FROM (((Weights LEFT JOIN Transfers ON Transfers.TransKey = Weights.TransKey) LEFT JOIN LossType ON Weights.LossTypeID = LossType.TypeID) " +
+                    ((typeComparision == "Loss") ? ")" : 
+                    " LEFT JOIN " + typeComparision + "Type ON Weights." + typeComparision + "TypeID = " + typeComparision + "Type.TypeID )") +
+                    (isWasteClassesUsed && (typeComparision != "Food") ? " LEFT JOIN FoodType ON Weights.FoodTypeID = FoodType.TypeID) " : "") +
+                    where +
+                    " (Weights.Timestamp >= #" + _InputParameters["FirstWeekStart"].ParamValue + 
+                    "# AND Weights.Timestamp < #" +
+                    DateTime.Parse(_InputParameters["FirstWeekStart"].ParamValue, CultureInfo.GetCultureInfo("en-US"), System.Globalization.DateTimeStyles.None).AddDays(7).ToString("MM/dd/yyyy", CultureInfo.GetCultureInfo("en-US")) + "#) " +
+                    " GROUP BY " + typeComparision + "Type.TypeName ) " +
+                    " GROUP BY Name )  AS A, " +
+                    " (SELECT Name, MAX(WasteValue) AS Waste2 FROM " +
+                    " (SELECT DISTINCT TypeName AS Name, 0.0001 AS WasteValue FROM  " + typeComparision + "Type  " +
+                    " UNION   SELECT " + typeComparision + "Type.TypeName AS Name, " + criteria + " AS WasteValue  " +
+                    " FROM (((Weights LEFT JOIN Transfers ON Transfers.TransKey = Weights.TransKey) LEFT JOIN LossType ON Weights.LossTypeID = LossType.TypeID) " +
+                    ((typeComparision == "Loss") ? ")" : 
+                    "  LEFT JOIN " + typeComparision + "Type ON Weights." + typeComparision + "TypeID = " + typeComparision + "Type.TypeID )") +
+                    (isWasteClassesUsed && (typeComparision != "Food") ? " LEFT JOIN FoodType ON Weights.FoodTypeID = FoodType.TypeID " : "") +
+                    where +
+                    " (Weights.Timestamp >= #" + _InputParameters["SecondWeekStart"].ParamValue + 
+                    "# AND Weights.Timestamp < #" +
+                    DateTime.Parse(_InputParameters["SecondWeekStart"].ParamValue, CultureInfo.GetCultureInfo("en-US"), System.Globalization.DateTimeStyles.None).AddDays(7).ToString("MM/dd/yyyy", CultureInfo.GetCultureInfo("en-US")) + "#) " +
+                    " GROUP BY " + typeComparision + "Type.TypeName  ) " +
+                    " GROUP BY Name )  AS B " +
+                    " WHERE A.Name=B.Name AND (A.Waste > 0.0001 OR B.Waste2 > 0.0001) " +
+                    " ORDER BY A.Waste DESC)" +
+                    "ORDER BY Waste " +( bool.Parse(_InputParameters["IsHorizontal"].ParamValue) ? " ASC;" : " DESC;");
+                this.chartControl1.Series[0].AxisX.Title = Regex.Split(_InputParameters["ComparisionType"].DisplayValue, " ")[0] + " Type";
+            }
+
+            if (_InputParameters["ComparisionPeriod"].DisplayValue == "None")
+                this.chartControl1.Series[1].Visible = false;
+
+            DataTable dt =  VWA4Common.DB.Retrieve(select);  
+            _ChartData = dt;
+            lblTitle.Text = "Comparison report for " + _InputParameters["ComparisionType"].DisplayValue;
+            if (_InputParameters["Title"] != null && _InputParameters["Title"].ParamValue != "")
+                this.lblTitle.Text = _InputParameters["Title"].ParamValue;
+            txtSubTitle.Text = _InputParameters["SubTitle"].ParamValue;
+            this.chartControl1.Titles["footer"].Text = "Current DataBase:" + UserControls.VWAPath.ViewWasteDBName;
+
+            if (!Boolean.Parse(_InputParameters["IsToggleFooter"].ParamValue))
+            {
+                if (_InputParameters["Filter"] != null && _InputParameters["Filter"].ParamValue != "")
+                    txtFilter.Text = "Filter used: " + _InputParameters["Filter"].DisplayValue;
+
+                this.lblDB.Text = "Current DataBase:" + UserControls.VWAPath.ViewWasteDBName;
+            }
+
+			this.chartControl1.DataSource = _ChartData;
+
+            if (_ChartData.Rows.Count > 0)
+            {
+                double max = Math.Max(double.Parse(_ChartData.Compute("Max(Waste)", "").ToString()),
+                    double.Parse(_ChartData.Compute("Max(Waste2)", "").ToString()));
+                int step = 1; double temp = max;
+                for (step = 1; temp > 1; step *= 10)
+                    temp = temp / 10;
+                step = step / 100 * (int)(1 + max * 10 / step);
+                this.chartControl1.ChartAreas[0].Axes["AxisY"].MajorTick.Step = step;
+
+                this.chartControl1.Series[0].Marker.Label.Font = new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Arial", (_ChartData.Rows.Count > 20) ? 6F : 8F));
+                this.chartControl1.Series[1].Marker.Label.Font = new DataDynamics.ActiveReports.Chart.FontInfo(System.Drawing.Color.Black, new System.Drawing.Font("Arial", (_ChartData.Rows.Count > 20) ? 6F : 8F));
+
+                SetLogo();
+                
+                this.chartControl1.ColorPalette = VWA4Common.VWACommon.GetPalette(_InputParameters["ChartColor"].ParamValue);
+                this.chartControl1.Series[0].ValueMembersY = "Waste";
+                this.chartControl1.Series[0].ValueMemberX = "Name";
+                this.chartControl1.Series[1].ValueMembersY = "Waste2";
+                this.chartControl1.Series[1].ValueMemberX = "Name";
+
+                DataTable total = VWA4Common.DB.Retrieve(@"SELECT " + criteria + " FROM Weights LEFT JOIN Transfers ON Transfers.TransKey = Weights.TransKey " +
+                    " WHERE [Weights.Timestamp] >= #" + _InputParameters["FirstWeekStart"].ParamValue +
+                    "# AND [Weights.Timestamp] < #" +
+                    DateTime.Parse(_InputParameters["FirstWeekStart"].ParamValue, CultureInfo.GetCultureInfo("en-US"), System.Globalization.DateTimeStyles.None).AddDays(7).ToString("MM/dd/yyyy", CultureInfo.GetCultureInfo("en-US")) + "#" +
+                            (_InputParameters["SiteID"].ParamValue != VWA4Common.GlobalSettings.AllSitesValue ? (" AND SiteID = " + _InputParameters["SiteID"].ParamValue) : ""));
+                double totalWeek1 = 0;
+                if(total.Rows[0][0].ToString() != "")
+                    totalWeek1 = double.Parse(total.Rows[0][0].ToString());
+                string testquery = @"SELECT " + criteria + " FROM Weights LEFT JOIN Transfers ON Transfers.TransKey = Weights.TransKey " +
+                    " WHERE [Weights.Timestamp] >= #" + _InputParameters["SecondWeekStart"].ParamValue +
+                    "# AND [Weights.Timestamp] < #" +
+                    DateTime.Parse(_InputParameters["SecondWeekStart"].ParamValue, CultureInfo.GetCultureInfo("en-US"), System.Globalization.DateTimeStyles.None).AddDays(7).ToString("MM/dd/yyyy", CultureInfo.GetCultureInfo("en-US")) + "#" +
+                            (_InputParameters["SiteID"].ParamValue != VWA4Common.GlobalSettings.AllSitesValue ? (" AND SiteID = " + _InputParameters["SiteID"].ParamValue) : "");
+				total = VWA4Common.DB.Retrieve(testquery);
+                double totalWeek2 = 0;
+                if (total.Rows[0][0].ToString() != "")
+                    totalWeek2 = double.Parse(total.Rows[0][0].ToString());
+                this.chartControl1.Series[0].Name = "Week 1: " + _InputParameters["FirstWeekStart"].DisplayValue + " Total" + title + totalWeek1.ToString("0") + end
+                    + ", Filtered" + title + decimal.Parse(_ChartData.Compute("Sum(Waste)", "").ToString()).ToString("0") + end;
+                this.chartControl1.Series[1].Name = "Week 2: " + _InputParameters["SecondWeekStart"].DisplayValue + " Total" + title + totalWeek2.ToString("0") + end
+                    + ", Filtered" + title + decimal.Parse(_ChartData.Compute("Sum(Waste2)", "").ToString()).ToString("0") + end;
+                
+                Set3D();
+                SetHorizontal();
+                
+                if (_InputParameters["ComparisionType"].DisplayValue == "Days of Week")
+                {
+                    DateTime firstDayOfWeek = DateTime.Parse(_InputParameters["FirstWeekStart"].ParamValue, CultureInfo.GetCultureInfo("en-US"), System.Globalization.DateTimeStyles.None);
+                    for (int i = 0; i < 7; i++)
+                        if (firstDayOfWeek.DayOfWeek == VWA4Common.VWACommon.AccessFirstDayOfWeek)
+                            break;
+                        else
+                            firstDayOfWeek = firstDayOfWeek.AddDays(1);
+                    foreach (DataRow row in dt.Rows)
+                        this.chartControl1.ChartAreas[0].Axes[0].Labels.Add(firstDayOfWeek.AddDays(int.Parse(row["Name"].ToString())-1).DayOfWeek.ToString());
+                }
+            }
+            else
+            {
+                if (bool.Parse(VWA4Common.GlobalSettings.ShowEmptyReports))
+                {         
+                    this.chartControl1.Visible = false;
+                    imgLogo.Visible = false;
+                    if (!Boolean.Parse(_InputParameters["IsToggleFooter"].ParamValue))
+                        lblWarning.Text = "No data found for: weeks " + _InputParameters["FirstWeekStart"].ParamValue + " and " + _InputParameters["SecondWeekStart"].ParamValue + (_InputParameters["Filter"].DisplayValue == "" ? "" : " and " + _InputParameters["Filter"].DisplayValue);
+                }
+                else
+                    this.Cancel();
+            }
+            this.Document.Printer.Landscape = true;
+            //this.PrintWidth = this.PageSettings.PaperHeight - (this.PageSettings.Margins.Top + this.PageSettings.Margins.Bottom);
+        }
+    }
+}

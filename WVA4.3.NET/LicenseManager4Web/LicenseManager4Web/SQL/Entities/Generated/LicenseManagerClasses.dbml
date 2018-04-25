@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="LicenseManager" EntityNamespace="LicenseManager4Web.Entities" ContextNamespace="LicenseManager4Web.DataContext" Class="LicenseManagerClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=sp.leanpath.com;Initial Catalog=LicenseManager;Persist Security Info=True;User ID=lm" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="LicenseManagerConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Activations" Member="Activations">
+    <Type Name="Activation">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LicenseID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CPUID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ExpirationDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ActivationCode" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="GeneratedBy" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="GeneratedTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsActivated" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Enabled" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="License_Activation" Member="License" ThisKey="LicenseID" OtherKey="ID" Type="License" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Clients" Member="Clients">
+    <Type Name="Client">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ClientName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SalesForceId" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="Client_Site" Member="Sites" ThisKey="ID" OtherKey="ClientID" Type="Site" />
+      <Association Name="Client_License" Member="Licenses" ThisKey="ID" OtherKey="ClientID" Type="License" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sites" Member="Sites">
+    <Type Name="Site">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SiteName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SalesForceId" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="Site_License" Member="Licenses" ThisKey="ID" OtherKey="SiteID" Type="License" />
+      <Association Name="Client_Site" Member="Client" ThisKey="ClientID" OtherKey="ID" Type="Client" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Licenses" Member="Licenses">
+    <Type Name="License">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SiteID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LicenseID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Product" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LicenseType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GeneratedBy" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="GeneratedTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="License_Activation" Member="Activations" ThisKey="ID" OtherKey="LicenseID" Type="Activation" />
+      <Association Name="License_LicenseFeature" Member="LicenseFeatures" ThisKey="ID" OtherKey="LicenseID" Type="LicenseFeature" />
+      <Association Name="Client_License" Member="Client" ThisKey="ClientID" OtherKey="ID" Type="Client" IsForeignKey="true" />
+      <Association Name="Site_License" Member="Site" ThisKey="SiteID" OtherKey="ID" Type="Site" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LicenseFeatures" Member="LicenseFeatures">
+    <Type Name="LicenseFeature">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LicenseID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LicenseKey" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ExpirationDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ExtendedExpirationDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ExpirationWarningStartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ExpirationWarningsMode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ExpirationWarningsFrequency" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExpirationWarningsUnit" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AllowedWasteClasses" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProductVersionName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DefaultUserLevel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ManagerPassword" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="AdministratorPassword" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ConfiguratorInstalled" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="UseConfigurator" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="NumberOfSites" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ManageTypesAvailable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AddUsers" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RemoveUsers" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ManageTrackers" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ManageSites" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ManageEventTypes" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ManageEventClients" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ManageEventOrders" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TrackerLimit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FoodTypeLimit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FoodCostAdjustments" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="LossTypeLimit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserTypeLimit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ManagePreferences" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ManageBaselines" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="UpdateTracker" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ImportWasteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RecurringTransactionsAvailable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="EnterLogSheetData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ManageLogForms" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ManageDataEntryTemplates" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DetLimits" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ConfigureStationEntry" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ConfigureDaypartEntry" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ConfigureDispositionEntry" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ConfigurePrePostEntry" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="StationEntry" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DaypartEntry" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DispositionEntry" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PrePostEntry" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AdvancedMenuAvailable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="EnterFinancialsAvailable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="EnterSWATNotesAvailable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ManageReportsSettingsShortcut" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ReportLimits" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AddNewReport" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AddNewCollection" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Clone" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SupportEmailAddress" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ShowSupportEmailAddress" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SupportPhoneNumber" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ShowSupportPhoneNumber" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SupportWebSiteURL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ShowSupportWebSiteURL" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Product" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="License_LicenseFeature" Member="License" ThisKey="LicenseID" OtherKey="ID" Type="License" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

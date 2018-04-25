@@ -1,0 +1,626 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.IO;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using System.Data;
+using System.Management;
+using System.Globalization;
+
+namespace VWA4Common
+{
+    public static class VWACommon
+    {
+        public class TitleEventArgs : EventArgs
+        {
+            private string _Title;
+            private string _ReportType;
+
+            public string ReportType
+            {
+                get { return _ReportType; }
+                set { _ReportType = value; }
+            }
+
+            public string Title
+            {
+                get { return _Title; }
+                set { _Title = value; }
+            }
+        }
+
+        private static string[] _ReportTypes = { "Station", "Food", "Loss", "Disposition", "Container", "Daypart", "BEO" };
+        private static string[] _ReportTypeNames = { "Station", "Food", "Loss", "Disposition", "Container", "Daypart", "Event Order" };
+
+        public static string[] ReportTypeNames
+        {
+            get { return VWACommon._ReportTypeNames; }
+        }
+
+        public static string[] ReportTypes
+        {
+            get { return _ReportTypes; }
+        }
+        //private static DayOfWeek _FirstDayOfWeek = DayOfWeek.Sunday;
+        public static DayOfWeek FirstDayOfWeek
+        {
+            get { return DateTime.Parse(VWA4Common.GlobalSettings.StartDateOfSelectedWeek).DayOfWeek; }
+        }
+        private static int _NumCycleWeeks = 1;
+        public static int NumCycleWeeks
+        {
+            set { _NumCycleWeeks = value; }
+            get { return _NumCycleWeeks; }
+        }
+        // returns beginnig of the next week or current week if it is incomplete
+        public static DateTime LastDayOfWeek
+        {
+            get {
+                DateTime lastDayOfWeek = DateTime.Parse(VWA4Common.GlobalSettings.StartDateOfSelectedWeek).AddDays(7);
+                
+                return lastDayOfWeek; 
+            }
+        }
+        public static DayOfWeek AccessFirstDayOfWeek
+        { get { return DayOfWeek.Sunday; } }
+
+        // return true if increasing, returns trend in the same arr
+        public static bool CalcTrend(ref double[] arr)
+        {
+            // calculate values
+            double sumd = 0;
+            double sumdi = 0;
+            double sumi2 = 0;
+            double n = arr.GetLength(0);
+            double sumi = (1 + n) * n / 2;
+
+            for (int i = 0; i < n; i++)
+            {
+                sumd += arr[i];
+                sumdi += arr[i] * (i + 1);
+                sumi2 += (i + 1) * (i + 1);
+            }
+            double b = (n * sumdi - sumi * sumd) / (n * sumi2 - sumi * sumi);
+            double a = (sumd * sumi2 - sumi * sumdi) / (n * sumi2 - sumi * sumi);
+            for (int i = 0; i < n; i++)
+                arr[i] = a + b * (i + 1);
+            return b > 0;
+        }
+        public static int MinTransNum(string period)
+        {
+            switch (period)
+            {
+                case "Day": return 10;
+                case "Week": return 70;
+                case "Month": return 300;
+                case "Quarter": return 900;
+                case "Year": return 3650;
+                default:
+                    throw new Exception("Dev Error - Period not handled.");
+            }
+        }
+        public static string GetAccessPeriod(string period)
+        {
+            switch (period)
+            {
+                case "Day": return "yyyymmdd";
+                case "Week": return "ww";
+                case "Month": return "mm";
+                case "Quarter": return "q";
+                case "Year": return "yyyy";
+                default:
+                    throw new Exception("Dev Error - Period not handled.");
+            }
+        }
+        public static string CalcDateFromWeek(int weekNum, int offset, string startDate)
+        {
+            DateTime start = DateTime.Parse(startDate);
+            DateTime res = new DateTime(start.Year, 1, 1).AddDays(7 * weekNum);// begining of week
+            while (res.DayOfWeek != VWACommon.AccessFirstDayOfWeek)
+                res = res.AddDays(-1); //we added days to access to synchronize access and our first days of week
+            res = res.AddDays(-offset);
+            return res.ToString("MM/dd/yyyy", CultureInfo.GetCultureInfo("en-US"));
+        }
+        public static DateTime GetFilterStartDate(string filter)
+        {
+            DateTime _startDate = DateTime.Now;
+            string regex = "";
+            if (Regex.IsMatch(filter, @"\[Timestamp\][^\[]*>"))
+                regex = Regex.Replace(filter, @".*\[Timestamp\][^\[]*>.*?#([^#]*)#.*", "$1");
+            if (regex != "")
+                _startDate = DateTime.Parse(regex);
+            else
+            {
+                _startDate = new DateTime(0);
+                //DataTable dt = VWA4Common.DB.Retrieve("SELECT MIN(Timestamp) FROM Weights");
+                //if (dt != null && dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "")
+                //{ // Found a record
+                //    _startDate = DateTime.Parse(dt.Rows[0][0].ToString());
+                //}
+            }
+            return _startDate;
+        }
+        public static DateTime GetFilterEndDate(string filter)
+        {
+            DateTime _endDate = DateTime.Now;
+            string regex = "";
+            if (Regex.IsMatch(filter, @"\[Timestamp\][^\[]*<"))
+                regex = Regex.Replace(filter, @".*\[Timestamp\][^\[]*<.*?#([^#]*)#.*", "$1");
+            if (regex != "")
+                _endDate = DateTime.Parse(regex);
+            else
+            {
+                _endDate = new DateTime(0);
+                //DataTable dt = VWA4Common.DB.Retrieve("SELECT MAX(Timestamp) FROM Weights");
+                //if (dt != null && dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "")
+                //{ // Found a record
+                //    _endDate = DateTime.Parse(dt.Rows[0][0].ToString());
+                //}
+            }
+            return _endDate;
+        }
+        public static string RemoveEmpty(string filter)
+        {
+            string regex = filter;
+            while (Regex.IsMatch(regex, @"\s*AND\s*(\(|\)|\s)*\s*AND", RegexOptions.IgnoreCase)) // remove double 'AND's
+                regex = Regex.Replace(regex, @"\s*AND\s*((\(|\)|\s)*)\s*AND", "$1 AND", RegexOptions.IgnoreCase);
+            while (Regex.IsMatch(regex, @"\(\s*\)"))//remove empty () and any 'AND's within
+                regex = Regex.Replace(regex, @"\(\s*\)\s*(AND)?\s*", "");
+            while (Regex.IsMatch(regex, @"(^|\()\s*AND", RegexOptions.IgnoreCase))// remove AND at the beginning or after (
+                regex = Regex.Replace(regex, @"(^|\()\s*AND\s*", "$1", RegexOptions.IgnoreCase); 
+            while (Regex.IsMatch(regex, @"\s*AND\s*(\)|$)", RegexOptions.IgnoreCase)) // remove AND at the end or before )
+                regex = Regex.Replace(regex, @"\s*AND\s*(\)|$)", "$1", RegexOptions.IgnoreCase);
+                       
+            regex.Trim();
+            return regex;
+        }
+        public static string RemoveFilterPeriod(string filter)
+        {
+            string regex = filter;
+            if (Regex.IsMatch(filter, @"\[(Weights\.)?Timestamp\]"))
+                regex = Regex.Replace(filter, @"\(?\[(Weights\.)?Timestamp\].*#\s*\)?(\s*AND\s*)?", "", RegexOptions.IgnoreCase);
+            //else if (Regex.IsMatch(filter, @"\[Timestamp\]"))
+            //    regex = Regex.Replace(filter, @"\(?\[Timestamp\].*#\s*\)?(\s*AND\s*)?", "", RegexOptions.IgnoreCase);
+            regex.Trim();
+			regex = RemoveEmpty(regex);
+            return regex;
+        }
+        public static string RemoveDisplayFilterPeriod(string filter)
+        {
+            string regex = filter;
+            if (Regex.IsMatch(regex, @"\[?Timestamp\]?.* AND \[?Timestamp\]?"))
+                regex = Regex.Replace(regex, @"\[?Timestamp\]? (.*) AND \[?Timestamp\]?", "Timestamp $1 Timestamp");
+            if (Regex.IsMatch(regex, @"Timestamp <"))
+                regex = Regex.Replace(regex, @"Timestamp < '?\d+\/\d+\/\d+( \d\d:\d\d:\d\d)?'?", "");
+            if (Regex.IsMatch(regex, @"Timestamp >="))
+                regex = Regex.Replace(regex, @"Timestamp >= '?\d+\/\d+\/\d+( \d\d:\d\d:\d\d)?'?", "");
+            if (Regex.IsMatch(regex, @"\(\s*\)\s*(AND)?\s*\((.*)\)", RegexOptions.IgnoreCase))
+                regex = Regex.Replace(regex, @"\(\s*\)\s*(AND)?\s*\((.*)\)", "$2");
+            else if (Regex.IsMatch(regex, @"\(\s*\)\s*(AND)?\s*(.*)", RegexOptions.IgnoreCase))
+                regex = Regex.Replace(regex, @"\(\s*\)\s*(AND)?\s*(.*)", "$2");
+            if (Regex.IsMatch(regex, @"^\s+AND", RegexOptions.IgnoreCase))
+                regex = Regex.Replace(regex, @"^\s+AND\s*", "", RegexOptions.IgnoreCase);
+            regex.Trim();
+			regex = RemoveEmpty(regex);
+            return regex;
+        }
+        public static List<string> ExtractNameFilter(string name, string filter)
+        {
+            List<string> ret = new List<string>();
+            foreach (Match m in Regex.Matches(filter, name + "TypeID]? =\\s*\\'(\\S+)\\'"))
+            {
+                ret.Add(m.Groups[1].ToString());			
+            }
+            return ret;
+        }
+        public static string ExtractStringNameFilter(string name, string filter)
+        {
+            string ret = "";
+            List<string> retList = ExtractNameFilter(name, filter);
+            foreach (string s in retList)
+            {
+                if (ret == "")
+                    ret = name + "TypeID = '" + s + "'";
+                else
+                    ret = ret + " OR "+ name + "TypeID = '" + s + "'";
+            }
+            return ret;
+        }
+        public static string ExtractStringPreconsumerFilter(string filter, out string filterDisplay)
+        {
+            string ret = "";
+            filterDisplay = "";
+            foreach (Match m in Regex.Matches(filter, "IsPreconsumer]?\\s*=\\s*(\\S+)"))
+            {
+                if (ret == "")
+                {
+                    ret = "Weights.[IsPreconsumer] = " + m.Groups[1].ToString();
+                    filterDisplay = "Waste Type: " + (m.Groups[1].ToString() == "1" ? "Pre-Consumer" : "")
+                        + (m.Groups[1].ToString() == "0" ? "Intermediate" : "") + (m.Groups[1].ToString() == "2" ? "Post-Consumer" : "");
+                }
+                else
+                {
+                    ret = ret + " OR " + "Weights.[IsPreconsumer] = " + m.Groups[1].ToString();
+                    filterDisplay = filterDisplay + ", " + (m.Groups[1].ToString() == "1" ? "PreConsumer" : "")
+                        + (m.Groups[1].ToString() == "0" ? "Intermediate" : "") + (m.Groups[1].ToString() == "2" ? "PostConsumer" : "");
+                }
+            }
+            return ret;
+        }
+
+        public static string ExtractDisplayNameFilter(string name, string filter)
+        {
+            string ret = "";
+            ret = Regex.Matches(filter, name + "Type\\s*=\\s*[^,]+\\s*(,\\s*[^,\\s\\)]+\\s*)*")[0].ToString();
+            return ret;
+        }
+
+        public static string ExtractWasteClassFilter(string filter)
+        {
+            string ret = "";
+            foreach (Match m in Regex.Matches(filter, "WasteClass]?\\s*=\\s*(\\S+)"))
+            {
+                if (ret == "")
+                {
+                    ret = "WasteClass = " + m.Groups[1].ToString();
+                }
+                else
+                {
+                    ret = ret + " OR " + "WasteClass = " + m.Groups[1].ToString();
+                }
+            }
+            return ret;
+        }
+        public static string RemoveWasteClassFilter(string filter)
+        {
+            string regex = filter;
+            if (Regex.IsMatch(filter, @"\[?(Weights\.)?WasteClass\]?"))
+                regex = Regex.Replace(filter, @"\(?\[?(Weights\.)?WasteClass\]?.*\s*\)?(\s*AND\s*)?", "", RegexOptions.IgnoreCase);
+            regex.Trim();
+			regex = RemoveEmpty(regex);
+            return regex;
+        }
+        
+        public static string RemoveWasteClassDisplayFilter(string filter)
+        {
+            string regex = filter;
+            regex = Regex.Replace(filter, @"\[?Allowed Waste Classes\]?\s*=\s*'[^']*'(\s*OR\s*)?", "", RegexOptions.IgnoreCase);
+            //if (Regex.IsMatch(regex, @"\(\s*\)\s*(AND)?\s*\((.*)\)", RegexOptions.IgnoreCase))
+            //    regex = Regex.Replace(regex, @"\(\s*\)\s*(AND)?\s*\((.*)\)", "$2");
+            //else if (Regex.IsMatch(regex, @"\(\s*\)\s*(AND)?\s*(.*)", RegexOptions.IgnoreCase))
+            //    regex = Regex.Replace(regex, @"\(\s*\)\s*(AND)?\s*(.*)", "$2");
+            //if (Regex.IsMatch(regex, @"^\s+AND", RegexOptions.IgnoreCase))
+            //    regex = Regex.Replace(regex, @"^\s+AND\s*", "", RegexOptions.IgnoreCase);
+            regex.Trim();
+			regex = RemoveEmpty(regex);
+            return regex;
+        }
+
+        public static bool TestExtractNameFilter()
+        {
+            string filter = "(StationTypeID = 'ZST_900000002' OR StationTypeID = 'ZST_900000003' OR StationTypeID = 'ZST_900000004')" +
+                " AND (FoodTypeID = 'ZFT_900000002' OR FoodTypeID = 'ZFT_900000003' OR FoodTypeID = 'ZFT_900000004')";
+            List<string> mls = ExtractNameFilter("Station", filter);
+            List<string> mlf = ExtractNameFilter("Food", filter);
+            return (mls.IndexOf("zst_900000002")>=0 && mls.IndexOf("zst_900000003")>=0 && mls.IndexOf("zst_900000004")>=0 &&
+                mlf.IndexOf("zft_900000002") >= 0 && mlf.IndexOf("zft_900000003") >= 0 && mlf.IndexOf("zft_900000004") >= 0);
+        }
+        public class MyListBoxItem
+        {
+            public MyListBoxItem(string Text)
+            {
+                text = Text;
+                itemData = "0";
+				item2Data = "";
+            }
+
+			public MyListBoxItem(string Text, string ItemData)
+			{
+				text = Text;
+				itemData = ItemData;
+				item2Data = "";
+			}
+			
+			public MyListBoxItem(string Text, string ItemData, string Item2Data)
+			{
+				text = Text;
+				itemData = ItemData;
+				item2Data = Item2Data;
+			}
+
+            public string ItemData
+            {
+				get
+				{
+					return itemData;
+				}
+				set
+				{
+					itemData = value;
+				}
+            }
+			public string Item2Data
+			{
+				get { return item2Data; }
+				set { item2Data = value; }
+			}
+
+            public override string ToString()
+            {
+                return text;
+            }
+
+            protected string text;
+            protected string itemData;
+			protected string item2Data;
+
+        }
+        // converts DateTime to string for storing in DB
+        public static string DateToString(DateTime date)
+        {
+            return date.ToString("yyyy/MM/dd HH:mm:ss",CultureInfo.GetCultureInfo("en-US"));
+        }
+        public static string DateToWesternFormat(DateTime date)
+        {
+            return date.ToString("MM/dd/yyyy HH:mm:ss", CultureInfo.GetCultureInfo("en-US"));
+        }
+        public static DayOfWeek StringToDayOfWeek(string dayOfWeek)
+        {
+            switch (dayOfWeek)
+            {
+                case "Sunday": return DayOfWeek.Sunday;
+                case "Monday": return DayOfWeek.Monday;
+                case "Tuesday": return DayOfWeek.Tuesday;
+                case "Wednesday": return DayOfWeek.Wednesday;
+                case "Thursday": return DayOfWeek.Thursday;
+                case "Friday": return DayOfWeek.Friday;
+                case "Saturday": return DayOfWeek.Saturday;
+                default: return DayOfWeek.Sunday;
+            }
+        }
+        public static int NumberOfDayOfWeek(string dayOfWeek)
+        {
+            switch (dayOfWeek)
+            {
+                case "Sunday": return 0;
+                case "Monday": return 1;
+                case "Tuesday": return 2;
+                case "Wednesday": return 3;
+                case "Thursday": return 4;
+                case "Friday": return 5;
+                case "Saturday": return 6;
+                default: return 0;
+            }
+        }
+        public static bool NotNullOrEmpty(string str)
+        {
+            return str != null && str != "";
+        }
+        //converts DateTime to string for tracker file (with AM and PM)
+        public static string DateToTrackerString(DateTime date)
+        {
+            return date.ToString("MM/dd/yyyy hh:mm:ss tt");
+        }
+        public static void ListControlBinding(ref ListControl listControl, object dataSource, string displayMember, string valueMember)
+        {
+            listControl.DisplayMember = displayMember;
+            listControl.ValueMember = valueMember;
+            listControl.DataSource = dataSource;
+        }
+
+        public static void ListControlBinding(ref ComboBox comboBox, object dataSource, string displayMember, string valueMember)
+        {
+            comboBox.DisplayMember = displayMember;
+            comboBox.ValueMember = valueMember;
+            comboBox.DataSource = dataSource;
+        }
+
+        public static DataDynamics.ActiveReports.Chart.ColorPalette GetPalette(string value)
+        {
+            switch (value)
+            {
+                case "Autumn":
+                    return DataDynamics.ActiveReports.Chart.ColorPalette.Autumn;
+                case "Cascade":
+                    return DataDynamics.ActiveReports.Chart.ColorPalette.Cascade;
+                case "Springtime":
+                    return DataDynamics.ActiveReports.Chart.ColorPalette.Springtime;
+                case "Iceberg":
+                    return DataDynamics.ActiveReports.Chart.ColorPalette.Iceberg;
+                case "Confetti":
+                    return DataDynamics.ActiveReports.Chart.ColorPalette.Confetti;
+                case "Greens":
+                    return DataDynamics.ActiveReports.Chart.ColorPalette.Greens;
+                case "Berries":
+                    return DataDynamics.ActiveReports.Chart.ColorPalette.Berries;
+                case "Murphy":
+                    return DataDynamics.ActiveReports.Chart.ColorPalette.Murphy;
+                default:
+                    return DataDynamics.ActiveReports.Chart.ColorPalette.Default;
+            }
+        }
+        public class DateEventArgs : EventArgs
+        {
+            private DateTime _date;
+            public DateEventArgs(DateTime date)
+            {
+                _date = date;
+            }
+            public DateTime Date
+            {
+                get { return _date; }
+                set { _date = value; }
+            }
+        }
+        public class StringEventArgs : EventArgs
+        {
+            private string _name;
+            public StringEventArgs(string name)
+            {
+                _name = name;
+            }
+            public string Name
+            {
+                get { return _name; }
+                set { _name = value; }
+            }
+        }
+        public const string ImportFilePattern = "VWT4WasteTransfer*.dat";
+        public const int MaxImportLevel = 3; //how deep to search in drives for import file
+        public static bool IsAllowEditVersion()
+        {
+            return VWA4Common.AppContext.CurrentVersion != VWA4Common.AppVersionType.ReadOnly;
+        }
+        /// <summary>
+        /// Check that a directory exists; create it if necessary; return false if it can't be created.
+        /// </summary>
+        /// <returns></returns>
+        public static bool CheckPath(string pathname)
+        {
+            if (!Directory.Exists(pathname))
+            {
+                try
+                {
+                    Directory.CreateDirectory(pathname);
+                    return true;
+                }
+                catch
+                {
+                    // Can't create the directory - we're dead in the water
+                    return false;
+                }
+            }
+            return true;
+        }
+        public static string GetConnectionString(string fileName)
+        {
+            return VWA4Common.AppContext.WasteConnectionString.Replace(VWA4Common.AppContext.DBPathName, fileName);
+        }
+
+        public static int ConvertIsPreconsumer(string desc)
+        {
+            switch (desc.ToLower().Trim())
+            {
+                case "pre consumer waste":
+                case "pre consumer":
+                case "pre-consumer":
+                    return 1;
+                case "post consumer waste":
+                case "post consumer":
+                case "post-consumer":
+                    return 2;
+                case "intermediate waste":
+                case "intermediate":
+                    return 0;
+                default:
+                    return 2;
+            }
+        }
+
+        public static string GetWasteClasses()
+        {
+			if (VWA4Common.GlobalSettings.FoodWasteClassAllowed && VWA4Common.GlobalSettings.NonFoodWasteClassAllowed)
+			{
+				return "All Waste Classes";
+			}
+			else if (VWA4Common.GlobalSettings.FoodWasteClassAllowed)
+			{
+				return "Food";
+			}
+			else if(VWA4Common.GlobalSettings.NonFoodWasteClassAllowed)
+			{
+				return "Non-Food";
+			}
+			return "Food";
+        }
+
+        ///
+        /// Weight Import Threshold
+        /// 
+        private const string _WasteProfileConst = "Waste";
+        private static string _WasteProfile;
+        static public string WasteProfile
+        {
+            get
+            {
+                if (String.IsNullOrEmpty(_WasteProfile))
+                {
+					int wasteProfile = -1;
+					if (VWA4Common.GlobalSettings.FoodWasteClassAllowed && VWA4Common.GlobalSettings.NonFoodWasteClassAllowed)
+						wasteProfile = -1;
+					else if (VWA4Common.GlobalSettings.FoodWasteClassAllowed)
+						wasteProfile = 1;
+					else if (VWA4Common.GlobalSettings.NonFoodWasteClassAllowed)
+						wasteProfile = 2;
+
+					if (wasteProfile == -1)
+					{
+						_WasteProfile = _WasteProfileConst; //all waste
+					}
+					else
+					{
+						DataTable dt = VWA4Common.DB.Retrieve("Select ProfileName FROM WasteProfiles WHERE ProfileClass = '" + wasteProfile + "'");
+						if (dt != null && dt.Rows.Count > 0)
+							_WasteProfile = dt.Rows[0]["ProfileName"].ToString().Trim();
+					}
+                }
+                if (String.IsNullOrEmpty(_WasteProfile))
+                    _WasteProfile = _WasteProfileConst;
+                return _WasteProfile;
+            }
+           
+        }
+        public static string GetCPUID()
+        {
+            string cpuInfo = string.Empty;
+            ManagementClass mc = new ManagementClass("win32_processor");
+            ManagementObjectCollection moc = mc.GetInstances();
+
+            foreach (ManagementObject mo in moc)
+            {
+                if (cpuInfo == "")
+                {
+                    //Get only the first CPU's ID
+                    cpuInfo = mo.Properties["processorID"].Value.ToString();
+                    break;
+                }
+            }
+
+            return cpuInfo;
+        }
+
+        // get the names of all the sites
+
+        public static string GetAllSiteNames()
+        {
+            DataTable siteDataTable = new DataTable();
+            string res = "";
+
+            string sql = @"SELECT LicensedSite " +
+                        " FROM Sites " +
+                        " WHERE Active = True";
+            siteDataTable = VWA4Common.DB.Retrieve(sql);
+
+            
+
+            foreach (DataRow row in siteDataTable.Rows)
+            {
+                res += (res == "" ? "" : ",") + row.ItemArray[0].ToString();
+                
+            }
+
+            return res;
+        }
+
+        public static int GetStep(int min, int max)
+        {
+            int step = 1; double temp = max - min;
+            for (step = 1; temp > 1; step *= 10)
+                temp = temp / 10;
+            step = step / 100 * (int)(1 + (max - min) * 10 / step);
+
+            return step;
+        }
+    }
+}

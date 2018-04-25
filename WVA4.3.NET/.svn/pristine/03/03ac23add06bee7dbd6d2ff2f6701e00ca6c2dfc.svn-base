@@ -1,0 +1,138 @@
+﻿namespace UserControls
+{
+    partial class UCWasteAvoidanceParameters
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.cbPeriod = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ucSiteChooser1 = new UserControls.UCSiteChooser();
+            this.chkDollars = new System.Windows.Forms.CheckBox();
+            this.chkPounds = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // cbPeriod
+            // 
+            this.cbPeriod.FormattingEnabled = true;
+            this.cbPeriod.Items.AddRange(new object[] {
+            "Week",
+            "Month",
+            "Quarter",
+            "Year"});
+            this.cbPeriod.Location = new System.Drawing.Point(95, 26);
+            this.cbPeriod.Name = "cbPeriod";
+            this.cbPeriod.Size = new System.Drawing.Size(121, 21);
+            this.cbPeriod.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 30);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(92, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Aggregate Period:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(34, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Select Site:";
+            // 
+            // ucSiteChooser1
+            // 
+            this.ucSiteChooser1.Location = new System.Drawing.Point(95, 4);
+            this.ucSiteChooser1.Name = "ucSiteChooser1";
+            this.ucSiteChooser1.SiteID = null;
+            this.ucSiteChooser1.Size = new System.Drawing.Size(121, 21);
+            this.ucSiteChooser1.TabIndex = 9;
+            this.ucSiteChooser1.TypeCatalogID = null;
+            // 
+            // chkDollars
+            // 
+            this.chkDollars.AutoSize = true;
+            this.chkDollars.Location = new System.Drawing.Point(95, 51);
+            this.chkDollars.Name = "chkDollars";
+            this.chkDollars.Size = new System.Drawing.Size(58, 17);
+            this.chkDollars.TabIndex = 13;
+            this.chkDollars.Text = "Dollars";
+            this.chkDollars.UseVisualStyleBackColor = true;
+            // 
+            // chkPounds
+            // 
+            this.chkPounds.AutoSize = true;
+            this.chkPounds.Location = new System.Drawing.Point(158, 51);
+            this.chkPounds.Name = "chkPounds";
+            this.chkPounds.Size = new System.Drawing.Size(62, 17);
+            this.chkPounds.TabIndex = 14;
+            this.chkPounds.Text = "Pounds";
+            this.chkPounds.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(51, 52);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(44, 13);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Display:";
+            // 
+            // UCWasteAvoidanceParameters
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.chkPounds);
+            this.Controls.Add(this.chkDollars);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ucSiteChooser1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cbPeriod);
+            this.Name = "UCWasteAvoidanceParameters";
+            this.Size = new System.Drawing.Size(220, 72);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.ComboBox cbPeriod;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private UCSiteChooser ucSiteChooser1;
+        private System.Windows.Forms.CheckBox chkDollars;
+        private System.Windows.Forms.CheckBox chkPounds;
+        private System.Windows.Forms.Label label3;
+
+    }
+}

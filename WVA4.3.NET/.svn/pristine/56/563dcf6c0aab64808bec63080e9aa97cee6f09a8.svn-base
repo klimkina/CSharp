@@ -1,0 +1,110 @@
+﻿namespace UserControls
+{
+    partial class UCTabularParameters
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.ucSiteChooser1 = new UserControls.UCSiteChooser();
+            this.label1 = new System.Windows.Forms.Label();
+            this.chkDaypart = new System.Windows.Forms.CheckBox();
+            this.chkStation = new System.Windows.Forms.CheckBox();
+            this.chkDisposition = new System.Windows.Forms.CheckBox();
+            this.SuspendLayout();
+            // 
+            // ucSiteChooser1
+            // 
+            this.ucSiteChooser1.Location = new System.Drawing.Point(34, 3);
+            this.ucSiteChooser1.Name = "ucSiteChooser1";
+            this.ucSiteChooser1.SiteID = null;
+            this.ucSiteChooser1.Size = new System.Drawing.Size(116, 21);
+            this.ucSiteChooser1.TabIndex = 0;
+            this.ucSiteChooser1.TypeCatalogID = null;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(28, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Site:";
+            // 
+            // chkDaypart
+            // 
+            this.chkDaypart.AutoSize = true;
+            this.chkDaypart.Location = new System.Drawing.Point(9, 28);
+            this.chkDaypart.Name = "chkDaypart";
+            this.chkDaypart.Size = new System.Drawing.Size(63, 17);
+            this.chkDaypart.TabIndex = 2;
+            this.chkDaypart.Text = "Daypart";
+            this.chkDaypart.UseVisualStyleBackColor = true;
+            // 
+            // chkStation
+            // 
+            this.chkStation.AutoSize = true;
+            this.chkStation.Location = new System.Drawing.Point(9, 46);
+            this.chkStation.Name = "chkStation";
+            this.chkStation.Size = new System.Drawing.Size(59, 17);
+            this.chkStation.TabIndex = 3;
+            this.chkStation.Text = "Station";
+            this.chkStation.UseVisualStyleBackColor = true;
+            // 
+            // chkDisposition
+            // 
+            this.chkDisposition.AutoSize = true;
+            this.chkDisposition.Location = new System.Drawing.Point(9, 64);
+            this.chkDisposition.Name = "chkDisposition";
+            this.chkDisposition.Size = new System.Drawing.Size(77, 17);
+            this.chkDisposition.TabIndex = 4;
+            this.chkDisposition.Text = "Disposition";
+            this.chkDisposition.UseVisualStyleBackColor = true;
+            // 
+            // UCTabularParameters
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.chkDisposition);
+            this.Controls.Add(this.chkStation);
+            this.Controls.Add(this.chkDaypart);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ucSiteChooser1);
+            this.Name = "UCTabularParameters";
+            this.Size = new System.Drawing.Size(156, 85);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private UCSiteChooser ucSiteChooser1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox chkDaypart;
+        private System.Windows.Forms.CheckBox chkStation;
+        private System.Windows.Forms.CheckBox chkDisposition;
+    }
+}

@@ -1,0 +1,1232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BC787C49-76A0-4836-9369-AEA31EF55151}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UserControls</RootNamespace>
+    <AssemblyName>UserControls</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <ApplicationIcon>VW_appicon.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ActiveReports.Chart, Version=6.2.3164.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ActiveReports.PdfExport, Version=6.2.3164.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ActiveReports.RtfExport, Version=6.2.3164.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Documents.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Documents.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinCalcManager.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinCalcManager.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinChart.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinChart.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinDataSource.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinDataSource.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinEditors.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinEditors.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinExplorerBar.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinExplorerBar.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinGrid.DocumentExport.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinGrid.DocumentExport.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinGrid.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinGrid.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinListView.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinListView.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinMaskedEdit.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinMaskedEdit.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinPrintPreviewDialog.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinPrintPreviewDialog.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinSchedule.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinSchedule.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinStatusBar.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinStatusBar.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinTabControl.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinTabControl.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinToolbars.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinToolbars.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinTree.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.UltraWinTree.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Shared.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Shared.v10.3.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.Misc.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.Misc.v10.3.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Win.v10.3.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v11.1.Core, Version=11.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Data.v11.1, Version=11.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v11.1, Version=11.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v11.1, Version=11.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v11.1, Version=11.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v11.1, Version=11.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraVerticalGrid.v11.1, Version=11.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    </Reference>
+    <Reference Include="DevExpress.XtraWizard.v11.1, Version=11.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="OpenNETCF.Desktop.Communication, Version=2.9.3574.21360, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\OpenNETCF.Desktop.Communication.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ARParameters.cs" />
+    <Compile Include="CheckedComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomColumnChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomColumnChooser.Designer.cs">
+      <DependentUpon>CustomColumnChooser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomDateTimeFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomDateTimeFilter.Designer.cs">
+      <DependentUpon>CustomDateTimeFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomRemap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomRemap.Designer.cs">
+      <DependentUpon>CustomRemap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomReplace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomReplace.Designer.cs">
+      <DependentUpon>CustomReplace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomTypeIDFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomTypeIDFilter.Designer.cs">
+      <DependentUpon>CustomTypeIDFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DriveDetector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditEventOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditEventOrder.Designer.cs">
+      <DependentUpon>EditEventOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditTransfer.Designer.cs">
+      <DependentUpon>EditTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddNewTag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddNewTag.Designer.cs">
+      <DependentUpon>frmAddNewTag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEnterLogProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEnterLogProperties.Designer.cs">
+      <DependentUpon>frmEnterLogProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEventOrderPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEventOrderPicker.Designer.cs">
+      <DependentUpon>frmEventOrderPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSessionSummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSessionSummary.Designer.cs">
+      <DependentUpon>frmSessionSummary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAllTypesPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAllTypesPicker.Designer.cs">
+      <DependentUpon>frmAllTypesPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEachFormatPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEachFormatPicker.Designer.cs">
+      <DependentUpon>frmEachFormatPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEnterCurrTransTimestamp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEnterCurrTransTimestamp.Designer.cs">
+      <DependentUpon>frmEnterCurrTransTimestamp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEnterTransUnits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEnterTransUnits.Designer.cs">
+      <DependentUpon>frmEnterTransUnits.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewSession.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewSession.Designer.cs">
+      <DependentUpon>frmNewSession.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOpenDETemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOpenDETemplate.Designer.cs">
+      <DependentUpon>frmOpenDETemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOpenExistingSession.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOpenExistingSession.Designer.cs">
+      <DependentUpon>frmOpenExistingSession.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSaveAs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSaveAs.Designer.cs">
+      <DependentUpon>frmSaveAs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmShowTaggedTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShowTaggedTypes.Designer.cs">
+      <DependentUpon>frmShowTaggedTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTagPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTagPicker.Designer.cs">
+      <DependentUpon>frmTagPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTransactionViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTransactionViewer.Designer.cs">
+      <DependentUpon>frmTransactionViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTypePicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTypePicker.Designer.cs">
+      <DependentUpon>frmTypePicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWasteModePicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWasteModePicker.Designer.cs">
+      <DependentUpon>frmWasteModePicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportData.cs" />
+    <Compile Include="ImportReports.cs" />
+    <Compile Include="MemorizedReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemorizedReports.Designer.cs">
+      <DependentUpon>MemorizedReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ReportParameters.cs" />
+    <Compile Include="TaskBase.cs" />
+    <Compile Include="TaskSheets.cs" />
+    <Compile Include="TopMostMessageBox.cs" />
+    <Compile Include="UC WasteAvoidanceParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC WasteAvoidanceParameters.Designer.cs">
+      <DependentUpon>UC WasteAvoidanceParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCAddUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCAddUser.Designer.cs">
+      <DependentUpon>UCAddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCComparisionParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCComparisionParameters.Designer.cs">
+      <DependentUpon>UCComparisionParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCComparisonSiteDetailsParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCComparisonSiteDetailsParameters.Designer.cs">
+      <DependentUpon>UCComparisonSiteDetailsParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCConfigParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCConfigParameters.Designer.cs">
+      <DependentUpon>UCConfigParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCConfigTransfer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCConfigTransfer.Designer.cs">
+      <DependentUpon>UCConfigTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCCrossTabParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCCrossTabParameters.Designer.cs">
+      <DependentUpon>UCCrossTabParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCDashBoard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDashBoard.Designer.cs">
+      <DependentUpon>UCDashBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCDatabaseInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDatabaseInfo.Designer.cs">
+      <DependentUpon>UCDatabaseInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCDateRangePeriodParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDateRangePeriodParameters.Designer.cs">
+      <DependentUpon>UCDateRangePeriodParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCDeleteUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDeleteUser.Designer.cs">
+      <DependentUpon>UCDeleteUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCDetailsParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDetailsParameters.Designer.cs">
+      <DependentUpon>UCDetailsParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCEditEventOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCEditEventOrder.Designer.cs">
+      <DependentUpon>UCEditEventOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCEditProduced.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCEditProduced.Designer.cs">
+      <DependentUpon>UCEditProduced.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCEditTransfer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCEditTransfer.Designer.cs">
+      <DependentUpon>UCEditTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCEditWeight.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCEditWeight.Designer.cs">
+      <DependentUpon>UCEditWeight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCEmployeeTransactionsParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCEmployeeTransactionsParameters.Designer.cs">
+      <DependentUpon>UCEmployeeTransactionsParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCEmpty.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCEmpty.Designer.cs">
+      <DependentUpon>UCEmpty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCEnterFinancialData.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCEnterFinancialData.Designer.cs">
+      <DependentUpon>UCEnterFinancialData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCEnterWasteLogs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCEnterWasteLogs.Designer.cs">
+      <DependentUpon>UCEnterWasteLogs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCFinancialParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCFinancialParameters.Designer.cs">
+      <DependentUpon>UCFinancialParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCFirstDayOfWeek.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCFirstDayOfWeek.Designer.cs">
+      <DependentUpon>UCFirstDayOfWeek.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCEmployeeParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCEmployeeParameters.Designer.cs">
+      <DependentUpon>UCEmployeeParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrintProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrintProperties.Designer.cs">
+      <DependentUpon>frmPrintProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IReportParameters.cs" />
+    <Compile Include="IWVAUserControlBase.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportParameter.cs" />
+    <Compile Include="UCBaseParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCBaseParameters.Designer.cs">
+      <DependentUpon>UCBaseParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCDateRangeParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDateRangeParameters.Designer.cs">
+      <DependentUpon>UCDateRangeParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCGoalHistoryParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCGoalHistoryParameters.Designer.cs">
+      <DependentUpon>UCGoalHistoryParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCGoalListbyCompletionParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCGoalListbyCompletionParameters.Designer.cs">
+      <DependentUpon>UCGoalListbyCompletionParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucGoaLWeeklyStatusParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucGoaLWeeklyStatusParameters.Designer.cs">
+      <DependentUpon>ucGoaLWeeklyStatusParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCHelp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCHelp.Designer.cs">
+      <DependentUpon>UCHelp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCImportTransactions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCImportTransactions.Designer.cs">
+      <DependentUpon>UCImportTransactions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCLowParticipation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCLowParticipation.Designer.cs">
+      <DependentUpon>UCLowParticipation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCLowParticipationParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCLowParticipationParameters.Designer.cs">
+      <DependentUpon>UCLowParticipationParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCManageBaselines.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCManageBaselines.Designer.cs">
+      <DependentUpon>UCManageBaselines.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCManageAdjustments.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCManageAdjustments.Designer.cs">
+      <DependentUpon>UCManageAdjustments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCManageEachFormats.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCManageEachFormats.Designer.cs">
+      <DependentUpon>UCManageEachFormats.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCManageEventClients.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCManageEventClients.Designer.cs">
+      <DependentUpon>UCManageEventClients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCManageEventOrders.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCManageEventOrders.Designer.cs">
+      <DependentUpon>UCManageEventOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCManageDETemplates.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCManageDETemplates.Designer.cs">
+      <DependentUpon>UCManageDETemplates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCManageGoals.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCManageGoals.Designer.cs">
+      <DependentUpon>UCManageGoals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCManagePrefs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCManagePrefs.Designer.cs">
+      <DependentUpon>UCManagePrefs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCManageTags.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCManageTags.Designer.cs">
+      <DependentUpon>UCManageTags.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCMemTransBuilder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCMemTransBuilder.Designer.cs">
+      <DependentUpon>UCMemTransBuilder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCNumberParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCNumberParameters.Designer.cs">
+      <DependentUpon>UCNumberParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCPrintParameters.cs" />
+    <Compile Include="UCReportChooser.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UCReportChooser.Designer.cs">
+      <DependentUpon>UCReportChooser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCReportParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCReportParameters.Designer.cs">
+      <DependentUpon>UCReportParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SmartDateTimePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SmartDateTimePicker.Designer.cs">
+      <DependentUpon>SmartDateTimePicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCHeader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCHeader.Designer.cs">
+      <DependentUpon>UCHeader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UCFooter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCFooter.Designer.cs">
+      <DependentUpon>UCFooter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCReportList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCReportList.Designer.cs">
+      <DependentUpon>UCReportList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCSetDisplayOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCSetDisplayOptions.Designer.cs">
+      <DependentUpon>UCSetDisplayOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCSetReportOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCSetReportOptions.Designer.cs">
+      <DependentUpon>UCSetReportOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCSiteChooser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCSiteChooser.Designer.cs">
+      <DependentUpon>UCSiteChooser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCSWATParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCSWATParameters.Designer.cs">
+      <DependentUpon>UCSWATParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCTabularParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCTabularParameters.Designer.cs">
+      <DependentUpon>UCTabularParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCTaskList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCTaskList.Designer.cs">
+      <DependentUpon>UCTaskList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCTrackerComparisionParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCTrackerComparisionParameters.Designer.cs">
+      <DependentUpon>UCTrackerComparisionParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCTrackerPicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCTrackerPicker.Designer.cs">
+      <DependentUpon>UCTrackerPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCTrackerViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCTrackerViewer.Designer.cs">
+      <DependentUpon>UCTrackerViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCTransactionViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCTransactionViewer.Designer.cs">
+      <DependentUpon>UCTransactionViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCTreeFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCTreeFilter.Designer.cs">
+      <DependentUpon>UCTreeFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCTreeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCTreeView.Designer.cs">
+      <DependentUpon>UCTreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCTrendParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCTrendParameters.Designer.cs">
+      <DependentUpon>UCTrendParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCViewWaste.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCViewWaste.Designer.cs">
+      <DependentUpon>UCViewWaste.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCViewWasteFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCViewWasteFilter.Designer.cs">
+      <DependentUpon>UCViewWasteFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCViewWeights.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCViewWeights.Designer.cs">
+      <DependentUpon>UCViewWeights.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCWeeklyTabularParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCWeeklyTabularParameters.Designer.cs">
+      <DependentUpon>UCWeeklyTabularParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewErrors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewErrors.Designer.cs">
+      <DependentUpon>ViewErrors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewWaste.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewWaste.Designer.cs">
+      <DependentUpon>ViewWaste.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vwa40blankDataSet.cs">
+      <DependentUpon>vwa40blankDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="vwa40blankDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>vwa40blankDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="VWADiscounts.cs" />
+    <Compile Include="VWAGridUtils.cs" />
+    <Compile Include="WeightsData.cs" />
+    <Compile Include="VWAPath.cs" />
+    <Compile Include="VWAWeights.cs" />
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomColumnChooser.resx">
+      <DependentUpon>CustomColumnChooser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomDateTimeFilter.resx">
+      <DependentUpon>CustomDateTimeFilter.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomRemap.resx">
+      <DependentUpon>CustomRemap.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomReplace.resx">
+      <DependentUpon>CustomReplace.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomTypeIDFilter.resx">
+      <DependentUpon>CustomTypeIDFilter.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditEventOrder.resx">
+      <DependentUpon>EditEventOrder.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditTransfer.resx">
+      <DependentUpon>EditTransfer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddNewTag.resx">
+      <DependentUpon>frmAddNewTag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEnterLogProperties.resx">
+      <DependentUpon>frmEnterLogProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEventOrderPicker.resx">
+      <DependentUpon>frmEventOrderPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSessionSummary.resx">
+      <DependentUpon>frmSessionSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSaveAs.resx">
+      <DependentUpon>frmSaveAs.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmShowTaggedTypes.resx">
+      <DependentUpon>frmShowTaggedTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTagPicker.resx">
+      <DependentUpon>frmTagPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemorizedReports.resx">
+      <DependentUpon>MemorizedReports.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="UC WasteAvoidanceParameters.resx">
+      <DependentUpon>UC WasteAvoidanceParameters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCAddUser.resx">
+      <DependentUpon>UCAddUser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCComparisionParameters.resx">
+      <DependentUpon>UCComparisionParameters.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCComparisonSiteDetailsParameters.resx">
+      <DependentUpon>UCComparisonSiteDetailsParameters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCConfigParameters.resx">
+      <DependentUpon>UCConfigParameters.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCConfigTransfer.resx">
+      <DependentUpon>UCConfigTransfer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCCrossTabParameters.resx">
+      <DependentUpon>UCCrossTabParameters.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCDashBoard.resx">
+      <DependentUpon>UCDashBoard.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCDatabaseInfo.resx">
+      <DependentUpon>UCDatabaseInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCDateRangePeriodParameters.resx">
+      <DependentUpon>UCDateRangePeriodParameters.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCDeleteUser.resx">
+      <DependentUpon>UCDeleteUser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCDetailsParameters.resx">
+      <DependentUpon>UCDetailsParameters.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCEditEventOrder.resx">
+      <DependentUpon>UCEditEventOrder.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCEditProduced.resx">
+      <DependentUpon>UCEditProduced.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCEditTransfer.resx">
+      <DependentUpon>UCEditTransfer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCEditWeight.resx">
+      <DependentUpon>UCEditWeight.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCEmployeeTransactionsParameters.resx">
+      <DependentUpon>UCEmployeeTransactionsParameters.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCEmpty.resx">
+      <DependentUpon>UCEmpty.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCEnterFinancialData.resx">
+      <DependentUpon>UCEnterFinancialData.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCFinancialParameters.resx">
+      <DependentUpon>UCFinancialParameters.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCFirstDayOfWeek.resx">
+      <DependentUpon>UCFirstDayOfWeek.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCEmployeeParameters.resx">
+      <DependentUpon>UCEmployeeParameters.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrintProperties.resx">
+      <DependentUpon>frmPrintProperties.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCBaseParameters.resx">
+      <DependentUpon>UCBaseParameters.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCDateRangeParameters.resx">
+      <DependentUpon>UCDateRangeParameters.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCGoalHistoryParameters.resx">
+      <DependentUpon>UCGoalHistoryParameters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCGoalListbyCompletionParameters.resx">
+      <DependentUpon>UCGoalListbyCompletionParameters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucGoaLWeeklyStatusParameters.resx">
+      <DependentUpon>ucGoaLWeeklyStatusParameters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCHelp.resx">
+      <DependentUpon>UCHelp.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCImportTransactions.resx">
+      <DependentUpon>UCImportTransactions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCLowParticipation.resx">
+      <DependentUpon>UCLowParticipation.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCLowParticipationParameters.resx">
+      <DependentUpon>UCLowParticipationParameters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCManageBaselines.resx">
+      <DependentUpon>UCManageBaselines.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCManageAdjustments.resx">
+      <DependentUpon>UCManageAdjustments.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCManageEachFormats.resx">
+      <DependentUpon>UCManageEachFormats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCManageEventClients.resx">
+      <DependentUpon>UCManageEventClients.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCManageEventOrders.resx">
+      <DependentUpon>UCManageEventOrders.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCManageGoals.resx">
+      <DependentUpon>UCManageGoals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCManagePrefs.resx">
+      <DependentUpon>UCManagePrefs.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCManageTags.resx">
+      <DependentUpon>UCManageTags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCMemTransBuilder.resx">
+      <DependentUpon>UCMemTransBuilder.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCNumberParameters.resx">
+      <DependentUpon>UCNumberParameters.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCReportChooser.resx">
+      <DependentUpon>UCReportChooser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCReportParameters.resx">
+      <DependentUpon>UCReportParameters.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SmartDateTimePicker.resx">
+      <DependentUpon>SmartDateTimePicker.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCFooter.resx">
+      <DependentUpon>UCFooter.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCHeader.resx">
+      <DependentUpon>UCHeader.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCReportList.resx">
+      <DependentUpon>UCReportList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCSetDisplayOptions.resx">
+      <DependentUpon>UCSetDisplayOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCSetReportOptions.resx">
+      <DependentUpon>UCSetReportOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCSiteChooser.resx">
+      <DependentUpon>UCSiteChooser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCSWATParameters.resx">
+      <DependentUpon>UCSWATParameters.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCTabularParameters.resx">
+      <DependentUpon>UCTabularParameters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCTaskList.resx">
+      <DependentUpon>UCTaskList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCTrackerComparisionParameters.resx">
+      <DependentUpon>UCTrackerComparisionParameters.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCTrackerPicker.resx">
+      <DependentUpon>UCTrackerPicker.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCTrackerViewer.resx">
+      <DependentUpon>UCTrackerViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCTreeFilter.resx">
+      <DependentUpon>UCTreeFilter.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCTreeView.resx">
+      <DependentUpon>UCTreeView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCTrendParameters.resx">
+      <DependentUpon>UCTrendParameters.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCViewWaste.resx">
+      <DependentUpon>UCViewWaste.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCViewWasteFilter.resx">
+      <DependentUpon>UCViewWasteFilter.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCViewWeights.resx">
+      <DependentUpon>UCViewWeights.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCWeeklyTabularParameters.resx">
+      <DependentUpon>UCWeeklyTabularParameters.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewErrors.resx">
+      <DependentUpon>ViewErrors.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewWaste.resx">
+      <DependentUpon>ViewWaste.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmAllTypesPicker.resx">
+      <DependentUpon>frmAllTypesPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEachFormatPicker.resx">
+      <DependentUpon>frmEachFormatPicker.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEnterCurrTransTimestamp.resx">
+      <DependentUpon>frmEnterCurrTransTimestamp.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEnterTransUnits.resx">
+      <DependentUpon>frmEnterTransUnits.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewSession.resx">
+      <DependentUpon>frmNewSession.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOpenDETemplate.resx">
+      <DependentUpon>frmOpenDETemplate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOpenExistingSession.resx">
+      <DependentUpon>frmOpenExistingSession.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTransactionViewer.resx">
+      <DependentUpon>frmTransactionViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTypePicker.resx">
+      <DependentUpon>frmTypePicker.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWasteModePicker.resx">
+      <DependentUpon>frmWasteModePicker.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\VW_appicon.ico" />
+    <EmbeddedResource Include="UCEnterWasteLogs.resx">
+      <DependentUpon>UCEnterWasteLogs.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCManageDETemplates.resx">
+      <DependentUpon>UCManageDETemplates.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCTransactionViewer.resx">
+      <DependentUpon>UCTransactionViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="ClassDiagram3.cd" />
+    <None Include="Resources\tasks_icon.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reports_icon.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tasks_icon1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reports_icon1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tasks_icon24.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reports_icon24.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dashboard_icon24.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendar_icon24.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shortcut_icon24.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tools_icon24.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\help.bmp" />
+    <None Include="vwa40blankDataSet.xsc">
+      <DependentUpon>vwa40blankDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="vwa40blankDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>vwa40blankDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="vwa40blankDataSet.xss">
+      <DependentUpon>vwa40blankDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VWA4Common\VWA4Common.csproj">
+      <Project>{757AF02D-486C-49C4-962E-26A88E5A8EE2}</Project>
+      <Name>VWA4Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clipboardicon.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clipboardicon2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\leanpath_clr_small.gif" />
+    <None Include="Resources\updatetracker_usb2.gif" />
+    <None Include="Resources\updatetracker_usb3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printericon.gif" />
+    <Content Include="Resources\pin_red.png" />
+    <Content Include="Resources\pin_yellow.png" />
+    <Content Include="VW_appicon.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="54fb9780-d0ca-480b-ab3a-4ebe4e73da61" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8090/Broadcastor" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Broadcastor.xsd" MetadataType="Schema" ID="c6e3bc9c-0194-4fb5-8532-b97c2a550812" SourceId="1" SourceUrl="http://localhost:8090/Broadcastor?xsd=xsd0" />
+    <MetadataFile FileName="BroadcastorService.wsdl" MetadataType="Wsdl" ID="d45dcf26-4ffe-4e54-a8db-85516df60c67" SourceId="1" SourceUrl="http://localhost:8090/Broadcastor?wsdl" />
+    <MetadataFile FileName="Broadcastor1.xsd" MetadataType="Schema" ID="667c905c-812f-4289-8c8b-f1ac94d73c85" SourceId="1" SourceUrl="http://localhost:8090/Broadcastor?xsd=xsd1" />
+    <MetadataFile FileName="Broadcastor.disco" MetadataType="Disco" ID="0e31b93a-6bca-4f46-aed6-5a217bd692ca" SourceId="1" SourceUrl="http://localhost:8090/Broadcastor?disco" />
+    <MetadataFile FileName="Broadcastor2.xsd" MetadataType="Schema" ID="387a27b2-8e09-46ac-84a4-20d4c08977f3" SourceId="1" SourceUrl="http://localhost:8090/Broadcastor?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

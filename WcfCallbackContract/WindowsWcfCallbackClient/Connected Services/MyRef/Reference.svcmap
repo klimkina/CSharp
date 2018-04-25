@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="43017f48-239c-44f5-9f63-06b37cb0b9a6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8075/Callback" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Callback.xsd" MetadataType="Schema" ID="7fd6fd9a-57f5-4ddc-a72e-af1caab570c2" SourceId="1" SourceUrl="http://localhost:8075/Callback?xsd=xsd0" />
+    <MetadataFile FileName="Callback.disco" MetadataType="Disco" ID="71a0bb19-778f-4f7d-8355-8ca805b9f767" SourceId="1" SourceUrl="http://localhost:8075/Callback?disco" />
+    <MetadataFile FileName="Callback1.xsd" MetadataType="Schema" ID="a4373c91-1f4d-4e77-a3bd-2d87ee075b15" SourceId="1" SourceUrl="http://localhost:8075/Callback?xsd=xsd2" />
+    <MetadataFile FileName="Callback2.xsd" MetadataType="Schema" ID="c58321e0-ab3c-4426-8f85-359df45a2a3b" SourceId="1" SourceUrl="http://localhost:8075/Callback?xsd=xsd1" />
+    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="34f162dc-5b83-49da-8b43-e124e093894c" SourceId="1" SourceUrl="http://localhost:8075/Callback?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

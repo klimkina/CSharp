@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="LicenseManager" EntityNamespace="LicenseManager4Web.Entities" ContextNamespace="LicenseManager4Web.DataContext" Class="UpdateManagerClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=sp.leanpath.com;Initial Catalog=LicenseManager;Persist Security Info=True;User ID=lm" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="LicenseManagerConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.UpdateFiles" Member="UpdateFiles">
+    <Type Name="UpdateFile">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UpdateId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="FileName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="[File]" Member="File" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="InstallPath" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="IsComplete" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DateFinished" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Update_UpdateFile" Member="Update" ThisKey="UpdateId" OtherKey="Id" Type="Update" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Versions" Member="Versions">
+    <Type Name="Version">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="VersionName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="Version_UpdatesVersion" Member="UpdatesVersions" ThisKey="Id" OtherKey="VersionId" Type="UpdatesVersion" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Updates" Member="Updates">
+    <Type Name="Update">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UpdateSeriesId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="UpdateType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Update_UpdateFile" Member="UpdateFiles" ThisKey="Id" OtherKey="UpdateId" Type="UpdateFile" />
+      <Association Name="Update_UpdatesApplication" Member="UpdatesApplications" ThisKey="Id" OtherKey="UpdateId" Type="UpdatesApplication" />
+      <Association Name="UpdateSery_Update" Member="UpdateSeries" ThisKey="UpdateSeriesId" OtherKey="Id" Type="UpdateSeries" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UpdatesApplication" Member="UpdatesApplications">
+    <Type Name="UpdatesApplication">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UpdateId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="Update_UpdatesApplication" Member="Update" ThisKey="UpdateId" OtherKey="Id" Type="Update" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UpdateSeries" Member="UpdateSeries">
+    <Type Name="UpdateSeries">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="UpdateSery_Update" Member="Updates" ThisKey="Id" OtherKey="UpdateSeriesId" Type="Update" />
+      <Association Name="UpdateSery_UpdatesVersion" Member="UpdatesVersions" ThisKey="Id" OtherKey="UpdateSeriesId" Type="UpdatesVersion" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UpdatesVersions" Member="UpdatesVersions">
+    <Type Name="UpdatesVersion">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UpdateSeriesId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="VersionId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="UpdateSery_UpdatesVersion" Member="UpdateSeries" ThisKey="UpdateSeriesId" OtherKey="Id" Type="UpdateSeries" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Version_UpdatesVersion" Member="Version" ThisKey="VersionId" OtherKey="Id" Type="Version" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ApplicationUpdates" Member="ApplicationUpdates">
+    <Type Name="ApplicationUpdate">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
