@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a77bce30-711e-44d3-8271-f6213115d399" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="net.tcp://localhost:7992/Calculator/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="3ae82621-b050-4954-88e1-36a2626bf897" SourceId="1" SourceUrl="net.tcp://localhost:7992/Calculator/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="680b920b-4bd9-462a-af52-fb2e53f58dae" SourceId="1" SourceUrl="net.tcp://localhost:7992/Calculator/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="f79bfc8e-bd3e-4807-a8ef-9302f91e49d4" SourceId="1" SourceUrl="net.tcp://localhost:7992/Calculator/mex" />
+    <MetadataFile FileName="CalculatorService.xsd" MetadataType="Schema" ID="afe594b1-48ff-4ae6-ad0f-90926feb988a" SourceId="1" SourceUrl="net.tcp://localhost:7992/Calculator/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
