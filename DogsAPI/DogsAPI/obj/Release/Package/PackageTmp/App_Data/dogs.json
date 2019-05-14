@@ -1,0 +1,26 @@
+[
+  {
+    "Id": 1,
+    "Name": "Djulbars",
+    "Owner": "Mazover",
+    "Notes": "WWII hero"
+  },
+  {
+    "Id": 2,
+    "Name": "White Fang",
+    "Owner": "Jack London",
+    "Notes": "Ficton book and movie"
+  },
+  {
+    "Id": 3,
+    "Name": "Peanut",
+    "Owner": "Mila",
+    "Notes": "Very friendly"
+  },
+  {
+    "Id": 4,
+    "Name": "Bagel",
+    "Owner": "Anna",
+    "Notes": "Peanut's sister"
+  }
+]
