@@ -1,0 +1,22 @@
+{ 
+    "dogs": [
+                 { 
+                    "id":           1,
+                    "name":         "Peanut",  
+                    "owner":     "Mila",
+                    "notes":     "Very friendly"
+                 },
+                 { 
+                    "id":           7,
+                    "name":         "Djulbars",  
+                    "owner":     "Mazover",
+                    "notes":     "WWII hero"
+                 },
+                 { 
+                    "id":           2,
+                    "name":         "White Fang",  
+                    "owner":     "Jack London",
+                    "notes":     "Ficton book and movie"
+                 }
+    ] 
+}

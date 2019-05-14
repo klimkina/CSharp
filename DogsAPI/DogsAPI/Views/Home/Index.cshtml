@@ -1,0 +1,45 @@
+﻿<div class="jumbotron">
+    <h1>Office Dogs</h1>
+</div>
+<div id="body">
+    <ul id="dogs"></ul>
+    <form id="saveDogForm" method="post">
+        <h3>Create a new Contact</h3>
+        <p>
+            <input type="hidden" name="Id" value=0 />
+        </p>
+        <p>
+            <label for="dogName">Dog Name:</label>
+            <input type="text" name="Name" />
+        </p>
+        <p>
+            <label for="Owner">Dog's Owner:</label>
+            <input type="text" name="Owner" />
+        </p>
+        <p>
+            <label for="Notes">Notes:</label>
+            <input type="text" name="Notes" />
+        </p>
+        <input type="button" id="saveDog" value="Save" />
+    </form>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $.getJSON('/api/dog', function (contactsJsonPayload) {
+                $(contactsJsonPayload).each(function (i, item) {
+                    $('#dogs').append('<li>' + item.Name + '</li>');
+                });
+            });
+        });
+        $('#saveDog').click(function () {
+            $.post("api/dog",
+                $("#saveDogForm").serialize(),
+                function (value) {
+                    $('#dogs').append('<li>' + value.Name + '</li>');
+                },
+                "json"
+            );
+        });
+    </script>
+}
